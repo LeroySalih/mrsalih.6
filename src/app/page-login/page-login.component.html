@@ -1,0 +1,54 @@
+
+  <section  >
+  <mat-card >
+    <mat-card-title>Log In</mat-card-title>
+    <mat-divider></mat-divider>
+    <form #f="ngForm"
+          (ngSubmit)="onSubmit(f)"
+          class="ui form"
+          >
+          
+            <mat-form-field>
+              <input type="text" matInput placeholder="School Id" name="schoolId" id="schoolId" ngModel>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input type="text" matInput 
+                      required
+                      #userName="ngModel"
+                      placeholder="User Name (redsnake, bluedog, etc)" id="userName" name="userName" ngModel>
+                      <mat-error *ngIf="userName.hasError('required')">User Name is required</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input type="text" matInput 
+                      placeholder="Password (atleast 6 chars)" id="password" name="password" 
+                      ngModel
+                      required
+                      minlength="6"
+                      #pwInput="ngModel"
+                      >
+                      <mat-hint>{{pwInput.value?.length}} charaters</mat-hint>
+                      <mat-error *ngIf="pwInput.hasError('required')">Password is required</mat-error>
+            </mat-form-field>
+  
+            <div>
+                <button mat-raised-button type="button" (click)="onCancel()" >
+                    <!-- <mat-icon>home</mat-icon> -->
+                    Cancel
+                  </button> 
+                  <button mat-raised-button 
+                          [disabled]="!f.valid"
+                          type="submit" color="primary">
+                      <!-- <mat-icon>home</mat-icon> -->
+                      Submit
+                    </button> 
+            </div>
+            <div>
+              {{status}}
+            </div>
+                
+    </form>
+  </mat-card>
+  </section>
+

@@ -1,0 +1,33 @@
+<mat-card class="quiz" *ngIf="typedQuestion">
+    <mat-card-content>
+        <form [formGroup]="form">
+                
+            <section class="typedQuestion">
+                    <div>Question {{index + 1}}</div>
+                    <ng-katex [equation]="typedQuestion.getLabel()" style="font-size:x-small"></ng-katex>
+            </section>
+
+            <section >
+                    <div class="answer">
+                        <p-radioButton 
+                                *ngFor="let answer of typedQuestion.displayAnswers();let i = index"
+                                name="answers" 
+                                formControlName="answer"
+                                value="{{answer}}" 
+                                label="{{answer}}"
+                                
+                                (click)="answerClicked(answer)"
+                                ></p-radioButton>
+                                <span>{{answer}}</span>
+                        </div>
+          </section>
+
+            <section class="actions">
+                    <button type="button" style="width:40%; margin: 3px;" pButton label="<<" (click)="previousQuestion()"></button>
+                    <!-- <button type="button" style="width:30%; margin: 3px;" pButton label="Submit" [disabled]="checkSubmitDisable()" (click)="checkAnswer()"></button> -->
+                    <button type="button" style="width:40%; margin: 3px;" pButton label=">>" (click)="nextQuestion()"></button>
+            </section>
+        </form>
+    </mat-card-content> 
+    </mat-card>
+

@@ -1,0 +1,41 @@
+
+  <section>
+      
+      <form [formGroup]="myForm" novalidate (ngSubmit)="emit(myForm.value)">
+          <!-- we will place our fields here -->
+
+            
+            <div class="container">
+                <h4>Video Notes</h4>
+            </div>
+            <!-- list of addresses -->
+            <div formArrayName="notes">
+                    <div *ngFor="let note of myForm['controls'].notes['controls']; let i=index">
+                        
+            
+                        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                        <div [formGroupName]="i">
+                            <span>{{i + 1}}</span>
+                            <span *ngIf="myForm['controls'].notes['controls'].length > 0" (click)="removeNote(i)">Remove</span>
+                        
+                                <!--time-->
+                                <div>
+                                    <label>time</label>
+                                    <input type="text" formControlName="time">
+                                    <!--display error message if street is not valid-->
+                                    <small [hidden]="myForm.controls.notes.controls[i].controls.time.valid">
+                                        Street is required
+                                    </small>
+                                        <label>comment</label>
+                                        <input type="text" formControlName="comment" (blur)="emit(myForm.value)">
+                                </div>
+
+                        </div>
+                            
+                    </div>
+                </div>
+        <button  (click)="addNote()">Add</button>
+        <button type="submit" [disabled]="!myForm.valid">Submit</button>
+      </form>
+  </section>
+

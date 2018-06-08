@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-content>This is a quiz</mat-card-content>
+</mat-card>
+
+<div class="questionArea">
+
+    <mat-card class="question">
+        <mat-card-content>
+            <ng-katex [equation]="equation"></ng-katex>
+          <div>
+              <mat-form-field>
+                  <input matInput placeholder="mins">
+                </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="question">
+          <mat-card-content>
+              <ng-katex [equation]="equation"></ng-katex>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="hours">
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="mins">
+                  </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      
+      <mat-card class="question correct">
+          <mat-card-content>
+              <ng-katex [equation]="equation"></ng-katex>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="mins">
+                  </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      
+        <mat-card class="question incorrect">
+            <mat-card-content>
+                <ng-katex [equation]="equation"></ng-katex>
+              <div>
+                  <mat-form-field>
+                      <input matInput placeholder="mins">
+                    </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+</div>
+
+
+<p-button label="Submit" style="margin:5px;"></p-button>

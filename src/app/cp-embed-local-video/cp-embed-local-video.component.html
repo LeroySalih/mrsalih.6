@@ -1,0 +1,5 @@
+<video id="videoPlayer" 
+       width="500" 
+       controls>
+    <source *ngFor="let safeUrl of safeUrls;" [src]="safeUrl" type="video/mp4">
+</video>

@@ -1,0 +1,38 @@
+.progressBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.progressItem {
+    flex: 1;
+    background-color: silver;
+    margin: 2px;
+    border-radius: 11px 11px 11px 11px;
+    -moz-border-radius: 11px 11px 11px 11px;
+    -webkit-border-radius: 11px 11px 11px 11px;
+    border: 3px solid #99ff99;
+    
+}
+
+.unanswered {
+    background-color: silver;
+}
+.correct {
+    background-color: #40cf10;
+}
+
+.incorrect {
+    background-color: #e64e56;
+}
+
+.unknown {
+    background-color: blue;
+}
+
+.current {
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(10,5,1,1);
+-moz-box-shadow: 0px 0px 9px 0px rgba(10,5,1,1);
+box-shadow: 0px 0px 9px 0px rgba(10,5,1,1);
+}

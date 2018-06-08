@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{description}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Module Title" formControlName="title">
+  </mat-form-field>
+  <div></div>
+  <mat-form-field>
+      <input matInput placeholder="Sub Title" formControlName="subtitle">
+  </mat-form-field>
+  <mat-form-field>
+      <mat-select placeholder="Category" formControlName="category">
+        <mat-option [value]="'Computational Thinking'">Computational Thinking</mat-option>
+        <mat-option [value]="'Programming Concepts'">Programming Concepts</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <div></div>
+  <p-editor formControlName="bodyText" [style]="{'height':'320px'}"></p-editor>
+  <p-checkbox name="softwareIcons" label="Python" value="/assets/images/python_logo.png" [formControl]="form.controls['softwareIcons']"></p-checkbox>
+  <p-checkbox name="softwareIcons" label="Flowgorithm" value="/assets/images/flowgorithm_logo.png" [formControl]="form.controls['softwareIcons']"></p-checkbox>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button" mat-primary (click)="save()">Save</button>
+</mat-dialog-actions>

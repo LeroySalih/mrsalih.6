@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-title>Learning Objectives</mat-card-title>
+      <app-cp-learning-objective 
+          *ngFor="let lo of los" 
+          [lo]="lo"
+          [status]="getLoFeedback(lo)"
+          (statusChange)="onStatusChange($event)"
+          (loEvent)="onLOEvent($event)"
+          >
+      </app-cp-learning-objective>
+      <p-button label="Add" (click)="onLOAddClick()"></p-button>
+</mat-card>

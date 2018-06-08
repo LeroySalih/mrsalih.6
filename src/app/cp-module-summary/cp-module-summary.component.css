@@ -1,0 +1,26 @@
+
+
+
+
+.moduleSummary{
+    width : 300px;
+    margin : 10px;
+}
+
+.softwareThumbnail {
+   
+    max-height:40px;
+    width: auto;
+    height: auto;
+    
+}
+
+.moduleSummaryContent {
+    display: flex; 
+    flex-direction: row
+}
+
+.moduleSummaryContentText {
+    margin-left:5px;
+}
+

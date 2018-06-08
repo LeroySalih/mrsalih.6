@@ -1,0 +1,25 @@
+<mat-card class="moduleSummary">
+    <mat-card-title >{{module.title}}</mat-card-title>
+    <mat-card-subtitle >{{module.subtitle}}</mat-card-subtitle>
+    <mat-card-content  class="moduleSummaryContent">
+        
+        
+        <div class="moduleSummaryContentText" >
+          <div [innerHTML]="module.bodyText"></div>
+        </div>
+    
+    </mat-card-content>
+
+
+  <mat-card-actions style="text-align: left">
+     <div style="display: flex; flex-direction: row;">
+       <span>
+         <img *ngFor="let icon of module.softwareIcons;" src="{{icon}}" class="softwareThumbnail"/>
+        </span>
+       <span style="flex: 1;  text-align: right; vertical-align: middle">
+         <p-splitButton label="Read More" icon="fa-check" (onClick)="OnReadMoreClick(module)" [model]="items" ></p-splitButton>
+        </span>
+     </div>
+      
+  </mat-card-actions>
+</mat-card>

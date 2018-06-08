@@ -1,0 +1,35 @@
+<div class="pageContainer">
+
+    <div class="bg-img">
+        <div class="pageBanner">
+            <div class="header">Welcome to Flipped Floki.</div>
+            <div class="subHeader">A resource site to help teachers deliver flipped <b>Maths</b> and <b>Computing</b> classrooms to KS3 &amp; KS4 pupils.</div>
+
+        </div>
+        <div class="signButtons" >
+            <div [@signInTrigger]="signedInState"
+                 (@signInTrigger.done)="animationDone($event)"
+                 style="display: flex; flex-direction: row">
+                    <div class="headerItem">Sign In</div>
+                    <div class="headerItem">Sign Up</div>
+            </div>
+            
+            <div class="headerItem"
+                [@signOutTrigger]="signedInState"
+                (@signOutTrigger.done)="animationDone($event)"
+            >
+            Sign Out, <span *ngIf="userProfile">{{userProfile.name}}</span>
+          </div>
+        </div>
+
+        
+    </div> 
+
+    <div class="sideBlocks">
+      <div class="sideBlock" style="background-color: #328CC1">KS3 Maths Resources</div>
+      <div class="sideBlock" style="background-color: #D9B310">KS3 Computing Resources</div>
+      <div class="sideBlock" style="background-color: #0B3C5D">KS4 Maths Resources</div>
+      <div class="sideBlock" style="background-color: #1D2731">KS4 Computing Resources</div>
+    </div>
+      
+</div>

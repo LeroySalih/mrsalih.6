@@ -1,0 +1,23 @@
+.questionArea {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.question {
+    width: 300px;
+    margin: 5px;
+}
+
+
+.correct {
+    background-color: #c3f8d3;
+}
+
+.incorrect {
+    background-color: #fc9b9b;
+}
+
+.answer{
+    margin: 5px;
+}

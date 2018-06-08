@@ -1,0 +1,49 @@
+<section>
+  <div droppable 
+    (onDrop)="onDrop($event)" 
+    class="dropTarget" 
+    [@highlightState]="getHighlightDragArea()"
+    >
+    <div class="dropTargetInner"></div>
+  </div>
+  <mat-card draggable 
+      [dragData]="index" 
+      (onDragStart)="onDragStart($event)" 
+      (onDragEnd)="onDragEnd($event)">
+      
+      <mat-card-title>{{section.title}}</mat-card-title>
+      
+      <mat-card-content>
+
+        <div [innerHtml]="section.content">
+
+        </div>
+        <app-cp-embed-video 
+                *ngIf="section.type == 'you-tube-video'"
+                [myVideoId]="section.options.videoId">
+        </app-cp-embed-video>
+
+        <app-cp-embed-local-video 
+                *ngIf="section.type == 'video'"
+                [myVideoId]="section.options.videoId">
+        </app-cp-embed-local-video>
+          
+        <app-cp-section-notes 
+                *ngIf="section.options.showComments == true"
+                [sectionId]="section.id"
+                [notes]=""
+                (SectionNoteChange)="saveSectionNote($event)">
+        </app-cp-section-notes>
+        
+        <app-cp-embed-text-content 
+                *ngIf="section.type == 'text'"
+                [section]="section">
+        </app-cp-embed-text-content>
+        
+       </mat-card-content>
+      <mat-card-actions style="display: flex; flex-direction: row">
+            <mat-checkbox style="flex:1" #chk (change)="onCompleteChange(chk)" [checked]="getCompleted()">Completed</mat-checkbox>
+            <p-splitButton style="" label="Edit" [model]="items" ></p-splitButton>
+      </mat-card-actions>
+</mat-card>
+</section>

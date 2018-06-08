@@ -1,0 +1,19 @@
+.jumbotron{
+    height:150px;
+}
+
+.moduleContent {
+    display : flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.moduleDescription {
+    flex-grow: 1;
+}
+
+.moduleLessons {
+    flex-grow: 1;
+}
+

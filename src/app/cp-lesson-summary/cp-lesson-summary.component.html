@@ -1,0 +1,26 @@
+<section>
+        <div droppable 
+        (onDrop)="onDrop($event)" 
+        class="dropTarget" 
+        [@highlightState]="getHighlightDragArea()"
+        >
+        <div class="dropTargetInner"></div>
+      </div>
+      <mat-card  
+            class="lessonSummary" 
+            draggable
+            [dragData]="index" 
+            (onDragStart)="onDragStart($event)" 
+            (onDragEnd)="onDragEnd($event)"
+            >
+            <mat-card-title>{{lesson.title}}</mat-card-title>
+            <mat-card-content>
+                    {{lesson.subtitle}}
+            </mat-card-content>
+            
+            <mat-card-actions>
+                <p-splitButton label="Read More" icon="fa-check" (onClick)="onReadMoreClick()" [model]="items" ></p-splitButton>
+            </mat-card-actions>
+        </mat-card>
+        
+</section>

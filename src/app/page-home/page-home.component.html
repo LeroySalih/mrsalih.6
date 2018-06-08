@@ -1,0 +1,23 @@
+
+
+    <div>
+        <button mat-raised-button mat-button-primary (click)="moduleNew()">New Module</button>
+    </div>
+
+    <app-cp-module-summary 
+          class="content" *ngFor="let module of modules"
+          (moduleEvent)="onModuleChanged($event)"
+          (readMore)="onReadMoreClicked($event)" 
+          [readOnly]="false"
+          [module]="module"></app-cp-module-summary> 
+
+
+
+
+
+
+
+
+
+
+    

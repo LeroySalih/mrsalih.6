@@ -1,0 +1,53 @@
+<section >
+<form [formGroup]="form">
+    
+    <mat-select formControlName="type" placeholder="Favorite food">
+        <mat-option *ngFor="let type of types" [value]="type.name">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+  
+
+     <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" placeholder="Title" >
+     </mat-form-field> 
+     <p-editor formControlName="content"></p-editor>
+  <div *ngIf="section.type == 'text'">
+    
+  </div>
+
+  <div *ngIf="section.type == 'video'">
+      <mat-form-field>
+          <input formControlName="videoId" matInput placeholder="Video Id"   >
+       </mat-form-field> 
+       
+      <mat-checkbox formControlName="showComments" [checked]="getShowCommentsChecked()" >Show Comments</mat-checkbox>
+  </div>
+
+  <div *ngIf="section.type == 'you-tube-video'">
+      <mat-form-field>
+          <input formControlName="videoId" matInput placeholder="Video Id"   >
+       </mat-form-field> 
+       
+      <mat-checkbox formControlName="showComments" [checked]="getShowCommentsChecked()" >Show Comments</mat-checkbox>
+  </div>
+
+  <div *ngIf="section.type == 'question'">
+        <mat-form-field>
+            <input formControlName="question" matInput placeholder="Question"   >
+         </mat-form-field> 
+         
+         <mat-form-field>
+                <input formControlName="answer" matInput placeholder="Answer"   >
+         </mat-form-field> 
+         
+        <mat-checkbox formControlName="showComments" [checked]="getShowCommentsChecked()" >Show Comments</mat-checkbox>
+    </div>
+
+  </form>
+
+  <mat-dialog-actions>
+      <button class="mat-raised-button" (click)="close()">Close</button>
+      <button class="mat-raised-button" mat-primary (click)="save()">Save</button>
+    </mat-dialog-actions>
+</section>
