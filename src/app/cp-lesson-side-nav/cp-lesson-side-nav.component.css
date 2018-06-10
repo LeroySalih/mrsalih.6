@@ -1,0 +1,16 @@
+.sideNav {
+    background-color: lightskyblue; 
+    border: 1px solid silver; 
+    border-radius: 5px; 
+    padding: 5px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-size: 14px; 
+    margin-top: 10px;
+}
+
+.sideNavItem {
+    margin: 5px; 
+    cursor: pointer; 
+    padding: 3px; 
+    border-bottom: dashed 1px black
+}

@@ -8,7 +8,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 import { AppComponent } from './app.component';
 import { PageHomeComponent } from './page-home/page-home.component';
@@ -58,6 +57,7 @@ import { CpQuestionStatusBarComponent } from './cp-question-status-bar/cp-questi
 import { PageLandingComponent } from './page-landing/page-landing.component';
 
 import { MomentModule } from 'angular2-moment';
+import { CpLessonSideNavComponent } from './cp-lesson-side-nav/cp-lesson-side-nav.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -95,6 +95,7 @@ const appRoutes: Routes = [
   PageQuizComponent,
   CpQuestionStatusBarComponent,
   PageLandingComponent,
+  CpLessonSideNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +110,6 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     KatexModule,
     MomentModule,
-    Ng2PageScrollModule,
     NgDragDropModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

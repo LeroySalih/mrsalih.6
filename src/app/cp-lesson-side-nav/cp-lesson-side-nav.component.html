@@ -1,0 +1,12 @@
+<div class="sideNav">
+    <div class="sideNavItem" (click)="gotoHome()">
+        <mat-icon>home</mat-icon>Home</div>
+    <div *ngFor="let section of sections; let i = index;" 
+         (click)="gotoSection(i)" 
+         class="sideNavItem"
+         >
+          <span *ngIf="checkSectionCompleted(section.id)"><mat-icon>done</mat-icon></span>
+          <span>{{section.title}}</span>
+        </div>
+    <div class="sideNavItem" (click)="gotoQuiz()">Quiz</div>
+</div>

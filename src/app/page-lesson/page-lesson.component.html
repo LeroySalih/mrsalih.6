@@ -4,12 +4,13 @@
 
                         <div class="wrapper">
                                 <div class="sideMenu box">
-                                        <div>
-                                                <div (click)="gotoSection(0)">Convert Hours and Minutes to Minutes</div>
-                                                <div (click)="gotoSection(1)">Convert Minutes to Hours and Minutes</div>
-                                                <div (click)="gotoSection(2)">Find the difference</div>
-                                                <div (click)="gotoQuiz(quiz)">Quiz</div>
-                                        </div>
+                                        <app-cp-lesson-side-nav
+                                                class="sideNav"
+                                                [sections]="sections"
+                                                [sectionPayloads]="sectionPayloads"
+                                                (sideNavEvent)="onSideNavEvent($event)"
+                                        ></app-cp-lesson-side-nav>
+                                        
                                 </div>
                                 <div id="sectionContainer" (scroll)="testScroll()" class="sectionContainer box">
 
@@ -27,12 +28,7 @@
                                                                         >
                                                                 </app-cp-learning-objectives>
                                                         </section>
-                                                        <section>
-                                                                <div style="display: flex; flex-direction: row">
-                                                                        <h2 class="mat-title" style="flex: 1">Lesson Sections:</h2>
-                                                                        <p-button label="Add" (click)="onSectionEvent({type:'NEW'})"></p-button>
-                                                                </div>        
-                                                        </section>
+                                                        
                                                         <app-cp-section  
                                                                
                                                                 *ngFor="let section of sections; let i = index;"

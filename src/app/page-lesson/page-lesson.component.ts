@@ -39,8 +39,10 @@ import { QuestionSpec } from '../models/question-spec';
 import { QuestionTypes } from '../enums/question-types';
 import { QuestionStatus } from '../enums/question-status';
 import { Attempt } from '../models/attempt';
-import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
+
 import { CpSectionComponent } from '../cp-section/cp-section.component';
+import { CpQuestionComponent } from '../cp-question/cp-question.component';
+import { CpLearningObjectivesComponent } from '../cp-learning-objectives/cp-learning-objectives.component';
 
 export interface Customer {
   name: string; // required field with minimum 5 characters
@@ -59,7 +61,9 @@ export interface Address {
 })
 export class PageLessonComponent implements OnInit, AfterViewInit {
 
+  @ViewChildren(CpLearningObjectivesComponent, { read: ElementRef} ) private pageHeadings: QueryList<ElementRef>;
   @ViewChildren(CpSectionComponent, { read: ElementRef }) private sectionContents: QueryList<ElementRef>;
+  @ViewChildren(CpQuestionComponent, {read: ElementRef }) private quizElements: QueryList<ElementRef>;
 
   userProfile: UserProfile;
   lessonId = 'Not Set';
@@ -102,7 +106,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
              }
 
   ngAfterViewInit()  {
-    
+
   }
 
   ngOnInit() {
@@ -189,20 +193,21 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
   }
 
+  gotoHome() {
+    console.log('gotoHome');
+    this.pageHeadings.toArray()[0].nativeElement.scrollIntoView(true);
+  }
+
   gotoSection(index) {
     this.sectionContents.toArray()[index].nativeElement.scrollIntoView(true);
     // this.sectionContents.toArray()[index].nativeElement.scrollIntoView(true);
   }
 
-  gotoQuiz(el) {
-
-    el.scrollIntoView(true);
-
+  gotoQuiz() {
+    this.quizElements.toArray()[0].nativeElement.scrollIntoView(true);
+    // el.scrollIntoView(true);
   }
 
-  testScroll() {
-    console.log('scrolling');
-  }
 
   onQuizChange(event) {
     console.log(`onQuizChange`, event);
@@ -362,6 +367,16 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
       case 'NEXT_QUESTION' : return this.nextQuestion();
       case 'PREVIOUS_QUESTION' : return this.previousQuestion();
       default: console.error('[onQuestionEvent] UNKNOWN EVENT TYPE');
+    }
+  }
+
+  onSideNavEvent(event) {
+    console.log(`[onSideEvent]`, event.type);
+    switch (event.type) {
+      case 'GOTO_HOME' : return this.gotoHome();
+      case 'GOTO_SECTION': return this.gotoSection(event.payload);
+      case 'GOTO_QUIZ': return this.gotoQuiz();
+      default: console.error(`onSideNavEvent:: UNKNOWN EVENT TYPE`);
     }
   }
 
