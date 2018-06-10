@@ -15,7 +15,7 @@ import { QuestionSpec } from '../models/question-spec';
 import { Quiz } from '../models/quiz';
 import { QuestionTypes } from '../enums/question-types';
 
-
+import * as firebase from 'firebase';
 
 @Injectable()
 export class QuestionService {
@@ -35,46 +35,75 @@ export class QuestionService {
 
         // create 5 questions
         const questions: Question[] = QuestionFactory.createQuestions(QuestionTypes.TimeConvertHrsMinsToMins, 5);
-        const quiz: Quiz = {questions};
 
-        // save them to DB
+        // convert the questions to POJO
         const saveQuestions = questions.map((question) => {
-          return Object.assign({}, question);
+          return Object.assign({}, question );
         });
 
-        const saveObj = Object.assign({}, {questions: saveQuestions});
 
-        return this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}`).set(saveObj);
+        // construct a quiz object
+        const saveObj = Object.assign({}, {
+            questions: saveQuestions,
+            timestamp: new Date()
+          });
+
+        // add the quiz to the qizzes collection
+        return this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}/quizzes/${saveObj.timestamp}`).set(saveObj);
 
       });
 
   }
 
-  getQuizForUser (lessonId: string, userId): Observable<Quiz> {
-    const doc: AngularFirestoreDocument<Quiz> = this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}`);
-    return doc.valueChanges().pipe(map((quiz) => {
+  convertQuestionsToTypedQuestions(questions: Question[]): Question[] {
+    return  questions.map((question) => {
+      return QuestionFactory.createQuestionFromDB(question);
+    });
+  }
 
-      if (quiz && quiz.questions) {
-        // Ensure that the questions are of the correct type.
-        quiz.questions = quiz.questions.map((obj) => {
-          return QuestionFactory.createQuestionFromDB(obj); }
-        );
-      }
+  getQuizzesForUser (lessonId: string, userId: string): Observable<Quiz[]> {
 
-      return quiz;
+    const collection: AngularFirestoreCollection<Quiz> = this.afs.collection<Quiz>(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}/quizzes`);
+
+    return collection.valueChanges().pipe(map((quizzes) => {
+
+      return quizzes.map((quiz) => {
+        quiz.questions = this.convertQuestionsToTypedQuestions(quiz.questions);
+        return quiz;
+      });
     }));
   }
 
-  saveQuizForUser(lessonId: string, userId: string, questions: Question[]): Promise<void> {
+  getQuizForUser (lessonId: string, userId): Observable<Quiz[]> {
+    const doc: AngularFirestoreDocument<Quiz> = this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}`);
+    const collection: AngularFirestoreCollection<Quiz> = this.afs.collection<Quiz>
+          (DbConfig.QUIZ, ref => ref
+              .where('lessonId', '==', lessonId)
+              .where('userId', '==', userId)
+              .orderBy('lessonId.userId.timestamp', 'asc'));
+
+    return collection.valueChanges().pipe(map((quizzes: Quiz[]) => {
+
+      quizzes.forEach((quiz) => {
+        quiz.questions = quiz.questions.map((obj) => {
+          return QuestionFactory.createQuestionFromDB(obj); }
+        );
+      });
+
+      return quizzes;
+    }));
+  }
+
+  saveQuizForUser(lessonId: string, userId: string, quiz: Quiz): Promise<void> {
 
     // save them to DB
-    const saveQuestions = questions.map((question) => {
+    const saveQuestions = quiz.questions.map((question) => {
       return Object.assign({}, question);
     });
 
-    const saveObj = Object.assign({}, {questions: saveQuestions});
+    const saveObj = Object.assign({}, {questions: saveQuestions, timestamp: quiz.timestamp});
 
-    return this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}`).set(saveObj);
+    return this.afs.doc(`${DbConfig.QUIZ}/${lessonId}/userId/${userId}/quiz/${quiz.timestamp}`).set(saveObj);
   }
 
 }

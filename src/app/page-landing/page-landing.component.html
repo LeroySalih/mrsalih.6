@@ -17,13 +17,42 @@
             <div class="headerItem"
                 [@signOutTrigger]="signedInState"
                 (@signOutTrigger.done)="animationDone($event)"
+                (click)="signOutClick()"
             >
             Sign Out, <span *ngIf="userProfile">{{userProfile.name}}</span>
           </div>
         </div>
 
-        
-    </div> 
+        <mat-card class="frmSignIn"  [@frmLoginTrigger]="signedInState">
+            <mat-card-title>Login</mat-card-title> 
+            <mat-card-content>
+                <form [formGroup]="frmLoginForm">
+                    <div>
+                        <mat-form-field>
+                            <input matInput placeholder="School Id" name="schoolId" formControlName="schoolId"/>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <input matInput placeholder="User Id" name="userId" formControlName="userId"/>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <input type="password" matInput placeholder="password" name="password" formControlName="password"/>
+                        </mat-form-field>
+                    </div>
+                </form>
+                <div class="signInStatusMsg">
+                    {{signInStatusMsg}}
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button pButton label="Sign In" (click)="signInClick()"></button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>     
 
     <div class="sideBlocks">
       <div class="sideBlock" style="background-color: #328CC1">KS3 Maths Resources</div>
@@ -31,5 +60,5 @@
       <div class="sideBlock" style="background-color: #0B3C5D">KS4 Maths Resources</div>
       <div class="sideBlock" style="background-color: #1D2731">KS4 Computing Resources</div>
     </div>
-      
+        
 </div>

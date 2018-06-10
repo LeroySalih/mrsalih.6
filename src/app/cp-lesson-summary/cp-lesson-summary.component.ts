@@ -18,7 +18,7 @@ export interface LessonEvent {
   styleUrls: ['./cp-lesson-summary.component.css'],
   animations: [
     trigger ('highlightState', [
-        state('inactive', style({backgroundColor: 'snow'}) ),
+        state('inactive', style({}) ),
         state('active', style({backgroundColor: 'yellow'}) ),
         transition('inactive => active', animate('300ms ease-in')),
         transition('active => inactive', animate('300ms ease-out')),

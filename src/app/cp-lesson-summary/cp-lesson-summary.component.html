@@ -13,13 +13,28 @@
             (onDragStart)="onDragStart($event)" 
             (onDragEnd)="onDragEnd($event)"
             >
-            <mat-card-title>{{lesson.title}}</mat-card-title>
+            <mat-card-title style="display: flex; flex-direction: row;">
+                    <div  style="flex: 1">
+                        {{lesson.title}}
+                    </div>
+                    <div>
+                        <mat-menu #appMenu="matMenu">
+                                <button mat-menu-item (click)="OnEditLessonClick()">Edit</button>
+                                <button mat-menu-item (click)="OnDeleteLessonClick()">Delete</button>
+                        </mat-menu>             
+                        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                                <mat-icon>more_vert</mat-icon>
+                        </button>
+                    </div>
+                    
+            </mat-card-title>
             <mat-card-content>
                     {{lesson.subtitle}}
             </mat-card-content>
             
-            <mat-card-actions>
-                <p-splitButton label="Read More" icon="fa-check" (onClick)="onReadMoreClick()" [model]="items" ></p-splitButton>
+            <mat-card-actions style="text-align: right;">
+                <button mat-raised-button (click)="onReadMoreClick()">View</button>
+                
             </mat-card-actions>
         </mat-card>
         

@@ -1,37 +1,35 @@
-<section class="jumbotron">
-  This is the jumbotron.
-  <span>{{moduleId}}</span>
-  
-</section>
-
-<section *ngIf="lessons; else loading" class="moduleContent">
-  <div class="moduleDescription">
-    <H2 class="mat-h2">Summary</H2>
-    <h2 class="mat-h2">Content</h2>
-    <h2 class="mat-h2">Feedback</h2>
-  </div>
-  <div class="moduleLessons">
-    <div style="display: flex; flex-direction: row">
-        <h3 class="mat-h2" style="margin-left: 5px; flex-grow: 1">
-            Lessons
-          </h3>
-          <p-button style="margin-right: 5px;" icon="fa fa-fw fa-plus" label="New" (click)="onNewLessonClick()"></p-button>
-          
+<div class="pageContainer">
+    <div class="toolBarContainer">
+            <button mat-raised-button mat-button-primary (click)="onNewLessonClick()">New Lesson</button>
     </div>
-    
-    <app-cp-lesson-summary 
-        *ngFor="let lesson of lessons;let i = index;" 
-        [index]="i"
-        [lesson]="lesson" 
-        [highlightDragArea]="isDragging"
-        (lessonEvent)="onLessonEvent($event)">
+    <div class="moduleContainer">
+        <section *ngIf="lessons; else loading" class="moduleContent">
+            
+            <div class="moduleLessons">
+              <div style="display: flex; flex-direction: row">
+                  <h3 class="mat-h1" style="margin-left: 5px; flex-grow: 1">
+                      Lessons
+                    </h3>
+              </div>
+              
+              <app-cp-lesson-summary 
+                  *ngFor="let lesson of lessons;let i = index;" 
+                  [index]="i"
+                  [lesson]="lesson" 
+                  [highlightDragArea]="isDragging"
+                  (lessonEvent)="onLessonEvent($event)">
+          
+              </app-cp-lesson-summary>
+              
+          
+            </div>
+          </section>
+          
+          <ng-template #loading>
+            Data Loading
+          </ng-template>
+  
+    </div>
+</div>
 
-    </app-cp-lesson-summary>
-    
 
-  </div>
-</section>
-
-<ng-template #loading>
-  Data Loading
-</ng-template>

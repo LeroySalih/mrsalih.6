@@ -9,16 +9,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material';
+import { MatDialogModule} from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
 
     imports: [ MatButtonModule, MatCardModule,
                MatInputModule, MatDividerModule,
                MatSelectModule, MatCheckboxModule,
-               MatSidenavModule, MatIconModule, MatDialogModule],
+               MatSidenavModule, MatIconModule, MatDialogModule,
+               MatMenuModule],
     exports: [ MatButtonModule, MatCardModule,
                MatInputModule, MatDividerModule,
                MatSelectModule, MatCheckboxModule,
-               MatSidenavModule, MatIconModule, MatDialogModule],
+               MatSidenavModule, MatIconModule, MatDialogModule,
+               MatMenuModule],
   })
   export class MaterialModule { }

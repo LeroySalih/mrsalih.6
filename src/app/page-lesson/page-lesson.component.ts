@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit, ViewChild, ElementRef, QueryList, ViewChildren  } from '@angular/core';
+import { DOCUMENT} from '@angular/common';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { LessonService } from '../services/lesson.service';
 import { LessonSectionService } from '../services/lesson-section.service';
@@ -38,6 +39,8 @@ import { QuestionSpec } from '../models/question-spec';
 import { QuestionTypes } from '../enums/question-types';
 import { QuestionStatus } from '../enums/question-status';
 import { Attempt } from '../models/attempt';
+import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
+import { CpSectionComponent } from '../cp-section/cp-section.component';
 
 export interface Customer {
   name: string; // required field with minimum 5 characters
@@ -54,7 +57,9 @@ export interface Address {
   templateUrl: './page-lesson.component.html',
   styleUrls: ['./page-lesson.component.css']
 })
-export class PageLessonComponent implements OnInit {
+export class PageLessonComponent implements OnInit, AfterViewInit {
+
+  @ViewChildren(CpSectionComponent, { read: ElementRef }) private sectionContents: QueryList<ElementRef>;
 
   userProfile: UserProfile;
   lessonId = 'Not Set';
@@ -69,6 +74,8 @@ export class PageLessonComponent implements OnInit {
   questions: Question[];
   currentQuestion: Question;
   currentQuestionIndex = 0;
+  quizzes: Quiz[];
+  quizDates: Date[] = [];
 
   // sectionPayloadService: any;
 
@@ -86,11 +93,17 @@ export class PageLessonComponent implements OnInit {
               private messageService: MessageService,
               private questionService: QuestionService,
               private _fb: FormBuilder,
+
             ) {
 
              // this.learningObjectiveFeedback = {'PsfYfc3ag8oGkfOS8hQn': 'Not Yet', 'gG18CK2wQ14STjnyBX9B' : 'Got It'};
             this.isDragging = false;
+
              }
+
+  ngAfterViewInit()  {
+    
+  }
 
   ngOnInit() {
 
@@ -118,15 +131,15 @@ export class PageLessonComponent implements OnInit {
           this.loService.getLearningObjectives(this.lessonId),
           this.loProgressService.getLOProgressForUser(this.userProfile.authenticationId, this.lessonId),
           this.sectionPayloadService.getSectionPayloadsForLesson(this.lessonId, this.userProfile.authenticationId),
-          this.questionService.getQuizForUser(this.lessonId, this.userProfile.authenticationId),
+          this.questionService.getQuizzesForUser(this.lessonId, this.userProfile.authenticationId),
            (lesson: Lesson,
             sections: LessonSection[],
             progress: LessonProgress[],
             los: LO[],
             loProgress: LOProgress[],
             sectionPayloads: SectionPayload[],
-            quiz: Quiz) =>
-          ({lesson, sections, progress, los, loProgress, sectionPayloads, quiz})
+            quizzes: Quiz[]) =>
+          ({lesson, sections, progress, los, loProgress, sectionPayloads, quizzes})
         ).subscribe((lessonData) => {
             console.log(lessonData);
 
@@ -150,10 +163,25 @@ export class PageLessonComponent implements OnInit {
               this.sectionPayloads[sectionPayload.sectionId] = sectionPayload;
             });
 
+            this.quizzes = lessonData.quizzes;
+
+            if (this.quizzes) {
+
+              this.quizDates = [];
+              this.quizzes.forEach((quiz) => {
+                this.quizDates.push(quiz.timestamp);
+              });
+
+              this.questions = this.quizzes[0].questions;
+              this.currentQuestion = this.questions[this.currentQuestionIndex];
+
+            }
+            /*
             if (lessonData.quiz) {
               this.questions =  lessonData.quiz['questions'];
               this.currentQuestion = this.questions[this.currentQuestionIndex];
             }
+            */
 
         });
 
@@ -161,6 +189,27 @@ export class PageLessonComponent implements OnInit {
 
   }
 
+  gotoSection(index) {
+    this.sectionContents.toArray()[index].nativeElement.scrollIntoView(true);
+    // this.sectionContents.toArray()[index].nativeElement.scrollIntoView(true);
+  }
+
+  gotoQuiz(el) {
+
+    el.scrollIntoView(true);
+
+  }
+
+  testScroll() {
+    console.log('scrolling');
+  }
+
+  onQuizChange(event) {
+    console.log(`onQuizChange`, event);
+    this.currentQuestionIndex = 0;
+    this.questions = this.quizzes[event.value].questions;
+    this.currentQuestion = this.questions[this.currentQuestionIndex];
+  }
   getSectionPayload (section: LessonSection) {
     return this.sectionPayloads[section.id];
   }
@@ -330,7 +379,10 @@ export class PageLessonComponent implements OnInit {
     this.currentQuestion = this.questions[this.currentQuestionIndex];
 
     // save the questions
-    this.questionService.saveQuizForUser(this.lessonId, this.userProfile.authenticationId, this.questions);
+    this.questionService.saveQuizForUser(
+      this.lessonId,
+      this.userProfile.authenticationId,
+      {questions: this.questions, timestamp: new Date()});
   }
 
   incorrectQuestion(answer: number) {
@@ -342,7 +394,10 @@ export class PageLessonComponent implements OnInit {
      this.addAttemptToQuestions(attempt, this.questions[this.currentQuestionIndex]);
 
     // save the questions status
-    this.questionService.saveQuizForUser(this.lessonId, this.userProfile.authenticationId, this.questions);
+    this.questionService.saveQuizForUser(
+      this.lessonId,
+      this.userProfile.authenticationId,
+      {questions: this.questions, timestamp: new Date()});
   }
 
   nextQuestion() {

@@ -11,7 +11,17 @@
       (onDragStart)="onDragStart($event)" 
       (onDragEnd)="onDragEnd($event)">
       
-      <mat-card-title>{{section.title}}</mat-card-title>
+      <mat-card-title style="display: flex; flex-direction: row;">
+              <div style="flex:1">{{section.title}}</div>
+              <mat-menu #appMenu="matMenu">
+                        <button mat-menu-item (click)="OnAddLessonClick()">Add</button>
+                        <button mat-menu-item (click)="OnEditLessonClick()">Edit</button>
+                        <button mat-menu-item (click)="OnDeleteLessonClick()">Delete</button>
+                </mat-menu>             
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                        <mat-icon>more_vert</mat-icon>
+                </button>
+        </mat-card-title>
       
       <mat-card-content>
 
@@ -39,11 +49,9 @@
                 *ngIf="section.type == 'text'"
                 [section]="section">
         </app-cp-embed-text-content>
-        
-       </mat-card-content>
-      <mat-card-actions style="display: flex; flex-direction: row">
-            <mat-checkbox style="flex:1" #chk (change)="onCompleteChange(chk)" [checked]="getCompleted()">Completed</mat-checkbox>
-            <p-splitButton style="" label="Edit" [model]="items" ></p-splitButton>
-      </mat-card-actions>
+        <div>
+                        <mat-checkbox style="flex:1" #chk (change)="onCompleteChange(chk)" [checked]="getCompleted()">Completed</mat-checkbox>
+        </div>
+        </mat-card-content>
 </mat-card>
 </section>

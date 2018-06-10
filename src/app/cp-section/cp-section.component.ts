@@ -56,7 +56,7 @@ export class CpSectionComponent implements OnInit {
 
     this.items = [
       {label: 'Edit', icon: 'fa-edit', command: () => {  this.OnEditLessonClick(); }},
-      {label: 'Delete', icon: 'fa-trash', command: () => {  this.OnDeleteLessonSectionClick(); }},
+      {label: 'Delete', icon: 'fa-trash', command: () => {  this.OnDeleteLessonClick(); }},
     ];
 
   }
@@ -91,12 +91,17 @@ export class CpSectionComponent implements OnInit {
     }
   }
 
+  OnAddLessonClick() {
+    console.log(`[OnAddLessonClick]`);
+    this.sectionEvent.emit({type: 'NEW', section: this.section} as SectionEvent);
+  }
+
   OnEditLessonClick() {
     console.log(`[OnEditLessonClick]`);
     this.sectionEvent.emit({type: 'EDIT', section: this.section} as SectionEvent);
   }
 
-  OnDeleteLessonSectionClick() {
+  OnDeleteLessonClick() {
     console.log(`[OnDeleteLessonSectionClick]`);
     this.sectionEvent.emit({type: 'DELETE', section: this.section} as SectionEvent);
   }

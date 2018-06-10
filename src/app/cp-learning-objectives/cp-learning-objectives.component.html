@@ -1,5 +1,13 @@
 <mat-card>
-    <mat-card-title>Learning Objectives</mat-card-title>
+    <mat-card-title style="display: flex; flex-direction: row">
+        <div style="flex:1">Learning Objectives</div>
+        <mat-menu #appMenu="matMenu" >
+                <button mat-menu-item (click)="onLOAddClick()">Add LO</button>
+        </mat-menu>             
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon>more_vert</mat-icon>
+        </button>
+    </mat-card-title>
       <app-cp-learning-objective 
           *ngFor="let lo of los" 
           [lo]="lo"
@@ -7,6 +15,5 @@
           (statusChange)="onStatusChange($event)"
           (loEvent)="onLOEvent($event)"
           >
-      </app-cp-learning-objective>
-      <p-button label="Add" (click)="onLOAddClick()"></p-button>
+</app-cp-learning-objective>
 </mat-card>
