@@ -44,6 +44,9 @@ import { CpSectionComponent } from '../cp-section/cp-section.component';
 import { CpQuestionComponent } from '../cp-question/cp-question.component';
 import { CpLearningObjectivesComponent } from '../cp-learning-objectives/cp-learning-objectives.component';
 
+import * as moment from 'moment';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export interface Customer {
   name: string; // required field with minimum 5 characters
   addresses: Address[]; // user can have one or more addresses
@@ -145,7 +148,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
             quizzes: Quiz[]) =>
           ({lesson, sections, progress, los, loProgress, sectionPayloads, quizzes})
         ).subscribe((lessonData) => {
-            console.log(lessonData);
+            console.log(`Received New Page Data`, lessonData);
 
             this.lesson = lessonData.lesson;
             this.sections = lessonData.sections;
@@ -169,16 +172,22 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
             this.quizzes = lessonData.quizzes;
 
-            if (this.quizzes) {
+            if (this.quizzes && this.quizzes.length) {
 
               this.quizDates = [];
               this.quizzes.forEach((quiz) => {
                 this.quizDates.push(quiz.timestamp);
               });
 
+
               this.questions = this.quizzes[0].questions;
               this.currentQuestion = this.questions[this.currentQuestionIndex];
 
+            } else {
+              this.quizDates = [];
+              this.questions = null;
+              this.currentQuestion = null;
+              this.currentQuestionIndex = 0;
             }
             /*
             if (lessonData.quiz) {
@@ -208,11 +217,20 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
     // el.scrollIntoView(true);
   }
 
-  convertDate(date: Date): string {
+  convertDate(date): string {
     // const dt = new Date(date);
     // console.log(`[convertDate]:: `, dt);
     // return dt.toDateString();
-    return 'test';
+    // console.log(date.toDate());
+
+    const quizDate = moment(date.toDate());
+    const today = moment(new Date());
+
+    if (Math.abs(quizDate.diff(today, 'days')) > 0) {
+      return quizDate.toLocaleString();
+    } else {
+        return quizDate.fromNow();
+    }
   }
 
 

@@ -49,7 +49,7 @@
                                                                         <H1 id="quiz" #quiz>
                                                                                 Quiz
                                                                                 <button  style="width:30%; margin: 3px;" mat-raised-button (click)="createQuiz()"> New Quiz </button>
-                                                                                <mat-form-field>
+                                                                                <mat-form-field style="font-family: 'Open Sans'; font-size: 15px;">
                                                                                         <mat-select (selectionChange)="onQuizChange($event);">
                                                                                                 <mat-option *ngFor="let qd of quizDates;let i = index" [value]="i">{{convertDate(qd)}}</mat-option>
                                                                                         </mat-select>

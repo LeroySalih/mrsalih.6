@@ -29,7 +29,7 @@ html, body {
     display: flex;
     height: 100%;
     flex-direction: column;
-    
+
 }
 
 .toolBarContainer {
@@ -44,6 +44,5 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: beige;
 }
 
