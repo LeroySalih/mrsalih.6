@@ -1,0 +1,42 @@
+.bannerContainer {
+    height: 150px;
+}
+
+.siteBanner {
+    background-color: red;
+    background-size: contain;
+    height: 150px;
+    width: 100%;
+
+}
+
+.quoteWrapper {
+    display: grid;
+    width: 160px;
+    grid-template-columns: 30px 250px 30px;
+}
+
+.quoteOpening {
+    grid-area: 1 / 1 / 2 / 2;
+    font-size: xx-large;
+}
+.quoteText {
+    grid-area: 1 / 2 / 2 / 3;
+}
+.quoteClosing {
+    grid-area: 1 / 3 / 2 / 4;  
+    font-size: xx-large;
+}
+.quoteSource {
+    text-align: right;
+    grid-area: 2 / 1 / 3 / 4;
+    font-family: 'Times New Roman';
+    font-size: x-small
+}
+
+
+
+.siteQuote {
+    transform: translate(30px, -140px)
+}
+

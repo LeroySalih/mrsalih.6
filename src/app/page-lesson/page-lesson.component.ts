@@ -208,6 +208,13 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
     // el.scrollIntoView(true);
   }
 
+  convertDate(date: Date): string {
+    // const dt = new Date(date);
+    // console.log(`[convertDate]:: `, dt);
+    // return dt.toDateString();
+    return 'test';
+  }
+
 
   onQuizChange(event) {
     console.log(`onQuizChange`, event);

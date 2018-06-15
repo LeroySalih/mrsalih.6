@@ -1,0 +1,7 @@
+<div class="tickerContainer">
+    <div class="tickerItem" 
+        *ngIf="tickerState"
+        [@newsItemTrigger]="'in'"
+        (@newsItemTrigger.done)="animationDone($event)"
+        >{{newsItem}}</div
+></div>

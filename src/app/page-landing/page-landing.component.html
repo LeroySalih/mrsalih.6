@@ -1,64 +1,82 @@
-<div class="pageContainer">
+<div class="page">
+    
+    <app-cp-site-banner></app-cp-site-banner>
+      
+    <app-cp-ticker></app-cp-ticker>
+    
 
-    <div class="bg-img">
-        <div class="pageBanner">
-            <div class="header">Welcome to Flipped Floki.</div>
-            <div class="subHeader">A resource site to help teachers deliver flipped <b>Maths</b> and <b>Computing</b> classrooms to KS3 &amp; KS4 pupils.</div>
+    <div class="gridContainer">
+        <mat-card style="max-width: 300; margin: 10px;">
+            <mat-card-content style="text-align: center">
 
-        </div>
-        <div class="signButtons" >
-            <div [@signInTrigger]="signedInState"
-                 (@signInTrigger.done)="animationDone($event)"
-                 style="display: flex; flex-direction: row">
-                    <div class="headerItem">Sign In</div>
-                    <div class="headerItem">Sign Up</div>
-            </div>
-            
-            <div class="headerItem"
-                [@signOutTrigger]="signedInState"
-                (@signOutTrigger.done)="animationDone($event)"
-                (click)="signOutClick()"
-            >
-            Sign Out, <span *ngIf="userProfile">{{userProfile.name}}</span>
-          </div>
-        </div>
-
-        <mat-card class="frmSignIn"  [@frmLoginTrigger]="signedInState">
-            <mat-card-title>Login</mat-card-title> 
-            <mat-card-content>
-                <form [formGroup]="frmLoginForm">
-                    <div>
-                        <mat-form-field>
-                            <input matInput placeholder="School Id" name="schoolId" formControlName="schoolId"/>
-                        </mat-form-field>
+                    <div class="teacherWindow">
+                            <div class="imageHeader">For Teachers</div>
+                            <div></div>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <input matInput placeholder="User Id" name="userId" formControlName="userId"/>
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field>
-                            <input type="password" matInput placeholder="password" name="password" formControlName="password"/>
-                        </mat-form-field>
-                    </div>
-                </form>
-                <div class="signInStatusMsg">
-                    {{signInStatusMsg}}
-                </div>
             </mat-card-content>
-            <mat-card-actions>
-                <button pButton label="Sign In" (click)="signInClick()"></button>
-            </mat-card-actions>
         </mat-card>
 
-    </div>     
-
-    <div class="sideBlocks">
-      <div class="sideBlock" style="background-color: #328CC1">KS3 Maths Resources</div>
-      <div class="sideBlock" style="background-color: #D9B310">KS3 Computing Resources</div>
-      <div class="sideBlock" style="background-color: #0B3C5D">KS4 Maths Resources</div>
-      <div class="sideBlock" style="background-color: #1D2731">KS4 Computing Resources</div>
-    </div>
+        <mat-card style="max-width: 300; margin: 10px;">
+            <mat-card-content>
+                    <div class="pupilWindow">
+                            <div class="imageHeader">For Pupils</div>
+                    </div>
+            </mat-card-content>
+        </mat-card>
         
+        
+        <app-cp-login 
+        style="max-width: 300; margin: 10px;"
+            class="loginForm" 
+            [@frmLoginTrigger]="signedInState"></app-cp-login>
+
+        <div class="userStats" [@userStatsTrigger]="signedInState">
+           <mat-card *ngIf="userProfile">
+               <mat-card-title>Welcome {{userProfile.name}}</mat-card-title>
+               <mat-card-content>
+                   <div>You have completed <a href="#">5 Modules</a>.</div>
+                   <div>You have been assigned <a href="#">3 Modules</a>.</div>
+                   <div>You have gained <a href="#">350</a> xps.</div>
+                   <div>You are ranked <a href="#">3rd</a> in your school.</div>
+               </mat-card-content>
+           </mat-card> 
+        </div>
+    </div>
+
+    <div class="modulesGrid">
+            <div class="mathsHeader"><h1 mat-h1>Maths Modules</h1></div>
+            <div class="computingHeader"> <h1 mat-h1>Computing Modules</h1></div>
+            <div class="newModulesHeader"> <h1 mat-h1>New Modules</h1></div>
+            <div class="challengesHeader"> <h1 mat-h1>Challenges Modules</h1></div>
+
+            <div class="mathsModules">
+                <ul>
+                    <li>Time Conversion</li>
+                    <li>Negative NUmbers</li>
+                    <li>Decimal NUmbers</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>Programming Concepts</li>
+                    <li>Python</li>
+                </ul>
+            </div>  
+            <div>
+
+            </div>
+            <div>
+                <ul>
+                    <li>Area Calculator</li>
+                    <li>Prime Numbers</li>
+                    <li>Build a Calculator</li>
+                </ul>
+            </div> 
+            
+        </div>
 </div>
+        
+       
+        
+       
+      

@@ -58,6 +58,9 @@ import { PageLandingComponent } from './page-landing/page-landing.component';
 
 import { MomentModule } from 'angular2-moment';
 import { CpLessonSideNavComponent } from './cp-lesson-side-nav/cp-lesson-side-nav.component';
+import { CpLoginComponent } from './cp-login/cp-login.component';
+import { CpTickerComponent } from './cp-ticker/cp-ticker.component';
+import { CpSiteBannerComponent } from './cp-site-banner/cp-site-banner.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -96,6 +99,9 @@ const appRoutes: Routes = [
   CpQuestionStatusBarComponent,
   PageLandingComponent,
   CpLessonSideNavComponent,
+  CpLoginComponent,
+  CpTickerComponent,
+  CpSiteBannerComponent,
   ],
   imports: [
     BrowserModule,

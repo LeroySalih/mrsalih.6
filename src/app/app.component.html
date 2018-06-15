@@ -1,25 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<section class="siteMenu">
+        <img class="siteLogo" src="assets/images/mrsalih_logo.png"/>
+</section>
+<p-growl></p-growl>
+<div class="container">
+        <router-outlet></router-outlet>
+</div>
 
-<mat-sidenav-container class="example-container" >
-    <mat-sidenav #sidenav>
-            <button mat-button (click)="sidenav.toggle()">Hide</button>
-
-            <button mat-button *ngIf="!userProfile" (click)="OnLogIn()">Log In</button>
-            <button mat-button *ngIf="userProfile" (click)="OnLogOut()">Log Out {{userProfile['name']}} ({{userProfile['className']}})</button>
-            <p-button label="Click" ></p-button>
-            
-    </mat-sidenav>
-    <mat-sidenav-content>
-            <section class="siteMenu">
-                    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-                    Mr-Salih.org
-                </section>
-                
-                <p-growl ></p-growl>
-                <router-outlet></router-outlet>
-    </mat-sidenav-content>
-    
-</mat-sidenav-container>
 
 
 

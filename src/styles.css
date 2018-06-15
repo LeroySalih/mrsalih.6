@@ -12,6 +12,7 @@ html, body {
     padding: 0px;
     margin: 0px;
     font-family: Roboto,"Helvetica Neue",sans-serif;
+    background-color: #efefef;
 }
 
 .ui-menu .ui-menuitem-link {
@@ -28,6 +29,7 @@ html, body {
     display: flex;
     height: 100%;
     flex-direction: column;
+    
 }
 
 .toolBarContainer {

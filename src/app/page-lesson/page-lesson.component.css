@@ -10,6 +10,21 @@
     flex: 1;
 }
 
+.lessonHeading{
+    border: solid 3px rgb(0, 217, 255);
+    background-color: rgb(255, 249, 161);
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: Roboto, 'Verdana';
+    font-size: 25px;
+    padding: 10px;
+}
+
+.mat-title {
+    font-size: 30px;
+}
+
 .quizArea {
     width: 400px;
 }
@@ -51,14 +66,14 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns : 150px auto;
+    grid-template-columns : 230px auto;
     grid-gap : 10px;
 }
 
 .sideMenu {
     grid-area : 1 / 1 / 2 / 2;
     position: fixed;
-    width: 150px; 
+    width: 230px; 
 }
 
 .sectionContainer {

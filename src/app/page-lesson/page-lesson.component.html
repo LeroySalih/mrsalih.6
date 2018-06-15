@@ -14,10 +14,10 @@
                                 </div>
                                 <div id="sectionContainer" (scroll)="testScroll()" class="sectionContainer box">
 
-                                                <section *ngIf="lesson">
-                                                                <h1 class="mat-title">{{lesson.title}}</h1>
-                                                                <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
-                                                        </section>
+                                                <section *ngIf="lesson" class="lessonHeading">
+                                                        <h1 class="mat-title">{{lesson.title}}</h1>
+                                                        <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
+                                                </section>
                                                         <section>
                                                                 <app-cp-learning-objectives 
                                                                         [los]="los"
@@ -46,17 +46,20 @@
                                 
                                                         <mat-card style="margin-top: 15px;">
                                                                 <mat-card-content>
-                                                                        <H1 id="quiz" #quiz>Quiz</H1>
+                                                                        <H1 id="quiz" #quiz>
+                                                                                Quiz
+                                                                                <button  style="width:30%; margin: 3px;" mat-raised-button (click)="createQuiz()"> New Quiz </button>
+                                                                                <mat-form-field>
+                                                                                        <mat-select (selectionChange)="onQuizChange($event);">
+                                                                                                <mat-option *ngFor="let qd of quizDates;let i = index" [value]="i">{{convertDate(qd)}}</mat-option>
+                                                                                        </mat-select>
+                                                                                </mat-form-field>
+                                                                        </H1>
                                                                         <section class="actions" *ngIf="!questions">
                                                                                 <button type="button" style="width:100%; margin: 3px;" pButton label="Take Quiz" (click)="createQuiz()"></button>
                                                                         </section>
-                                                                        <mat-form-field>
-                                                                                <mat-select (selectionChange)="onQuizChange($event);">
-                                                                                        <mat-option *ngFor="let qd of quizDates;let i = index" [value]="i">{{qd}}</mat-option>
-                                                                                </mat-select>
-                                                                               
-                                                                        </mat-form-field>
-                                                                        <button  style="width:30%; margin: 3px;" mat-raised-button (click)="createQuiz()"> New Quiz </button>
+                                                                        
+                                                                        
                                                                        
                                                                         
                                                                         

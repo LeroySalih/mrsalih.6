@@ -5,8 +5,8 @@
          (click)="gotoSection(i)" 
          class="sideNavItem"
          >
-          <span *ngIf="checkSectionCompleted(section.id)"><mat-icon>done</mat-icon></span>
-          <span>{{section.title}}</span>
+          <span class="sideNavItemTitle">{{section.title}}</span>
+          <span class="sideNavItemCheck" *ngIf="checkSectionCompleted(section.id)"><mat-icon>done</mat-icon></span>
         </div>
     <div class="sideNavItem" (click)="gotoQuiz()">Quiz</div>
 </div>

@@ -1,0 +1,28 @@
+<mat-card >
+    <mat-card-title>Login</mat-card-title> 
+    <mat-card-content>
+        <form [formGroup]="frmLoginForm" style="width: 100%">
+            <div>
+                <mat-form-field style="width: 100%">
+                    <input style="width: 100%" matInput placeholder="School Id" name="schoolId" formControlName="schoolId"/>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="User Id" name="userId" formControlName="userId"/>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field style="width: 100%">
+                    <input type="password" matInput placeholder="password" name="password" formControlName="password"/>
+                </mat-form-field>
+            </div>
+        </form>
+        <div class="signInStatusMsg">
+            {{signInStatusMsg}}
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="signInClick()">Sign In</button>
+    </mat-card-actions>
+</mat-card>

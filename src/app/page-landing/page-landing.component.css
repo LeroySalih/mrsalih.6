@@ -1,27 +1,19 @@
 
 
-.pageContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-}
-
-.bg-img{
-    flex: 1;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: tan;
-    background: linear-gradient(
-                rgba(0,0,0,0.9) 25%,  transparent),
-                url('/assets/images/cover-photo.jpg') 
-                center center no-repeat;
-    background-size: cover;
+.page {
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    background-color: #f5f5f5;
+    border-left: silver solid 1px;
+    border-right: silver 1px solid;
 }
+
+
+
+
 
 .pageBanner {
     font-family: 'Varela Round', sans-serif;
@@ -29,59 +21,109 @@
     height: 50px;
     padding: 10px;
     background-color: beige;
+   
 }
 
-.pageBanner .header {
-    font-size: x-large;
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
-.pageBanner .subHeader {
-    font-size : small;
-}
-
-.signButtons {
-    display: flex;
-    flex-direction: row;
-    text-align: right;
-    justify-content: flex-end;
-}
-
-.headerItem  {
-    color: white;
-    border-radius: 5px;
-    border: white solid 2px;
-    margin: 10px;
-    padding: 5px;
-    height: 25px;
-    cursor: pointer;
-} 
-
-
-
-
-
-.sideBlocks {
-    width: 250px;
-    height: 100%;
-    background-color: beige;
-    display: flex;
-    flex-direction: column;
-
-}
-
-
-.sideBlock {
-    flex: 1;
-    padding: 10px;
-    color: white;
-    background-color: silver;
-    margin: 10px;
-    font-family: 'Ubuntu Condensed', sans-serif;
-}
-
-.frmSignIn {
+.window {
     width: 300px;
+    height: 150px;
+    background-color: red;
 }
+.teacherWindow {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+    min-height: 200px;
+    background-size: contain;
+    background: url('/assets/images/ForTeachers.png') no-repeat center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+
+.pupilWindow {
+    grid-area: 1 / 2 / 2 / 3;
+    width: 100%;
+    min-height: 200px;
+    background-size: contain;
+    background: url('/assets/images/ForPupils.png') no-repeat center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+.windowImage {
+    width: 100%;
+    
+}
+
+.imageHeader {
+    height: 32px;
+    background-color: rgba(54, 136, 230, 0.8);
+    padding-top: 3px;
+    padding-left: 3px;
+    font-size: 25px;
+    color: white;
+}
+
+.loginForm {
+    grid-area: 1 / 3 / 2/ 4 
+}
+
+.userStats {
+    grid-area: 1 / 3 / 2/ 4 
+}
+
+.modulesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.modulesGrid H1 {
+    font-family : 'Open Sans', Verdana;
+    font-size: x-large;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: silver 1px dashed;
+
+}
+
+.mathsHeader {
+    grid-area: 1 / 1 / 2 / 2 
+}
+
+.computingHeader {
+    grid-area: 1 / 2 / 2 / 3
+}
+
+.newModulesHeader {
+    grid-area: 1 / 3 / 2 / 4
+}
+
+.challengesHeader {
+    grid-area: 1 / 4 / 2 / 5
+}
+
+
+
+
+
+
   
 
 
