@@ -1,0 +1,16 @@
+<div id="quiz" style="display: flex; flex-direction: row">
+                                
+    <app-cp-question-status-bar 
+
+            *ngIf="questions"
+            [questions]="questions"
+            [currentQuestionIndex]="currentIndex"
+            >
+    </app-cp-question-status-bar>
+    <app-cp-question *ngIf="questions" 
+            (questionEvent)="onQuestionEvent($event)"
+            [question]="currentQuestion"
+            [currentQuestionIndex]="currentQuestionIndex"
+    >
+    </app-cp-question>
+</div>

@@ -5,6 +5,7 @@ export interface Lesson {
     moduleId: string;
     order: number;
     id: string;
+    logo: string;
   }
 
 

@@ -43,7 +43,7 @@ export class SectionEditDialogComponent implements OnInit {
     this.form.patchValue({showComments: this.getShowCommentsChecked()});
 
     this.form.valueChanges.subscribe((formValue: any) => {
-      console.log(formValue);
+      // console.log(formValue);
       this.section.type = formValue.type;
       this.section.title = formValue.title;
       this.section.content = formValue.content;
@@ -66,17 +66,17 @@ export class SectionEditDialogComponent implements OnInit {
   }
 
   close() {
-    console.log(`[close]`);
+    // console.log(`[close]`);
     this.dialogRef.close();
   }
 
   save() {
-    console.log(`[save]`, this.section);
+    // console.log(`[save]`, this.section);
     this.dialogRef.close(this.section);
   }
 
   getShowCommentsChecked(): boolean {
-    console.log(`[getShowCommentsChecked]`, this.section.options);
+    // console.log(`[getShowCommentsChecked]`, this.section.options);
     return (this.section.options) ? (this.section.options.showComments === true) : false;
   }
 

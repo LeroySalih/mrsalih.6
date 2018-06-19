@@ -14,6 +14,10 @@ export class ModuleService {
 
   }
 
+  getModule (moduleId: string): Observable<Module> {
+    return this.afs.doc<Module>(`${DbConfig.MODULES}/${moduleId}`).valueChanges();
+  }
+
   getModules(): Observable<Module[]> {
     const collection = this.afs.collection<Module>(DbConfig.MODULES, ref => ref.orderBy(DbConfig.ORDER_FIELD, 'asc'));
 
@@ -32,7 +36,7 @@ export class ModuleService {
 
     return this.afs.doc(`${DbConfig.MODULES}/${module.id}`).set(module);
   }
-
+ 
   deleteModule(module: Module): Promise<void> {
     return this.afs.doc(`${DbConfig.MODULES}/${module.id}`).delete();
   }

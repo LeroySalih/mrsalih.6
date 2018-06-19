@@ -1,15 +1,16 @@
 <div class="pageContainer">
-    <div class="toolBarContainer">
-            <button mat-raised-button mat-button-primary (click)="onNewLessonClick()">New Lesson</button>
-    </div>
+    
     <div class="moduleContainer">
         <section *ngIf="lessons; else loading" class="moduleContent">
             
             <div class="moduleLessons">
+                <h1 class="mat-h1">{{module.title}}</h1>
               <div style="display: flex; flex-direction: row">
-                  <h3 class="mat-h1" style="margin-left: 5px; flex-grow: 1">
+                   
+                   <h2 class="mat-h2" style="margin-left: 5px; flex-grow: 1">
                       Lessons
-                    </h3>
+                   </h2>
+                   <button mat-raised-button mat-button-primary (click)="onNewLessonClick()">New Lesson</button>
               </div>
               
               <app-cp-lesson-summary 
@@ -26,7 +27,8 @@
           </section>
           
           <ng-template #loading>
-            Data Loading
+            <img src="assets/images/Spinner-1s-200px.svg">
+            <app-cp-loading></app-cp-loading>
           </ng-template>
   
     </div>

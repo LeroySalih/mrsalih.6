@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, AfterViewInit, ViewChild, ElementRef, QueryList, ViewChildren  } from '@angular/core';
 import { DOCUMENT} from '@angular/common';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LessonService } from '../services/lesson.service';
 import { LessonSectionService } from '../services/lesson-section.service';
 
@@ -89,6 +89,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   public myForm: FormGroup; // our form model
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private lessonService: LessonService,
               private loService: LOService,
               private loProgressService: LOProgressService,
@@ -234,12 +235,18 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   }
 
 
+  OnShowReport() {
+    console.log(`OnShowReport`);
+    this.router.navigate(['/quiz-report', this.lessonId]);
+  }
+
   onQuizChange(event) {
     console.log(`onQuizChange`, event);
     this.currentQuestionIndex = 0;
     this.questions = this.quizzes[event.value].questions;
     this.currentQuestion = this.questions[this.currentQuestionIndex];
   }
+
   getSectionPayload (section: LessonSection) {
     return this.sectionPayloads[section.id];
   }

@@ -46,7 +46,7 @@ export class CpLessonSideNavComponent implements OnInit {
   }
 
   checkSectionCompleted(sectionId): boolean {
-    return this.sectionPayloads[sectionId].completed === true;
+    return (this.sectionPayloads[sectionId]) ? this.sectionPayloads[sectionId].completed === true : false;
   }
 
 }

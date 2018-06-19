@@ -14,7 +14,7 @@ export class CpQuestionStatusBarComponent implements OnInit, OnChanges {
   questions: Question[];
 
   @Input()
-  currentIndex: number;
+  currentQuestionIndex: number;
 
   constructor() { }
 
@@ -30,7 +30,7 @@ export class CpQuestionStatusBarComponent implements OnInit, OnChanges {
   checkStatus (question: Question): string {
     let classNames = '';
 
-    if (question.order === this.currentIndex) {
+    if (question.order === this.currentQuestionIndex) {
       classNames = 'progressItem current ';
     } else {
       classNames = 'progressItem ';

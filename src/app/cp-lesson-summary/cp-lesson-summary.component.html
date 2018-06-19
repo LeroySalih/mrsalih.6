@@ -13,24 +13,34 @@
             (onDragStart)="onDragStart($event)" 
             (onDragEnd)="onDragEnd($event)"
             >
-            <mat-card-title style="display: flex; flex-direction: row;">
-                    <div  style="flex: 1">
-                        {{lesson.title}}
-                    </div>
+
+            <div style="display: flex; flex-direction: row">
                     <div>
-                        <mat-menu #appMenu="matMenu">
-                                <button mat-menu-item (click)="OnEditLessonClick()">Edit</button>
-                                <button mat-menu-item (click)="onDeleteLessonClick()">Delete</button>
-                        </mat-menu>             
-                        <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                                <mat-icon>more_vert</mat-icon>
-                        </button>
+                            <img style="width: 100px; height: 100px;" src="/assets/images/{{lesson.logo}}.png">
                     </div>
-                    
-            </mat-card-title>
-            <mat-card-content>
-                    {{lesson.subtitle}}
-            </mat-card-content>
+                    <div style="flex:1; margin: 5px;">
+                        <mat-card-title style="display: flex; flex-direction: row;">
+                                        <div  style="flex: 1">
+                                                {{lesson.title}}
+                                        </div>
+                                        <div>
+                                                <mat-menu #appMenu="matMenu">
+                                                        <button mat-menu-item (click)="OnEditLessonClick()">Edit</button>
+                                                        <button mat-menu-item (click)="onDeleteLessonClick()">Delete</button>
+                                                </mat-menu>             
+                                                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                                                        <mat-icon>more_vert</mat-icon>
+                                                </button>
+                                        </div>
+                                        
+                                </mat-card-title>
+                                <mat-card-content>
+                                        {{lesson.subtitle}}
+                                </mat-card-content>
+                    </div>
+            </div>
+
+            
             
             <mat-card-actions style="text-align: right;">
                 <button mat-raised-button (click)="onReadMoreClick()">View</button>

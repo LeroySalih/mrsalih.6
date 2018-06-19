@@ -6,7 +6,7 @@
                 <div>
                         <form [formGroup]="form">
                                 <section class="typedQuestion">
-                                        <div>Question {{index + 1}}</div>
+                                        <div>Question {{currentQuestionIndex + 1}}</div>
                                         <ng-katex [equation]="typedQuestion.getLabel()" style="font-size:x-small"></ng-katex>
                                 </section>
                                 <section >

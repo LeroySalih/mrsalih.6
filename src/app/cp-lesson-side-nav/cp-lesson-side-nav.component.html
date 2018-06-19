@@ -1,12 +1,19 @@
 <div class="sideNav">
     <div class="sideNavItem" (click)="gotoHome()">
-        <mat-icon>home</mat-icon>Home</div>
+        <mat-icon>home</mat-icon>
+            <span class="sideNavItemTitle">Home</span>
+        </div>
     <div *ngFor="let section of sections; let i = index;" 
          (click)="gotoSection(i)" 
          class="sideNavItem"
          >
+          <mat-icon *ngIf="section.type == 'video'">video_library</mat-icon>
+          <mat-icon *ngIf="section.type == 'text'">text_fields</mat-icon>
           <span class="sideNavItemTitle">{{section.title}}</span>
           <span class="sideNavItemCheck" *ngIf="checkSectionCompleted(section.id)"><mat-icon>done</mat-icon></span>
         </div>
-    <div class="sideNavItem" (click)="gotoQuiz()">Quiz</div>
+    <div class="sideNavItem" (click)="gotoQuiz()">
+        <mat-icon>question_answer</mat-icon>
+        <span class="sideNavItemTitle">Quiz</span>
+    </div>
 </div>

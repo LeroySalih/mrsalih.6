@@ -1,18 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '../node_modules/font-awesome/css/font-awesome.min.css';
-@import '../node_modules/primeng/resources/themes/omega/theme.css';
-@import '../node_modules/primeng/resources/primeng.min.css';
+
 @import '~katex/dist/katex.css';
 
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+HTML, BODY {
+    background-color: #efefef;
     padding: 0px;
     margin: 0px;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-    background-color: #efefef;
+    height: 100%;
+    overflow: hidden;
 }
 
 .ui-menu .ui-menuitem-link {
@@ -25,13 +22,8 @@ html, body {
 
 .katex { font-size: 2em; }
 
-.pageContainer {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
 
-}
-
+/*
 .toolBarContainer {
     background-color: #d9B310;
     height: 40px;
@@ -45,4 +37,4 @@ html, body {
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+*/

@@ -24,7 +24,7 @@ export class CpQuestionComponent implements OnInit, OnChanges {
   typedQuestion: Question;
 
   @Input()
-  index: number;
+  currentQuestionIndex: number;
 
   @Output()
   questionEvent: EventEmitter<QuestionEvent>;
@@ -80,11 +80,11 @@ export class CpQuestionComponent implements OnInit, OnChanges {
     if (this.typedQuestion.checkAnswer(this.form.value['answer'])) {
       this.questionEvent.emit(
         {type: 'CORRECT_ANSWER',
-        payload: {currentIndex: this.index, answer: parseFloat(this.form.value['answer'])}});
+        payload: {currentIndex: this.currentQuestionIndex, answer: parseFloat(this.form.value['answer'])}});
     } else {
       this.questionEvent.emit(
         {type: 'INCORRECT_ANSWER',
-        payload: {currentIndex: this.index, answer: parseFloat(this.form.value['answer'])}});
+        payload: {currentIndex: this.currentQuestionIndex, answer: parseFloat(this.form.value['answer'])}});
     }
 
   }

@@ -29,7 +29,8 @@ export class CpEmbedLocalVideoComponent implements OnInit {
       this.safeUrls = this.myVideoId.split(';').map((v) => {
         v = v.trim();
 
-        const url = `${DbConfig.VIDEO_URL_BASE}${v}`;
+        const url = `${DbConfig.VIDEO_URL_BASE}${v}.mp4?raw=1`;
+        // const url =  'https://www.dropbox.com/s/1x1dgnx8xtpq7yh/Numbers-Adding-Subtracting-Negative-Numbers.mp4?raw=1';
 
         return this.sanitizer.bypassSecurityTrustResourceUrl(url);
       });

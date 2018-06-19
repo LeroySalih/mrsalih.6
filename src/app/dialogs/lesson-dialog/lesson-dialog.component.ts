@@ -24,7 +24,7 @@ export class LessonDialogComponent implements OnInit {
       if (data) {
         this.lesson = data;
       } else {
-        this.lesson = {id: null, title: '',  subtitle: '',  order: 0, moduleId: null};
+        this.lesson = {id: null, title: '',  subtitle: '',  order: 0, moduleId: null, logo: ''};
       }
     }
 
@@ -32,7 +32,8 @@ export class LessonDialogComponent implements OnInit {
     this.form = this.fb.group({
       title: [this.lesson.title, []],
       subtitle: [this.lesson.subtitle, []],
-      order: [this.lesson.order, []]
+      order: [this.lesson.order, []],
+      logo: [this.lesson.logo, []]
     });
   }
 
@@ -40,7 +41,7 @@ export class LessonDialogComponent implements OnInit {
     this.lesson.title = this.form.value.title;
     this.lesson.subtitle = this.form.value.subtitle;
     this.lesson.order = this.form.value.order;
-
+    this.lesson.logo = this.form.value.logo;
     this.dialogRef.close(this.lesson);
   }
 

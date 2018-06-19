@@ -61,6 +61,9 @@ import { CpLessonSideNavComponent } from './cp-lesson-side-nav/cp-lesson-side-na
 import { CpLoginComponent } from './cp-login/cp-login.component';
 import { CpTickerComponent } from './cp-ticker/cp-ticker.component';
 import { CpSiteBannerComponent } from './cp-site-banner/cp-site-banner.component';
+import { PageQuizReportComponent } from './page-quiz-report/page-quiz-report.component';
+import { CpQuizComponent } from './cp-quiz/cp-quiz.component';
+import { CpLoadingComponent } from './cp-loading/cp-loading.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -69,7 +72,9 @@ const appRoutes: Routes = [
   {path: 'login', component: PageLoginComponent},
   {path: 'module/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
-  {path: 'quiz/:id', component: PageQuizComponent}
+  {path: 'quiz/:id', component: PageQuizComponent},
+  {path: 'quiz-report/:lessonId', component: PageQuizReportComponent}
+
 ];
 
 @NgModule({
@@ -102,6 +107,9 @@ const appRoutes: Routes = [
   CpLoginComponent,
   CpTickerComponent,
   CpSiteBannerComponent,
+  PageQuizReportComponent,
+  CpQuizComponent,
+  CpLoadingComponent,
   ],
   imports: [
     BrowserModule,

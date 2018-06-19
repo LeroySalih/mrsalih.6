@@ -1,9 +1,6 @@
 .pageContainer {
-    max-width : 80%;
-    margin: auto;
     display: flex;
     flex-direction: row;
-    margin-top : 50px;
 } 
 
 .lesson {
@@ -31,11 +28,10 @@
 
 .quiz {
     margin-left: 5px;
-    
-
     width: 100%;
 }
 
+/*
 .progressBar {
     display: flex;
     flex-direction: row;
@@ -63,6 +59,7 @@
     margin: 15px;
     min-height: 40px;
 }
+*/
 
 .wrapper {
     display: grid;

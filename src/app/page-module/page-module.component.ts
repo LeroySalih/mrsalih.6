@@ -11,6 +11,8 @@ import { MenuItem } from 'primeng/api';
 import { Lesson } from '../models/lesson';
 import { LessonEvent} from '../cp-lesson-summary/cp-lesson-summary.component';
 import { LessonDialogComponent} from '../dialogs/lesson-dialog/lesson-dialog.component';
+import { combineLatest } from 'rxjs';
+import { ModuleService } from '../services/module.service';
 
 
 @Component({
@@ -21,6 +23,7 @@ import { LessonDialogComponent} from '../dialogs/lesson-dialog/lesson-dialog.com
 export class PageModuleComponent implements OnInit {
 
   moduleId = 'Not Set';
+  module: Module;
   lessons: Lesson[];
 
   items: MenuItem[];
@@ -30,7 +33,8 @@ export class PageModuleComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private readonly lessonService: LessonService,
+      private lessonService: LessonService,
+      private moduleService: ModuleService,
       private matDialog: MatDialog,
       private messageService: MessageService,
     ) {
@@ -43,8 +47,13 @@ export class PageModuleComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       this.moduleId = paramMap['params']['id'];
 
-      this.lessonService.getLessons(this.moduleId).subscribe((data: Lesson[]) => {
-        this.lessons = data;
+      combineLatest(
+        this.moduleService.getModule(this.moduleId),
+        this.lessonService.getLessons(this.moduleId),
+        (module, lessons) => ({module, lessons})
+      ).subscribe((data) => {
+        this.module = data.module;
+        this.lessons = data.lessons;
       });
 
     });
@@ -97,7 +106,7 @@ export class PageModuleComponent implements OnInit {
 
     const newLesson: Lesson = {
       id: null, title: '',  subtitle: '',
-      order: nextOrder, moduleId: this.moduleId};
+      order: nextOrder, moduleId: this.moduleId, logo: ''};
 
     dialogConfig.data = newLesson;
 

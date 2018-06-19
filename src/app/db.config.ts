@@ -14,6 +14,6 @@ export class DbConfig {
     public static ORDER_FIELD = 'order';
     public static ACS = 'acs';
 
-    public static VIDEO_URL_BASE = 'http://localhost:3000/video/';
+    public static VIDEO_URL_BASE = 'https://www.dropbox.com/s/1x1dgnx8xtpq7yh/';
 
 }
