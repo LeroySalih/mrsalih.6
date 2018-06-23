@@ -7,7 +7,8 @@ import { QuestionService } from '../services/question.service';
 import { QuestionTypes } from '../enums/question-types';
 import { QuestionStatus } from '../enums/question-status';
 
-import { TimeConvertHrsMinsToMIns} from './time-convert-hrs-mins-to-mins';
+import { TimeConvertHrsMinsToMins } from './questions/time-convert-hrs-mins-to-mins';
+import { NumberAddingNegativeNumbers } from './questions/number-adding-negative-numbers';
 
 
 
@@ -16,6 +17,7 @@ export class QuestionFactory {
     static createQuestion(type: QuestionTypes): Question {
         switch (type) {
             case QuestionTypes.TimeConvertHrsMinsToMins :  return new TimeConvertHrsMinsToMins();
+            case QuestionTypes.NumberAddNegativeNumbers : return new NumberAddingNegativeNumbers();
             default: return null;
         }
     }
@@ -36,6 +38,7 @@ export class QuestionFactory {
 
         switch (question.type) {
             case QuestionTypes.TimeConvertHrsMinsToMins :  return new TimeConvertHrsMinsToMins(question);
+            case QuestionTypes.NumberAddNegativeNumbers : return new NumberAddingNegativeNumbers(question);
             default: return null;
         }
     }

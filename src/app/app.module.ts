@@ -64,16 +64,19 @@ import { CpSiteBannerComponent } from './cp-site-banner/cp-site-banner.component
 import { PageQuizReportComponent } from './page-quiz-report/page-quiz-report.component';
 import { CpQuizComponent } from './cp-quiz/cp-quiz.component';
 import { CpLoadingComponent } from './cp-loading/cp-loading.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
   {path: 'home', component: PageHomeComponent},
   {path: 'login', component: PageLoginComponent},
   {path: 'module/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
   {path: 'quiz/:id', component: PageQuizComponent},
-  {path: 'quiz-report/:lessonId', component: PageQuizReportComponent}
+  {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
+  {path: '404', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 
 ];
 
@@ -85,6 +88,7 @@ const appRoutes: Routes = [
     PageLessonComponent,
     PageLoginComponent,
     PageQuizComponent,
+    PageNotFoundComponent,
     CpLearningObjectiveComponent,
     CpSectionNotesComponent,
     CpEmbedVideoComponent,

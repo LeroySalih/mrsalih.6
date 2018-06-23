@@ -2,7 +2,9 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChange
 import {sprintf } from 'sprintf-js';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { QuestionService } from '../services/question.service';
-import { QuestionFactory, TimeConvertHrsMinsToMins } from '../models/question-factory';
+import { QuestionFactory } from '../models/question-factory';
+import { TimeConvertHrsMinsToMins } from '../models/questions/time-convert-hrs-mins-to-mins';
+
 import { Question } from '../models/question';
 import { QuestionStatus } from '../enums/question-status';
 
