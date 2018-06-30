@@ -49,6 +49,13 @@
                 *ngIf="section.type == 'text'"
                 [section]="section">
         </app-cp-embed-text-content>
+
+        <app-cp-section-quiz
+                *ngIf="section.type == 'quiz'"
+                [userId]="userId"
+                [section]="section">
+        
+        </app-cp-section-quiz>
         <div>
                         <mat-checkbox style="flex:1" #chk (change)="onCompleteChange(chk)" [checked]="getCompleted()">Completed</mat-checkbox>
         </div>

@@ -48,6 +48,9 @@ export class CpSectionComponent implements OnInit {
   @Input()
   highlightDragArea: boolean;
 
+  @Input()
+  userId: string;
+
   items: MenuItem[];
 
   constructor() {

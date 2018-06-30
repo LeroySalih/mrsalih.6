@@ -106,7 +106,7 @@ export class PageModuleComponent implements OnInit {
 
     const newLesson: Lesson = {
       id: null, title: '',  subtitle: '',
-      order: nextOrder, moduleId: this.moduleId, logo: ''};
+      order: nextOrder, moduleId: this.moduleId, logo: '', quizType: 0};
 
     dialogConfig.data = newLesson;
 

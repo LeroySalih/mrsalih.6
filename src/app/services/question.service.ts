@@ -34,7 +34,7 @@ export class QuestionService {
     return new Promise ((reject, resolve) => {
 
         // create 5 questions
-        const questions: Question[] = QuestionFactory.createQuestions(QuestionTypes.TimeConvertHrsMinsToMins, 5);
+        const questions: Question[] = QuestionFactory.createQuestions(questionType, 5);
 
         // convert the questions to POJO
         const saveQuestions = questions.map((question) => {

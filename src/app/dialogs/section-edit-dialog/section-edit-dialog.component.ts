@@ -23,7 +23,7 @@ export class SectionEditDialogComponent implements OnInit {
         {name: 'text'},
         {name: 'video'},
         {name: 'you-tube-video'},
-        {name: 'question'}
+        {name: 'quiz'}
       ];
 
 
@@ -37,6 +37,7 @@ export class SectionEditDialogComponent implements OnInit {
       videoId: [this.section.options.videoId, []],
       question: [this.section.options.question, []],
       answer: [this.section.options.answer, []],
+      quizTypeId: [this.section.options.quizTypeId, []],
       showComments: new FormControl (false)
     });
 
@@ -60,6 +61,12 @@ export class SectionEditDialogComponent implements OnInit {
         this.section.options = {
           question: formValue.question,
           answer: formValue.answer};
+      }
+
+      if (this.section.type === 'quiz') {
+        this.section.options = {
+          quizTypeId: formValue.quizTypeId
+        };
       }
 
     });

@@ -24,7 +24,7 @@ export class LessonDialogComponent implements OnInit {
       if (data) {
         this.lesson = data;
       } else {
-        this.lesson = {id: null, title: '',  subtitle: '',  order: 0, moduleId: null, logo: ''};
+        this.lesson = {id: null, title: '',  subtitle: '',  order: 0, moduleId: null, logo: '', quizType: 0};
       }
     }
 

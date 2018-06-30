@@ -2,6 +2,7 @@ import {QuestionTypes} from '../../enums/question-types';
 import {QuestionStatus} from '../../enums/question-status';
 import {Attempt} from '../attempt';
 import {Question} from '../question';
+import {sprintf } from 'sprintf-js';
 
 export class NumberAddingNegativeNumbers implements Question {
   public order;

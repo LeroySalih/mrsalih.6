@@ -9,11 +9,8 @@
          >
           <mat-icon *ngIf="section.type == 'video'">video_library</mat-icon>
           <mat-icon *ngIf="section.type == 'text'">text_fields</mat-icon>
+          <mat-icon *ngIf="section.type == 'quiz'">question_answer</mat-icon>
           <span class="sideNavItemTitle">{{section.title}}</span>
           <span class="sideNavItemCheck" *ngIf="checkSectionCompleted(section.id)"><mat-icon>done</mat-icon></span>
         </div>
-    <div class="sideNavItem" (click)="gotoQuiz()">
-        <mat-icon>question_answer</mat-icon>
-        <span class="sideNavItemTitle">Quiz</span>
-    </div>
 </div>

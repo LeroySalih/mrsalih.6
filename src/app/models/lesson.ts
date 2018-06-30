@@ -6,6 +6,7 @@ export interface Lesson {
     order: number;
     id: string;
     logo: string;
+    quizType: number;
   }
 
 

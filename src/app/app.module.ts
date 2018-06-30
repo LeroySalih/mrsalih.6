@@ -65,6 +65,7 @@ import { PageQuizReportComponent } from './page-quiz-report/page-quiz-report.com
 import { CpQuizComponent } from './cp-quiz/cp-quiz.component';
 import { CpLoadingComponent } from './cp-loading/cp-loading.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CpSectionQuizComponent } from './cp-section-quiz/cp-section-quiz.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -77,7 +78,6 @@ const appRoutes: Routes = [
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
-
 ];
 
 @NgModule({
@@ -114,6 +114,7 @@ const appRoutes: Routes = [
   PageQuizReportComponent,
   CpQuizComponent,
   CpLoadingComponent,
+  CpSectionQuizComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import {QuestionStatus} from '../../enums/question-status';
 import {Attempt} from '../attempt';
 import {Question} from '../question';
 
+import {sprintf } from 'sprintf-js';
+
 export class TimeConvertHrsMinsToMins implements Question {
   public order;
   public answerLabel = '%1d minutes';

@@ -548,7 +548,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
       this.questionService.createQuizforUser(
         this.lessonId,
         this.userProfile.authenticationId,
-        QuestionTypes.TimeConvertHrsMinsToMins)
+        this.lesson.quizType)
         .then(() => { this.messageService.add({severity: 'success', summary: 'Quiz Created'}); })
         .catch((err) => {
           this.messageService.add({severity: 'danger', summary: err.message});

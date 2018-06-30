@@ -1,6 +1,8 @@
 
-
-    <div class="pageContainer">
+ <ng-template name="loading" #loading>
+        <app-cp-loading></app-cp-loading>
+ </ng-template>
+    <div class="pageContainer" *ngIf="modules; else loading">
         <div class="toolBarContainer">
                 <button mat-raised-button mat-button-primary (click)="moduleNew()">New Module</button>
         </div>
