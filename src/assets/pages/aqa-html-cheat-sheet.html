@@ -1,0 +1,167 @@
+<style>
+  .comment {
+    color :darkgreen;
+  }
+
+  .tag {
+    color : red;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .attr {
+    color: blueviolet; 
+  }
+
+  .desc {
+    color: darkslategray;
+  }
+</style>
+<div class="pageContent">
+    <h1>AQA iGCSE HTML Cheat Sheet.</h1>
+    <div>The following HTML Cheat Sheet core requirements for the AQA iGCSE course in Computer Science.
+      For a complete web reference, you should visit <a href="https://www.w3schools.com/html/default.asp">www.w3schools.com</a>.
+
+    </div>
+    <div class="sectionTitle">Document Structure</div>
+    <div class="sectionText">The following HTML demonstrates the standard structure of a HTML document.</div>
+    <br/>
+    <div class="card">
+      <pre>
+        <span class="comment">&lt;!-- Tell the client browser that this document is HTML--&gt;</span>
+        &lt;!DOCTYPE HTML &gt;
+        
+        <span class="comment">&lt;!-- Start of the HTML Document --&gt;</span>
+        &lt;<span class="tag">HTML</span>&gt;
+
+          &lt;<span class="tag">HEAD</span>&gt;
+            <span class="comment">&lt;!-- Document info goes here --&gt;</span>
+            <span class="comment">&lt;!-- Stylesheet links go here --&gt;</span>
+            <span class="comment">&lt;!-- Script links go here --&gt;</span>
+          &lt;<span class="tag">/HEAD</span>&gt;
+
+          &lt;<span class="tag">BODY</span>&gt;
+            <span class="comment">&lt;!-- Body content goes here --&gt;</span>
+            <span class="comment">&lt;!-- Script to run when page loads goes here --&gt;</span>
+            
+          &lt;<span class="tag">/BODY</span>&gt;
+
+        &lt;<span class="tag">/HTML</span>&gt;
+      </pre>
+
+    </div>
+
+
+    <div class="sectionTitle">Block Level Tags</div>
+    <div>The following tags are <strong>BLOCK LEVEL</strong> tags.  This means that they apply to the whole section.</div>
+    <div class="card">
+      <pre>
+        <u>Tags</u>
+        &lt;<span class="tag">DIV</span>&gt;&lt;<span class="tag">/DIV</span>&gt;
+        <span class="desc">DIV blocks mark out sections of the page. A DIV can contain other DIV or P elements.</span>
+      
+        &lt;<span class="tag">P</span>&gt;&lt;<span class="tag">/P</span>&gt;
+        <span class="desc">A P marks a paragraph. It can not contain other DIV or P elements.</span>
+      
+        &lt;<span class="tag">Hx</span>&gt;&lt;<span class="tag">/Hx</span>&gt;
+        <span class="desc">H1..H6 header elements, mark a section as being a Page Header. </span>
+      
+        &lt;<span class="tag">UL</span>&gt;&lt;<span class="tag">/UL</span>&gt;, &lt;<span class="tag">OL</span>&gt;&lt;<span class="tag">/OL</span>&gt;, &lt;<span class="tag">LI</span>&gt;&lt;<span class="tag">/LI</span>&gt;
+        <span class="desc">UL, OL combine with LI tags to create Ordered or Unordered Lists. </span>
+      
+
+        <u>Attributes</u>
+        <span class="attr">id=""</span>
+        <span class="attr">style=""</span>
+
+        
+      </pre>
+
+    </div>
+
+
+    <div class="sectionTitle">Inline Level Tags</div>
+    <div>The following tags are <strong>Inline LEVEL</strong> tags.  This means that they apply to the whole section.</div>
+    <div class="card">
+      <pre>
+        <u>Tags</u>
+        &lt;<span class="tag">STRONG</span>&gt;&lt;<span class="tag">/STRONG</span>&gt;
+        <span class="desc">STRONG tag mark out sections of text that are to be emphasised.  Most browsers display using bold.</span>
+      
+        &lt;<span class="tag">SPAN</span>&gt;&lt;<span class="tag">/SPAN</span>&gt;
+        <span class="desc">A SPAN marks section of text in a paragraph. It can be used to apply styles to specific areas of the page.</span>
+      
+        &lt;<span class="tag">I</span>&gt;&lt;<span class="tag">/I</span>&gt;
+        <span class="desc">Mark a section of text as using Italic.</span>
+      
+        &lt;<span class="tag">U</span>&gt;&lt;<span class="tag">/U</span>&gt;
+        <span class="desc">Underline a section of text.</span>
+      
+
+        &lt;<span class="tag">BR/</span>&gt;
+        <span class="desc">Create a break in the page. This can be used to add space after a paragraph, or to breakup a line of text. </span>
+      
+        &lt;<span class="tag">HR/</span>&gt;
+        <span class="desc"> Creates a break in a page, that is underlined. </span>
+      
+        <u>Attributes</u>
+        <span class="attr">id=""</span>
+        <span class="attr">style=""</span>
+
+       
+
+      </pre>
+
+    </div>
+
+    <div class="sectionTitle">Image Tag</div>
+    <div>The following tags are <strong>Inline LEVEL</strong> tags.  This means that they apply to the whole section.</div>
+    <div class="card">
+      <pre>
+        <u>Tags</u>
+        &lt;<span class="tag">IMG</span>&gt;&lt;<span class="tag">/IMG</span>&gt;
+        <span class="desc">DIV blocks mark out sections of the page. A DIV can contain other DIV or P elements.</span>
+      
+        <u>Attributes</u>
+        <span class="attr">src=""</span>
+      
+        <u>Examples</u>
+        &lt;<span class="tag">IMG</span> 
+          <span class="attr">scr="http://www.mrsalih.org/assets/images/mrsalih_logo.png"</span> 
+          <span class="attr">style="width: 50px; height: 30px;"</span> &gt;
+        &lt;<span class="tag">/IMG</span>&gt;
+
+        <img src="http://www.mrsalih.org/assets/images/mrsalih_logo.png"
+             style="width:50px; height: 30px;"
+        >
+        </img>
+
+      </pre>
+
+    </div>
+
+    <div class="sectionTitle">Link Tag</div>
+    <div>The following tags are <strong>Link</strong> tags.  This means that they apply to the whole section.</div>
+    <div class="card">
+      <pre>
+        <u>Tags</u>
+        &lt;<span class="tag">A</span>&gt;&lt;<span class="tag">/A</span>&gt;
+        <span class="desc">The Anchor tag (A) creates a link to either another section on the current page or a different page.</span>
+      
+        <u>Attributes</u>
+        <span class="attr">href=""</span>
+        This is the URL or bookmark the link will take the user to.
+
+        <span class="attr">target=""</span>
+        Used to specify whether to open the link in the same browser window (_self) or a new browser window (_blank) 
+
+        <u>Example</u>
+        &lt;<span class="tag">A</span>  <span class="attr">href="www.bbc.com"</span>  <span class="attr">target="_blank"</span> &gt;The BBC Web Site.&lt;<span class="tag">/A</span>&gt;
+        
+        produces
+
+        <a href="www.bbc.com" target="blank">The BBC Web Site.</a>
+      </pre>
+
+    </div>
+
+</div>

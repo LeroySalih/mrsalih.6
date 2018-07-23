@@ -66,6 +66,10 @@ import { CpQuizComponent } from './cp-quiz/cp-quiz.component';
 import { CpLoadingComponent } from './cp-loading/cp-loading.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CpSectionQuizComponent } from './cp-section-quiz/cp-section-quiz.component';
+import { PageBlogPostComponent } from './page-blog-post/page-blog-post.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpXsrfCookieExtractor } from '@angular/common/http/src/xsrf';
+import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -76,6 +80,8 @@ const appRoutes: Routes = [
   {path: 'lesson/:id', component: PageLessonComponent},
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
+  {path: 'blog-home', component: PageBlogHomeComponent},
+  {path: 'blog/:id', component: PageBlogPostComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
@@ -115,6 +121,8 @@ const appRoutes: Routes = [
   CpQuizComponent,
   CpLoadingComponent,
   CpSectionQuizComponent,
+  PageBlogPostComponent,
+  PageBlogHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +131,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     PrimeNGModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

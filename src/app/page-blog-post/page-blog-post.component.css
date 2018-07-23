@@ -1,0 +1,51 @@
+.wrapper {
+  display : grid;
+  grid-template-columns: 150px auto;
+  font-family: 'Roboto', Verdana;
+}
+
+.pageTitle {
+  grid-area : 1 / 1 / 2 / 4;
+  background-color: #e3f0e5;
+  height: 50px;
+  border-top: solid silver 1px;
+  border-bottom: solid silver 1px;
+  font-family: 'Roboto', Verdana;
+  font-size: xx-large;
+  padding: 5px;
+}
+
+.sideBar {
+
+}
+
+.sideBarDateDay {
+
+}
+
+.dateDay {
+  margin-top: 250px;
+  text-align: center;
+  font-size: 60px;
+}
+
+.dateMonth {
+  text-align: center;
+  font-size: smaller;
+  border-bottom: 1px silver solid;
+
+}
+
+.email {
+  text-align: center;
+  font-size: 12px;
+}
+
+linkBlogHome {
+  text-align: center;
+  font-size: 12px;
+}
+
+.content {
+  grid-area : 2 / 2 / 3 / 3;
+}

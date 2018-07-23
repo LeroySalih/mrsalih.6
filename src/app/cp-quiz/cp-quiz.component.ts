@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../models/question';
 import { QuestionEvent } from '../cp-question/cp-question.component';
 
+
+// OBSELETE!!!!1
+
 @Component({
   selector: 'app-cp-quiz',
   templateUrl: './cp-quiz.component.html',

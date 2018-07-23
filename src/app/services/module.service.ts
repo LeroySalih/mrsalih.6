@@ -36,7 +36,7 @@ export class ModuleService {
 
     return this.afs.doc(`${DbConfig.MODULES}/${module.id}`).set(module);
   }
- 
+
   deleteModule(module: Module): Promise<void> {
     return this.afs.doc(`${DbConfig.MODULES}/${module.id}`).delete();
   }

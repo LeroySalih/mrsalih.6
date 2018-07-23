@@ -19,13 +19,15 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/assets/pages/"
+              "src/assets/pages/",
+              "src/assets/images"
             ],
             "styles": [
               "src/styles.css",
               "node_modules/quill/dist/quill.core.css",
               "node_modules/quill/dist/quill.snow.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeng/resources/themes/omega/theme.css",
               "node_modules/ng-drag-drop/style.css"
