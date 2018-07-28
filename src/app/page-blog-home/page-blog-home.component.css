@@ -1,0 +1,46 @@
+.pageTitle {
+  background-color: #e3f0e5;
+  height: 50px;
+  border-top: solid silver 1px;
+  border-bottom: solid silver 1px;
+  font-family: 'Roboto', Verdana;
+  font-size: xx-large;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+
+.firstBlogGrid {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.firstBlogImage {
+  grid-area: 1 / 1 / 4 / 2;
+  background-color: red;
+}
+
+.firstBlogTitle {
+  grid-area: 1 / 2 / 2 / 3;
+  font-family: 'Roboto', 'Times New Roman';
+  font-size: xx-large;
+  padding: 10px;
+}
+
+.firstBlogText {
+  grid-area: 2 / 2 / 3 / 3;
+  font-family: 'Roboto', 'Times New Roman';
+  font-size: large;
+  padding: 10px;
+}
+
+.firstBlogDate {
+  grid-area: 3 / 2 / 4 / 3;
+  font-family: 'Roboto', 'Times New Roman';
+  font-size:smaller;
+  padding: 10px;
+  color: darkcyan
+}
+

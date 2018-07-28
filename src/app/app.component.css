@@ -12,6 +12,9 @@
     background-color: black;
     padding-top: 10px;
     padding-left: 10px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
   }
   
   .pageBody {
@@ -25,4 +28,20 @@
 
   .siteLogo {
     height: 40px;
+    margin-right: 50px;
+  }
+
+  .siteMenuItem {
+    color: silver;
+    margin-right: 15px;
+    font-family: 'Roboto';
+    font-size: larger;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .siteMenuItem.active {
+    background-color: aquamarine;
+    border-radius: 10px;
+    color: black;
   }

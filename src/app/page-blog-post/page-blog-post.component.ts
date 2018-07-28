@@ -23,7 +23,6 @@ export class PageBlogPostComponent implements OnInit {
   ) { }
 
   transform(v: string): SafeHtml {
-
     return this.sanitizer.bypassSecurityTrustHtml(v);
   }
 

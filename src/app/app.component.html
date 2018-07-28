@@ -2,8 +2,11 @@
 
 <p-growl></p-growl>
 <div class="pageContainer">
-        <div class="pageHeader">
+        <div class="pageHeader" >
                 <img   class="siteLogo" src="/assets/images/mrsalih_logo.png">
+                <a class="siteMenuItem" [routerLink]="'modules'"   [routerLinkActive]="'active'">Modules</a>
+                <a class="siteMenuItem" [routerLink]="'blog-home'" [routerLinkActive]="'active'" >Posts</a>
+                
         </div>
         <div class="pageBody">
                 <router-outlet></router-outlet>

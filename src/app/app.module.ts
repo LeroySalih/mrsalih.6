@@ -74,7 +74,7 @@ import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
-  {path: 'home', component: PageHomeComponent},
+  {path: 'modules', component: PageHomeComponent},
   {path: 'login', component: PageLoginComponent},
   {path: 'module/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},

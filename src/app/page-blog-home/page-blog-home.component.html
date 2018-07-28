@@ -1,9 +1,25 @@
 
-  <ul>
-    <li *ngFor="let bp of blogPosts">
-      <a [routerLink]="['/blog', bp.id]">
-        {{bp.title}}
-      </a>
-    </li>
-  </ul>
+<div class="wrapper">
+    <div class="pageTitle">
+      Resources
+    </div>  
+    <div *ngIf="firstBlogPost">
+      <div class="firstBlogGrid">
+          <div class="firstBlogImage"></div>
+          <div class="firstBlogTitle">{{firstBlogPost.title}}</div>
+          <div class="firstBlogText">{{firstBlogPost.desc}}</div>
+          <div class="firstBlogDate">{{convertDate(firstBlogPost.date)}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="remainingBlogPosts">
+      <ul>
+        <li *ngFor="let bp of this.remainingBlogPosts">
+          <a [routerLink]="['/blog', bp.id]">
+            {{bp.title}}
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>  
 
