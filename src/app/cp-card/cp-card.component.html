@@ -1,0 +1,25 @@
+
+    <article class="card post" >
+        
+      <div class="card-info post">
+            <div class="card-tag post">{{tag}}</div>
+            <div class="card-date post">{{convertDate(date)}}</div>    
+        </div>
+
+        <header class="card-title post">
+          <div class="card-title">{{title}}</div>
+          <div class="card-subtitle">{{subTitle}}</div>
+        </header>
+
+        <a class="card-fig post" [routerLink]="linkUrl">
+          <figure >
+            <img [src]="thumbnailUrl"/>
+          </figure>
+        </a>
+
+        <main class="card-desc post">
+          <ng-content></ng-content>
+        </main>
+        
+    </article>
+

@@ -10,7 +10,7 @@ export class  ModuleEvent {
 @Component({
   selector: 'app-cp-module-summary',
   templateUrl: './cp-module-summary.component.html',
-  styleUrls: ['./cp-module-summary.component.css']
+  styleUrls: ['./cp-module-summary.component.css', '../../card.css']
 })
 export class CpModuleSummaryComponent implements OnInit {
 

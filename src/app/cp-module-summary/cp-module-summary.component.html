@@ -1,9 +1,17 @@
-<mat-card class="moduleSummary">
-
-   <div style="display: flex; flex-direction: row;">
-      <div><img src="assets/images/subject-time.png"></div>
-      <div style="flex:1">
+<app-cp-card
+    [title]="module.title"
+    [subTitle]="module.subtitle"
+    [tag]="module.category"
+    [thumbnailUrl]="module.thumbnailUrl"
+    [linkUrl] = "['/modules', module.id]"
+    >
+    <div> 
+        <div [innerHTML]="module.bodyText"></div>
+    </div>
+      
+ <!--     
           <mat-card-title style="display: flex; flex-direction: row">
+                <a [routerLink]="['/posts', module.id]">{{title}}</a>
               <div style="flex:1">{{module.title}}</div>
               <div style="vertical-align: top">
                   <mat-menu  #appMenu="matMenu">
@@ -19,27 +27,22 @@
         
             <mat-card-subtitle >{{module.subtitle}}</mat-card-subtitle>
             <mat-card-content  class="moduleSummaryContent">
-                
                 <div class="moduleSummaryContentText" >
                   <div [innerHTML]="module.bodyText"></div>
                 </div>
-            
             </mat-card-content>
-      </div>
-   </div>
 
+        -->
     
 
+<!--
+    <mat-card-actions style="text-align: left">
+        <div style="display: flex; flex-direction: row;">
+        <span>
+            <img *ngFor="let icon of module.softwareIcons;" src="{{icon}}" class="softwareThumbnail"/>
+            </span>
+        </div>
+    </mat-card-actions>
+-->
 
-  <mat-card-actions style="text-align: left">
-     <div style="display: flex; flex-direction: row;">
-       <span>
-         <img *ngFor="let icon of module.softwareIcons;" src="{{icon}}" class="softwareThumbnail"/>
-        </span>
-       <span style="flex: 1;  text-align: right; vertical-align: middle">
-         <button mat-raised-button (click)="OnReadMoreClick(module)">View</button>
-        </span>
-     </div>
-      
-  </mat-card-actions>
-</mat-card>
+</app-cp-card>

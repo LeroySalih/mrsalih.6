@@ -70,18 +70,19 @@ import { PageBlogPostComponent } from './page-blog-post/page-blog-post.component
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpXsrfCookieExtractor } from '@angular/common/http/src/xsrf';
 import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component';
+import { CpCardComponent } from './cp-card/cp-card.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
   {path: 'modules', component: PageHomeComponent},
   {path: 'login', component: PageLoginComponent},
-  {path: 'module/:id', component: PageModuleComponent},
+  {path: 'modules/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
-  {path: 'blog-home', component: PageBlogHomeComponent},
-  {path: 'blog/:id', component: PageBlogPostComponent},
+  {path: 'posts', component: PageBlogHomeComponent},
+  {path: 'posts/:id', component: PageBlogPostComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
@@ -123,6 +124,7 @@ const appRoutes: Routes = [
   CpSectionQuizComponent,
   PageBlogPostComponent,
   PageBlogHomeComponent,
+  CpCardComponent,
   ],
   imports: [
     BrowserModule,

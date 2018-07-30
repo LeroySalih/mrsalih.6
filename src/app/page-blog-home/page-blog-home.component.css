@@ -22,11 +22,14 @@
   background-color: red;
 }
 
+
 .firstBlogTitle {
   grid-area: 1 / 2 / 2 / 3;
   font-family: 'Roboto', 'Times New Roman';
   font-size: xx-large;
   padding: 10px;
+  color: black;
+  text-decoration: none;
 }
 
 .firstBlogText {
@@ -43,4 +46,68 @@
   padding: 10px;
   color: darkcyan
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.blogPostTitle {
+  font-family: 'Roboto', Verdana;
+  font-size: small;
+  color: silver;
+}
+
+.card.post {
+  display: grid;
+  grid-template-areas: "info info"
+                       "fig  title"
+                       "fig  desc";
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 10px;
+}
+
+.card-info.post {
+  grid-area: info;
+  display: inline;
+  margin-bottom: 10px;
+}
+
+.card-tag.post {
+  color: lightseagreen;
+  font-family: 'Roboto', Verdana;
+  font-size: small;
+  display: inline;
+}
+
+.card-date.post {
+  color: grey;
+  font-family: 'Roboto', Verdana;
+  font-size: small;
+  display: inline;
+  margin-left: 20px;
+}
+
+.card-fig.post {
+  grid-area: fig;
+  background-color: red;
+  
+}
+
+.card-title.post {
+  grid-area: title;
+  font-family: 'Roboto', Verdana;
+  font-size: x-large;
+  color: black;
+}
+
+.card-desc.post {
+  grid-area: desc;
+  color: gray;
+  font-family: 'Open Sans', verdana;
+  font-size: small;
+  margin-top: 15px;
+  
+}
+
 

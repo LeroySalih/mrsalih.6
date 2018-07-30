@@ -1,0 +1,65 @@
+.card {
+  display: grid;
+  border : 1px solid silver;
+  border-radius: 5px;
+  margin : 5px;
+  padding: 5px;
+  grid-template-areas: "info info"
+                       "fig  title"
+                       "fig  desc";
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 10px;
+}
+
+.card-info {
+  grid-area: info;
+  display: inline;
+  margin-bottom: 10px;
+}
+
+.card-tag {
+  color: lightseagreen;
+  font-family: 'Roboto', Verdana;
+  font-size: small;
+  display: inline;
+}
+
+.card-date {
+  color: grey;
+  font-family: 'Roboto', Verdana;
+  font-size: small;
+  display: inline;
+  margin-left: 20px;
+}
+
+.card-fig {
+  grid-area: fig;
+}
+
+.card-fig img {
+  max-width: 70px;
+  height: auto;
+}
+
+.card-title {
+  grid-area: title;
+  font-family: 'Roboto', Verdana;
+  font-size: x-large;
+  color: black;
+}
+
+.card-subtitle {
+  grid-area: title;
+  font-family: 'Roboto', Verdana;
+  font-size: large;
+  color: silver;
+}
+
+.card-desc {
+  grid-area: desc;
+  color: rgba(15,15,15,1);
+  font-family: 'Open Sans', verdana;
+  font-size: small;
+  margin-top: 15px;
+  
+}

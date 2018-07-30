@@ -10,25 +10,18 @@
     height:60px;
     color: white;
     background-color: black;
-    padding-top: 10px;
-    padding-left: 10px;
     vertical-align: middle;
     display: flex;
+    flex-direction: row;
     align-items: center;
   }
   
-  .pageBody {
-    grid-area: 2/ 2 / 3 / 3;
-    background-color: white;
-    border-left: silver 1px solid;
-    border-right: silver 1px solid;
-    padding: 10px;
-    overflow-y: auto;
-  }
+ 
 
   .siteLogo {
     height: 40px;
     margin-right: 50px;
+    
   }
 
   .siteMenuItem {
@@ -44,4 +37,21 @@
     background-color: aquamarine;
     border-radius: 10px;
     color: black;
+  }
+
+  .userName{
+    color: aquamarine;
+    font-family: 'Open Sans';
+    flex: 1;
+    text-align: right; 
+    margin-right: 30px;
+  }
+
+  .pageBody {
+    grid-area: 2/ 2 / 3 / 3;
+    background-color: white;
+    border-left: silver 1px solid;
+    border-right: silver 1px solid;
+    padding: 10px;
+    overflow-y: auto;
   }
