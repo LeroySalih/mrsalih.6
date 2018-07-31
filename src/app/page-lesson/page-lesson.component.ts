@@ -115,6 +115,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
+    console.log(`ngOnInit`);
     const pageParam$: Observable<ParamMap> = this.route.paramMap;
     const user$: Observable<UserProfile> = this.userService.currentUser$;
 
@@ -125,7 +126,10 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
     );
 
     values$.subscribe(data => {
-      if (!data.page || !data.user) {return; }
+      console.log(`Received values ${data}`);
+      if (!data.page || !data.user) {
+        console.log('No User... returning');
+        return; }
 
       // At this point, we have lessonId and userId.
 
