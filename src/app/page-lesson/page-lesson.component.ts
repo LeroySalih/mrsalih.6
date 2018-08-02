@@ -84,6 +84,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   quizzes: Quiz[];
   quizDates: Date[] = [];
 
+  assignmentUrl: string;
   // sectionPayloadService: any;
 
   public myForm: FormGroup; // our form model
@@ -106,7 +107,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
              // this.learningObjectiveFeedback = {'PsfYfc3ag8oGkfOS8hQn': 'Not Yet', 'gG18CK2wQ14STjnyBX9B' : 'Got It'};
             this.isDragging = false;
-
+            this.assignmentUrl = 'https://repl.it/student_embed/assignment/1313666/0481d3a37556d7a80661299f0d48dc74';
              }
 
   ngAfterViewInit()  {

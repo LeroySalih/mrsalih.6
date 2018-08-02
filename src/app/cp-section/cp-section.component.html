@@ -56,6 +56,12 @@
                 [section]="section">
         
         </app-cp-section-quiz>
+        <app-cp-repl-assignment
+                *ngIf="section.type == 'repl.assignment'"
+                [options]="section.options"
+        >
+
+        </app-cp-repl-assignment>
         <div>
                         <mat-checkbox style="flex:1" #chk (change)="onCompleteChange(chk)" [checked]="getCompleted()">Completed</mat-checkbox>
         </div>

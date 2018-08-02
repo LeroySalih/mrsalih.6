@@ -32,6 +32,14 @@
       <mat-checkbox formControlName="showComments" [checked]="getShowCommentsChecked()" >Show Comments</mat-checkbox>
   </div>
 
+  <div *ngIf="section.type == 'repl.assignment'">
+        <mat-form-field>
+            <input formControlName="url" matInput placeholder="URL"   >
+        </mat-form-field> 
+        
+        <mat-checkbox formControlName="showComments" [checked]="getShowCommentsChecked()" >Show Comments</mat-checkbox>
+    </div>
+
   <div *ngIf="section.type == 'quiz' ">
         <mat-form-field>
             <input formControlName="quizTypeId" matInput placeholder="Quiz Id">

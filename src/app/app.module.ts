@@ -71,6 +71,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpXsrfCookieExtractor } from '@angular/common/http/src/xsrf';
 import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component';
 import { CpCardComponent } from './cp-card/cp-card.component';
+import { CpReplAssignmentComponent } from './cp-repl-assignment/cp-repl-assignment.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -125,6 +126,7 @@ const appRoutes: Routes = [
   PageBlogPostComponent,
   PageBlogHomeComponent,
   CpCardComponent,
+  CpReplAssignmentComponent,
   ],
   imports: [
     BrowserModule,

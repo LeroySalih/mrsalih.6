@@ -41,44 +41,8 @@
                                         (questionEvent)="onQuestionEvent($event)"
                                         >
                                 </app-cp-section>
-                                <!--                 
-                                <mat-card style="margin-top: 15px;">
-                                        <mat-card-content>
-                                                <div style="display: flex; flex-direction: row;">
-                                                        <H1 id="quiz" #quiz style="flex: 1">
-                                                                Quiz
-                                                                <button  style="width:30%; margin: 3px;" mat-raised-button (click)="createQuiz()"> New Quiz </button>
-                                                                <mat-form-field style="font-family: 'Open Sans'; font-size: 15px;">
-                                                                        <mat-select (selectionChange)="onQuizChange($event);">
-                                                                                <mat-option *ngFor="let qd of quizDates;let i = index" [value]="i">{{convertDate(qd)}}</mat-option>
-                                                                        </mat-select>
-                                                                </mat-form-field>
-                                                        </H1>
-                                                        <div>
-                                                                <mat-menu #appMenu="matMenu">
-                                                                        <button mat-menu-item (click)="OnShowReport()">See Report</button>
-                                                                </mat-menu>             
-                                                                <button mat-icon-button [matMenuTriggerFor]="appMenu">
-                                                                        <mat-icon>more_vert</mat-icon>
-                                                                </button>
-                                                        </div>         
-                                                </div>
-        
-                                                <section class="actions" *ngIf="!questions">
-                                                        <button type="button" style="width:100%; margin: 3px;" pButton label="Take Quiz" (click)="createQuiz()"></button>
-                                                </section>
-                                                
-                                                <app-cp-quiz
-                                                        [questions]="questions"
-                                                        [currentQuestionIndex]="currentQuestionIndex"
-                                                        [currentQuestion]="currentQuestion"
-                                                        (questionEvent)="onQuestionEvent($event)"
-                                                
-                                                ></app-cp-quiz>
-                                                
-                                        </mat-card-content>
-                                </mat-card>
-                        -->
+                                
+                                
                         </div>
                 </div>
         </div>
