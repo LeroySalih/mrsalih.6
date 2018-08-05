@@ -4,8 +4,8 @@ import { Observable ,  BehaviorSubject } from 'rxjs';
 
 import { Module } from '../models/module';
 import { v4 as uuid } from 'uuid';
-
 import { DbConfig } from '../db.config';
+import { Lesson } from '../models/lesson';
 @Injectable()
 export class ModuleService {
 

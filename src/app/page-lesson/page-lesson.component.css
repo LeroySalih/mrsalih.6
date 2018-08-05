@@ -31,55 +31,26 @@
     width: 100%;
 }
 
-/*
-.progressBar {
-    display: flex;
-    flex-direction: row;
-}
-
-.progressItem {
-    flex: 1;
-    background-color: silver;
-    margin: 2px;
-}
-
-.success {
-    background-color: red;
-}
-
-.error {
-    background-color: green;
-}
-
-.current {
-    background-color: orange;
-}
-
-.answer {
-    margin: 15px;
-    min-height: 40px;
-}
-*/
-
 .wrapper {
     display: grid;
     grid-template-columns : 230px auto;
     grid-gap : 10px;
 }
 
+
+
 .sideMenu {
     grid-area : 1 / 1 / 2 / 2;
     position: fixed;
-    width: 230px; 
+    
+    
 }
 
 .sectionContainer {
     grid-area : 1 / 2 / 2 / 3 
 }
 
-.sideNav {
-    margin-top: 5px;
-}
+
 
 
 

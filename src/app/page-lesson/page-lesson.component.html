@@ -5,20 +5,25 @@
 <section class="pageContainer" *ngIf="lesson; else loading">
         <div class="lesson">
                 <div class="wrapper">
+                        
                         <div class="sideMenu box">
+                                <div *ngIf="module">
+                                        <a [routerLink]="['/modules', module.id]">
+                                                Back to {{module.title}}
+                                        </a>
+                                </div>
                                 <app-cp-lesson-side-nav
-                                        class="sideNav"
-                                        [sections]="sections"
+                                        [sections]="sections" 
                                         [sectionPayloads]="sectionPayloads"
                                         (sideNavEvent)="onSideNavEvent($event)"
                                 ></app-cp-lesson-side-nav>
                                 <button mat-raised-button (click)="onSectionNew()">Add Section</button>
                         </div>
                         <div id="sectionContainer" (scroll)="testScroll()" class="sectionContainer box">
-                                <section *ngIf="lesson" class="lessonHeading">
-                                        <h1 class="mat-title">{{lesson.title}}</h1>
-                                        <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
-                                </section>
+                                        <div *ngIf="lesson" class="lessonHeading ">
+                                                        <h1 class="mat-title">{{lesson.title}}</h1>
+                                                        <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
+                                        </div>
                                 <section>
                                         <app-cp-learning-objectives 
                                                 [los]="los"

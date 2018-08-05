@@ -46,6 +46,8 @@ import { CpLearningObjectivesComponent } from '../cp-learning-objectives/cp-lear
 
 import * as moment from 'moment';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import { ModuleService } from '../services/module.service';
+import { Module } from '../models/module';
 
 export interface Customer {
   name: string; // required field with minimum 5 characters
@@ -70,6 +72,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
   userProfile: UserProfile;
   lessonId = 'Not Set';
+  module: Module;
   lesson: Lesson;
   sections: LessonSection[];
   lessonProgresses: any = {};
@@ -92,6 +95,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private lessonService: LessonService,
+              private moduleService: ModuleService,
               private loService: LOService,
               private loProgressService: LOProgressService,
               private lessonSectionService: LessonSectionService,
@@ -195,13 +199,13 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
               this.currentQuestion = null;
               this.currentQuestionIndex = 0;
             }
-            /*
-            if (lessonData.quiz) {
-              this.questions =  lessonData.quiz['questions'];
-              this.currentQuestion = this.questions[this.currentQuestionIndex];
-            }
-            */
 
+            if (lessonData.lesson.moduleId) {
+              this.moduleService.getModule(lessonData.lesson.moduleId)
+                 .subscribe((module) => {
+                   this.module = module;
+                 });
+            }
         });
 
     });
