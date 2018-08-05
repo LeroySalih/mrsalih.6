@@ -72,6 +72,14 @@ HTML, BODY {
 
 }
 
+a {
+    text-decoration : none;
+}
+
+figure {
+    margin: 10px;
+}
+
 
   
 

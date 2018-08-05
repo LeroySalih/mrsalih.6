@@ -4,7 +4,11 @@
         <section *ngIf="lessons; else loading" class="moduleContent">
             
             <div class="moduleLessons">
-                <h1 class="mat-h1">{{module.title}}</h1>
+              <h1 class="mat-h1">{{module.title}}</h1>
+              <div class="breadcrumb">
+                    <A  [routerLink]="['/modules']"> Back to: Modules</A>
+              </div>
+             
               <div style="display: flex; flex-direction: row">
                    
                    <h2 class="mat-h2" style="margin-left: 5px; flex-grow: 1">

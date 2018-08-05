@@ -7,8 +7,10 @@
         </div>
 
         <header class="card-title post">
-          <div class="card-title">{{title}}</div>
-          <div class="card-subtitle">{{subTitle}}</div>
+          <a [routerLink]="linkUrl">
+            <div class="card-title">{{title}}</div>
+            <div class="card-subtitle">{{subTitle}}</div>
+          </a>
         </header>
 
         <a class="card-fig post" [routerLink]="linkUrl">
