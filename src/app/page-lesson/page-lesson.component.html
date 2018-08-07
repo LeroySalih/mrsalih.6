@@ -7,9 +7,9 @@
                 <div class="wrapper">
                         
                         <div class="sideMenu box">
-                                <div *ngIf="module">
+                                <div *ngIf="module" class="breadcrumb">
                                         <a [routerLink]="['/modules', module.id]">
-                                                Back to {{module.title}}
+                                                << {{module.title}}
                                         </a>
                                 </div>
                                 <app-cp-lesson-side-nav

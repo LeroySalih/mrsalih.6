@@ -50,6 +50,19 @@
     grid-area : 1 / 2 / 2 / 3 
 }
 
+.breadcrumb {
+    cursor: pointer;
+    color: aquamarine;
+    background-color: rgb(100,100,100);
+    width: 100%;
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+}
+
+.breadcrumb A:visited {
+    color: aquamarine;
+}
 
 
 
