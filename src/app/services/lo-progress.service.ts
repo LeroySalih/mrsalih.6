@@ -11,6 +11,13 @@ export class LOProgressService {
 
   constructor(private afs: AngularFirestore) { }
 
+  getAllLOPProgressForUser (userId: string): Observable<LOProgress[]> {
+    const collection: AngularFirestoreCollection<LOProgress> = this.afs.collection<LOProgress>
+    (this.LO_PROGRESS_COLLECTION, ref => ref
+      .where('userId', '==', userId));
+
+    return collection.valueChanges();
+  }
   getLOProgressForUser (userId: string, lessonId: string): Observable<LOProgress[]> {
 
     const collection: AngularFirestoreCollection<LOProgress> = this.afs.collection<LOProgress>

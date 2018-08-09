@@ -72,6 +72,7 @@ import { HttpXsrfCookieExtractor } from '@angular/common/http/src/xsrf';
 import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component';
 import { CpCardComponent } from './cp-card/cp-card.component';
 import { CpReplAssignmentComponent } from './cp-repl-assignment/cp-repl-assignment.component';
+import { PageProgressComponent } from './page-progress/page-progress.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: 'posts', component: PageBlogHomeComponent},
   {path: 'posts/:id', component: PageBlogPostComponent},
+  {path: 'progress', component: PageProgressComponent},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
@@ -127,6 +129,7 @@ const appRoutes: Routes = [
   PageBlogHomeComponent,
   CpCardComponent,
   CpReplAssignmentComponent,
+  PageProgressComponent,
   ],
   imports: [
     BrowserModule,

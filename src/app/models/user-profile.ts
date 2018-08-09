@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export class UserProfile {
 
@@ -25,4 +25,12 @@ export class UserProfile {
                     form['email'],
                     form['name']);
     }
+}
+
+/* used to bypass the shitty architecture for UserProfile */
+
+export interface UserData {
+    authenticationId: string;
+    className: string;
+    name: string;
 }

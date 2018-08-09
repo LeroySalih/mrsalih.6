@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LessonSection } from '../models/lesson-section';
-import { DomSanitizer, SafeUrl } from '../../../node_modules/@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cp-repl-assignment',

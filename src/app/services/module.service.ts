@@ -6,6 +6,7 @@ import { Module } from '../models/module';
 import { v4 as uuid } from 'uuid';
 import { DbConfig } from '../db.config';
 import { Lesson } from '../models/lesson';
+import { ModuleSubscription } from '../models/module-subscription';
 @Injectable()
 export class ModuleService {
 
@@ -21,6 +22,11 @@ export class ModuleService {
   getModules(): Observable<Module[]> {
     const collection = this.afs.collection<Module>(DbConfig.MODULES, ref => ref.orderBy(DbConfig.ORDER_FIELD, 'asc'));
 
+    return collection.valueChanges();
+  }
+
+  getModuleSubscriptionsForClass(classId): Observable<ModuleSubscription[]> {
+    const collection = this.afs.collection<ModuleSubscription>(DbConfig.MODULE_SUBSCRIPTIONS, ref =>  ref.where ('classId', '==', classId));
     return collection.valueChanges();
   }
 

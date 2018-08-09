@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable ,  BehaviorSubject } from 'rxjs';
 

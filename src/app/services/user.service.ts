@@ -4,10 +4,11 @@ import { BehaviorSubject ,  Subject ,  Observable } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
-import { UserProfile } from './../models/user-profile';
+import { UserProfile, UserData } from '../models/user-profile';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { DbConfig } from '../db.config';
 
 interface Note {
   content: string;
@@ -20,6 +21,7 @@ export class UserService {
   currentUser$: Subject <UserProfile>;
 
   constructor(private db: AngularFirestore,
+              private afs: AngularFirestore,
               private firebaseAuth: AngularFireAuth) {
 
     // this.db = firebase.firestore();
@@ -48,6 +50,7 @@ export class UserService {
       }
     });
   }
+
 
   createUser (registrationForm: any) {
     firebase.auth().createUserWithEmailAndPassword(registrationForm.userId, registrationForm.password)
@@ -93,6 +96,13 @@ export class UserService {
     console.log('%c Oh my heavens! ', 'background: #222; color: #bada55');
     console.log('%c[user.service]' + '%cloggout', 'color:red;',  'color:blue');
     return firebase.auth().signOut();
+  }
+
+  getUserProfile (userId): Observable<UserData> {
+
+    return this.afs.doc<UserData>(`${DbConfig.USER_DATA}/${userId}`)
+          .valueChanges();
+
   }
 
 }

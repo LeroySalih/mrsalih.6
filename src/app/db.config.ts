@@ -1,5 +1,6 @@
 export class DbConfig {
     public static MODULES = 'modules';
+    public static MODULE_SUBSCRIPTIONS = 'module_subscriptions';
     public static LESSONS = 'lessons';
     public static LOS = 'los';
     public static LESSON_PROGRESS = 'loProgress';
@@ -8,6 +9,8 @@ export class DbConfig {
     public static SECTION_PAYLOAD = 'sectionPayloads';
     public static QUIZ = 'quizzes';
     public static BLOG_POSTS = 'blogPosts';
+    public static CLASSES = 'classes';
+    public static USER_DATA = 'userProfiles';
 
     public static USER_PROFILES = 'userProfiles';
 
