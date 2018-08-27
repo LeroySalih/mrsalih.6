@@ -268,6 +268,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
       className: this.userProfile.className,
       learningObjectiveId: event.lo.id,
       lessonId: this.lessonId,
+      moduleId: this.lesson.moduleId,
       status: event.status
     };
 
@@ -307,6 +308,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
         if (data) {
            this.loService.saveLO(data as LO)
            .then(() => {
+
               this.messageService.add(
                 {severity: 'success', summary: 'Module Saved'}
               );

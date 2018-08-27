@@ -5,6 +5,49 @@
     height: 100%;
 }
 
+#pageGrid {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "profile detail" "sideBar detail";
+    grid-template-columns: 350px auto;
+}
+
+#profile {
+    grid-area: profile;
+    background-color: lightgray;
+    text-align: center;
+}
+
+#profilePic {
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    padding: 7px;
+    border: solid 1px silver;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px darkgray;
+}
+
+#profileName {
+    font-family: 'Open Sans';
+    color: black;
+}
+
+#profileClass {
+    font-family: 'Open Sans';
+    color: black;
+}
+
+#detail {
+    grid-area: detail;
+    background-color: darkgrey;
+}
+
+#sideBar {
+    grid-area: sideBar;
+    background-color: lightgrey; 
+}
 
 .card-container {
     display: grid;
@@ -12,4 +55,5 @@
     grid-template-rows: auto; 
   }
 
+ 
 

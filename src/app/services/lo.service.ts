@@ -13,6 +13,10 @@ export class LOService {
   constructor(private afs: AngularFirestore) {
   }
 
+  getAllLearningObjectives(): Observable<LO[]> {
+    return this.afs.collection<LO>(this.LO_COLLECTION).valueChanges();
+  }
+
   getLearningObjectives(lessonId: string): Observable<LO[]> {
 
     const collection = this.afs.collection<LO>

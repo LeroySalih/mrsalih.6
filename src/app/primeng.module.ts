@@ -13,14 +13,17 @@ import {CardModule} from 'primeng/card';
 import {DragDropModule} from 'primeng/dragdrop';
 import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {TreeTableModule} from 'primeng/treetable';
+import {TreeNode} from 'primeng/api';
+
 @NgModule({
 
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-      CardModule, DragDropModule, DropdownModule, RadioButtonModule
+      CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule,
     ],
     exports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-    CardModule, DragDropModule, DropdownModule, RadioButtonModule],
+    CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule],
   })
   export class PrimeNGModule { }

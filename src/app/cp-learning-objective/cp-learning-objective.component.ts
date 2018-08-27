@@ -39,11 +39,11 @@ export class CpLearningObjectiveComponent implements OnInit {
     this.loEvent = new EventEmitter<LOEvent>();
 
     this.items = [
-      {label: 'Edit', icon: 'fa-edit', command: () => {  this.onEditLOClick(); }},
-      {label: 'Delete', icon: 'fa-trash', command: () => {  this.onDeleteLOClick(); }},
-      {label: 'Not Yet', icon: 'fa-frown-o', command: () => {  this.onStatusChange('Not Yet'); }},
-      {label: 'Nearly There', icon: 'fa-meh-o', command: () => {  this.onStatusChange('Nearly There'); }},
-      {label: 'Got It', icon: 'fa-smile-o', command: () => {  this.onStatusChange('Got It'); }},
+      {label: 'Edit', icon: 'fa fa-edit', command: () => {  this.onEditLOClick(); }},
+      {label: 'Delete', icon: 'fa fa-trash', command: () => {  this.onDeleteLOClick(); }},
+      {label: 'Not Yet', icon: 'fa fa-frown-o', command: () => {  this.onStatusChange('Not Yet'); }},
+      {label: 'Nearly There', icon: 'fa fa-meh-o', command: () => {  this.onStatusChange('Nearly There'); }},
+      {label: 'Got It', icon: 'fa fa-smile-o', command: () => {  this.onStatusChange('Got It'); }},
 
     ];
   }

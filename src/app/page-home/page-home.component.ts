@@ -10,25 +10,48 @@ import {ModuleEvent} from '../cp-module-summary/cp-module-summary.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { ModuleDialogComponent} from '../dialogs/module-dialog/module-dialog.component';
+import { UserService} from '../services/user.service';
+import { UserProfile } from '../models/user-profile';
+
+import { trigger, transition, query, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-page-home',
   templateUrl: './page-home.component.html',
-  styleUrls: ['./page-home.component.css']
+  styleUrls: ['./page-home.component.css'],
+  animations : [
+    trigger('profileState', [
+
+      transition ('* => *', [
+        query ('div', [
+
+          style({opacity: 0, transform: 'translateY(50%)'}),
+          animate ('0.5s', style ({opacity: 1, transform: 'translateY(0)'}))
+
+        ], {optional : true})
+      ])
+    ])
+  ]
 })
 export class PageHomeComponent implements OnInit {
 
   modules: Module[];
 
   animal: string;
+  userProfile: UserProfile;
 
   constructor(private readonly moduleService: ModuleService,
               private router: Router,
               private matDialog: MatDialog,
               private messageService: MessageService,
+              private userService: UserService
               ) { }
 
   ngOnInit() {
+    this.userService.currentUser$.subscribe((userData: UserProfile) => {
+      this.userProfile = userData;
+    });
+
     this.moduleService.getModules().subscribe((data: Module[]) => {
       console.log(`[app-page-home::ngInit] Received:`, data);
       this.modules = data;

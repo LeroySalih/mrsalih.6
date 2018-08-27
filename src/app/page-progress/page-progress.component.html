@@ -1,18 +1,29 @@
-<div *ngIf="pupil">
-  <div>Loading Progress for {{pupil.name}}, {{pupil.className}}</div>
-  <div *ngIf="modules">
-    <div *ngFor="let module of getModules()">
-      {{module.title}}
-      <div *ngFor="let lesson of module.lessons">{{lesson.title}}
 
-        <div>
-          LO's
-          <ul *ngIf="lesson.los">
-            <li *ngFor="let lo of lesson.los" >{{lo.title}} ({{checkLOStatus(lo.id)}})</li>
-          </ul>
-        </div>
-
-      </div>
-    </div> 
-  </div>
+<div *ngIf="data">
+    <p-treeTable [value]="data" [resizableColumns]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th ttResizableColumn>Title</th>
+                <th style="width:150px;" ttResizableColumn>Not Answered</th>
+                <th style="width:150px;" ttResizableColumn>Not Yet</th>
+                <th style="width:150px;" ttResizableColumn>Nearly There</th>
+                <th style="width:150px;" ttResizableColumn>Got It</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr >
+                <td [ngClass]="{'moduleRow' : rowData['level'] == 'module', 'lessonRow' : rowData['level'] == 'lesson', 'loRow' : rowData['level'] == 'lo'     }">
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{rowData.title}}
+                </td>
+                
+                <td  [ngClass]="{'moduleRow' : rowData['level'] == 'module', 'lessonRow' : rowData['level'] == 'lesson', 'loRow' : rowData['level'] == 'lo'     }" style="text-align: right">{{rowData['Not Answered']}}</td>
+                
+                <td  [ngClass]="{'moduleRow' : rowData['level'] == 'module', 'lessonRow' : rowData['level'] == 'lesson', 'loRow' : rowData['level'] == 'lo'     }" style="text-align: right">{{rowData['Not Yet']}}</td>
+                <td [ngClass]="{'moduleRow' : rowData['level'] == 'module', 'lessonRow' : rowData['level'] == 'lesson', 'loRow' : rowData['level'] == 'lo'     }" style="text-align: right">{{rowData['Nearly There']}}</td>
+                <td [ngClass]="{'moduleRow' : rowData['level'] == 'module', 'lessonRow' : rowData['level'] == 'lesson', 'loRow' : rowData['level'] == 'lo'     }" style="text-align: right">{{rowData['Got It']}}</td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+    
 </div>

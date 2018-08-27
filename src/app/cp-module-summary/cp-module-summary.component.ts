@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Module } from '../models/module';
 import { MenuItem } from 'primeng/api';
+import { trigger, transition, query, style, animate } from '@angular/animations';
 
 export class  ModuleEvent {
   type: string;
@@ -10,7 +11,23 @@ export class  ModuleEvent {
 @Component({
   selector: 'app-cp-module-summary',
   templateUrl: './cp-module-summary.component.html',
-  styleUrls: ['./cp-module-summary.component.css', '../../card.css']
+  styleUrls: ['./cp-module-summary.component.css', '../../card.css'],
+  animations: [
+
+    trigger ('moduleState', [
+
+      transition ('* => *', [
+
+        query(':enter', [
+          style({opacity: 0}),
+          animate('1s', style({ opacity: 1}))
+        ], {optional: true})
+
+      ])
+
+    ])
+
+  ]
 })
 export class CpModuleSummaryComponent implements OnInit {
 

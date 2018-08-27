@@ -1,0 +1,19 @@
+<div style="overflow-y: scroll; height:400px;" 
+[@moduleItems]="modules.length"
+(@moduleItems.start)="animationStart($event)"
+>
+    <div *ngFor="let module of modules">
+        <a routerLink="/modules/module/{{module.id}}">
+            <div class="card">
+            <div class="card-info">{{module.category}}</div>
+            <div class="card-fig">
+                <img src="{{module.thumbnailUrl}}">
+            </div>
+            <div class="card-title">{{module.title}}</div>
+            <div class="card-subtitle">{{module.subtitle}}</div>
+        </div>
+        </a>
+    </div>
+    
+    
+</div>

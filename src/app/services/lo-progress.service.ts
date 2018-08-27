@@ -18,6 +18,7 @@ export class LOProgressService {
 
     return collection.valueChanges();
   }
+
   getLOProgressForUser (userId: string, lessonId: string): Observable<LOProgress[]> {
 
     const collection: AngularFirestoreCollection<LOProgress> = this.afs.collection<LOProgress>

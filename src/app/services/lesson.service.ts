@@ -14,6 +14,10 @@ export class LessonService {
 
   }
 
+  getAllLessons(): Observable<Lesson[]> {
+    return this.afs.collection<Lesson>(DbConfig.LESSONS).valueChanges();
+  }
+
   getLessons(moduleId: string): Observable<Lesson[]> {
 
     // console.log(`[getLessons]`, moduleId);

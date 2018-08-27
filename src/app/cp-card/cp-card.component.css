@@ -1,6 +1,7 @@
 .card {
   display: grid;
   border : 1px solid silver;
+  background-color: white;
   border-radius: 5px;
   margin : 5px;
   padding: 5px;
@@ -61,5 +62,4 @@
   font-family: 'Open Sans', verdana;
   font-size: small;
   margin-top: 15px;
-  
 }

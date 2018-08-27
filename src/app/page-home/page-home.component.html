@@ -7,14 +7,28 @@
         <button mat-raised-button mat-button-primary (click)="moduleNew()">New Module</button>
 </div>
 -->
-<div class="card-container" *ngIf="modules; else loading">
-        <app-cp-module-summary 
-        *ngFor="let module of modules"
-        (moduleEvent)="onModuleChanged($event)"
-        (readMore)="onReadMoreClicked($event)" 
-        [readOnly]="false"
-        [module]="module"></app-cp-module-summary> 
-</div>
+<div id="pageGrid">
+        <div id="profile" [@profileState]="userProfile">
+                <div *ngIf="userProfile">
+                        <img id="profilePic" src="assets/images/default_profile.jpg">
+                        <div id="profileName">{{userProfile.name}}</div>
+                        <div id="profileClass">{{userProfile.className}}</div>
+                </div>
+        </div>
+        <div id="sideBar">
+                <div class="card-container" *ngIf="modules; else loading">
+                        <app-cp-module-summary-list
+                                [modules]="modules"
+                                (moduleChanged)="onModuleChanged($event)"
+                        >
+                        </app-cp-module-summary-list>
+                </div>
+        </div>
+        <div id="detail">
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+
 
 
     

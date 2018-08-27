@@ -73,12 +73,17 @@ import { PageBlogHomeComponent } from './page-blog-home/page-blog-home.component
 import { CpCardComponent } from './cp-card/cp-card.component';
 import { CpReplAssignmentComponent } from './cp-repl-assignment/cp-repl-assignment.component';
 import { PageProgressComponent } from './page-progress/page-progress.component';
+import { CpModuleSummaryListComponent } from './cp-module-summary-list/cp-module-summary-list.component';
+import { CpModuleDetailComponent } from './cp-module-detail/cp-module-detail.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
-  {path: 'modules', component: PageHomeComponent},
+  {path: 'modules', component: PageHomeComponent, children: [
+    {path: 'module/:id', component: CpModuleDetailComponent}
+  ]},
   {path: 'login', component: PageLoginComponent},
+  {path: 'moduleDetailTest/:id', component: CpModuleDetailComponent},
   {path: 'modules/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
   {path: 'quiz/:id', component: PageQuizComponent},
@@ -130,6 +135,8 @@ const appRoutes: Routes = [
   CpCardComponent,
   CpReplAssignmentComponent,
   PageProgressComponent,
+  CpModuleSummaryListComponent,
+  CpModuleDetailComponent,
   ],
   imports: [
     BrowserModule,
