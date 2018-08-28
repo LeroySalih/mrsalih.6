@@ -41,7 +41,7 @@
 
 #detail {
     grid-area: detail;
-    background-color: darkgrey;
+    background-color: lightgrey;
 }
 
 #sideBar {

@@ -56,19 +56,19 @@ export class CpModuleSummaryComponent implements OnInit {
 
   OnReadMoreClick(data: Module) {
     this.moduleEvent.emit({type: 'READ', module: this.module});
-    console.log('[OnReadMore] sending: ', {module: this.module});
+    // ('[OnReadMore] sending: ', {module: this.module});
     // this.router.navigate(['module', data.id]);
   }
 
 
   OnEditModuleClick() {
     this.moduleEvent.emit({type: 'EDIT', module: this.module});
-    console.log('[OnEditModuleClick] sending: ', {module: this.module});
+  //  console.log('[OnEditModuleClick] sending: ', {module: this.module});
   }
 
   OnDeleteModuleClick() {
     this.moduleEvent.emit({type: 'DELETE', module: this.module});
-    console.log('[OnDeleteModuleClick] sending: ', {module: this.module});
+  //  console.log('[OnDeleteModuleClick] sending: ', {module: this.module});
   }
 
 }

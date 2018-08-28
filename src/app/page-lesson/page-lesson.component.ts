@@ -256,6 +256,10 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
     this.currentQuestion = this.questions[this.currentQuestionIndex];
   }
 
+  getCompleted() {
+    // TODO: ----
+  }
+
   getSectionPayload (section: LessonSection) {
     return this.sectionPayloads[section.id];
   }
@@ -374,18 +378,15 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   onSectionCompletedChange(section: LessonSection, completed: boolean) {
     console.log(`[onSectionCompletedChange]`, section, completed);
 
-    const sectionComplete: SectionPayload = {
-        id: `${section.lessonId}-${section.id}-${this.userProfile.authenticationId}`,
-        userId: this.userProfile.authenticationId,
-        completed: completed,
-        lessonId: this.lessonId,
-        sectionId: section['id'],
-        };
+    const lp: LessonProgress = {
+      classId: this.userProfile.className,
+      userId: this.userProfile.authenticationId,
+      lessonId: this.lessonId,
+      sectionId: section['id'],
+      completed: completed
+    };
 
-    this.sectionPayloadService.saveSectionPayload(sectionComplete)
-          .then(() => {console.log(`onCompletedChange ${section.id} updated to`, completed); } )
-          .catch((error) => { console.log('onCompletedChange error: ', error.message); });
-
+    this.lessonProgressService.setLessonProgress(lp);
   }
 
   onSectionEvent(event) {

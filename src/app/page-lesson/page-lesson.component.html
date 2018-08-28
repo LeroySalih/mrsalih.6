@@ -39,6 +39,7 @@
                                         #sectionElem
                                         [userId]="userProfile.authenticationId"
                                         [section]="section"
+                                        [completed]="getCompleted(sectionId)"
                                         [payload]="getSectionPayload(section)"
                                         [index]="i"
                                         [highlightDragArea]="isDragging"

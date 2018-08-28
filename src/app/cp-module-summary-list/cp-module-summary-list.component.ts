@@ -61,7 +61,7 @@ export class CpModuleSummaryListComponent implements OnInit {
   }
 
   animationStart(event) {
-    console.log(`Summary List::Animation Started`, event);
+   // console.log(`Summary List::Animation Started`, event);
   }
 
   ngOnInit() {

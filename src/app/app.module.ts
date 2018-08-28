@@ -75,6 +75,7 @@ import { CpReplAssignmentComponent } from './cp-repl-assignment/cp-repl-assignme
 import { PageProgressComponent } from './page-progress/page-progress.component';
 import { CpModuleSummaryListComponent } from './cp-module-summary-list/cp-module-summary-list.component';
 import { CpModuleDetailComponent } from './cp-module-detail/cp-module-detail.component';
+import { GraphComponent } from './graph/graph.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -137,6 +138,7 @@ const appRoutes: Routes = [
   PageProgressComponent,
   CpModuleSummaryListComponent,
   CpModuleDetailComponent,
+  GraphComponent
   ],
   imports: [
     BrowserModule,

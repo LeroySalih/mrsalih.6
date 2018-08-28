@@ -34,6 +34,9 @@ export class CpSectionComponent implements OnInit {
   section: LessonSection;
 
   @Input()
+  completed: boolean;
+
+  @Input()
   payload: SectionPayload;
 
   @Output()
@@ -74,7 +77,7 @@ export class CpSectionComponent implements OnInit {
   }
 
   getCompleted(): boolean {
-    return (this.payload) ? this.payload.completed : false;
+    return (this.completed === undefined) ? false : this.completed;
   }
 
   onDragStart(event) {

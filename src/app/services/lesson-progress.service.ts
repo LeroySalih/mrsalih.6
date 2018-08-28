@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable ,  BehaviorSubject } from 'rxjs';
 
 import { LessonProgress, LessonProgressId } from '../models/lesson-progress';
+import {DbConfig} from '../db.config';
 
 @Injectable()
 export class LessonProgressService {
@@ -23,6 +24,13 @@ export class LessonProgressService {
     .doc(`lessonProgress/${lessonProgress.userId}-${lessonProgress.lessonId}-${lessonProgress.sectionId}`)
     .set(lessonProgress);
 
+  }
+
+  getProgressForUser(userId: string): Observable<LessonProgress[]> {
+    console.log(`getProgressForUser ${userId}`);
+    return this.afs.collection<LessonProgress>(DbConfig.LESSON_PROGRESS, ref => ref
+        .where('userId', '==', userId))
+        .valueChanges();
   }
 
   getLessonProgressForUser(userId: string, lessonId: string): Observable<LessonProgress[]> {

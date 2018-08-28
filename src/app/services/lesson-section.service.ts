@@ -14,6 +14,10 @@ export class LessonSectionService {
   constructor(private afs: AngularFirestore) {
   }
 
+  getAllLessonSections (): Observable<LessonSection[]> {
+    return this.afs.collection<LessonSection>(DbConfig.SECTIONS).valueChanges();
+  }
+
   getLessonSections(lessonId: string): Observable<LessonSection[]> {
 
     const collection = this.afs.collection<LessonSection>

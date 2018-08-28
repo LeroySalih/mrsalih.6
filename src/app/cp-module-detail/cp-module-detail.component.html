@@ -1,6 +1,36 @@
-<div [@moduleIdState]="moduleId" (@moduleIdState.start)="animateStart($event)">
-  <div style="font-size: x-large"> 
-    cp-module-detail works!
-    {{this.moduleId}}
+<div *ngIf="module" [@moduleIdState]="moduleId" (@moduleIdState.start)="animateStart($event)">
+  <div> 
+    <div class="card">
+        <div class="card-fig">
+          <img src="{{module.thumbnailUrl}}">
+        </div>
+        <div class="card-title"> {{module.title}}</div>
+
+        <div class="card-desc" [innerHTML]="module.bodyText"></div>
+    </div>
+    
+
+    <p-accordion>
+        
+        <p-accordionTab *ngFor="let lesson of lessons" >
+          <p-header>
+            
+              {{lesson.title}}
+              <span style="float: right; width: 150px;" class="progressLabel">&nbsp;( {{ formatPercentCompleted(lesson.id) }})</span>
+              <span style="float: right;">
+                <app-graph 
+                  [w]="100" 
+                  [h]="20" 
+                  [v]="getProgressPercent(lesson.id)"></app-graph>
+              </span>
+              
+            
+             
+          </p-header>
+           <p><a routerLink="/lesson/{{lesson.id}}">View Lesson</a></p>
+           <p>There are {{getSectionsForLesson(lesson.id).length}} sections.</p>  
+           <p>{{getProgressForLesson(lesson.id).length}} are completed.</p>
+        </p-accordionTab>
+    </p-accordion>
   </div>
 </div>

@@ -8,11 +8,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { UserService } from './services/user.service';
 import { UserProfile } from './models/user-profile';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { fadeAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [fadeAnimation]
 })
 export class AppComponent implements OnInit, OnDestroy {
 

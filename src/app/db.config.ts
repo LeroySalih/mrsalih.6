@@ -3,7 +3,7 @@ export class DbConfig {
     public static MODULE_SUBSCRIPTIONS = 'module_subscriptions';
     public static LESSONS = 'lessons';
     public static LOS = 'los';
-    public static LESSON_PROGRESS = 'loProgress';
+    public static LESSON_PROGRESS = 'lessonProgress';
     public static LO_PROGRESS = 'loProgress';
     public static SECTIONS = 'lesson-sections';
     public static SECTION_PAYLOAD = 'sectionPayloads';

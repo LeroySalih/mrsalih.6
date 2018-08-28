@@ -16,9 +16,9 @@
                 </div>
         </div>
         <div id="sideBar">
-                <div class="card-container" *ngIf="modules; else loading">
+                <div class="card-container" *ngIf="getModules(); else loading">
                         <app-cp-module-summary-list
-                                [modules]="modules"
+                                [modules]="getModules()"
                                 (moduleChanged)="onModuleChanged($event)"
                         >
                         </app-cp-module-summary-list>
