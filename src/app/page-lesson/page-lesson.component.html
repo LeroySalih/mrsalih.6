@@ -7,23 +7,25 @@
                 <div class="wrapper">
                         
                         <div class="sideMenu box">
-                                <div *ngIf="module" class="breadcrumb">
-                                        <a [routerLink]="['/modules', module.id]">
-                                                << {{module.title}}
-                                        </a>
-                                </div>
+                                
                                 <app-cp-lesson-side-nav
                                         [sections]="sections" 
+                                        [lessonProgresses]="lessonProgresses"
                                         [sectionPayloads]="sectionPayloads"
                                         (sideNavEvent)="onSideNavEvent($event)"
                                 ></app-cp-lesson-side-nav>
-                                <button mat-raised-button (click)="onSectionNew()">Add Section</button>
+                                <button *ngIf="isAdmin" mat-raised-button (click)="onSectionNew()">Add Section</button>
                         </div>
                         <div id="sectionContainer" (scroll)="testScroll()" class="sectionContainer box">
-                                        <div *ngIf="lesson" class="lessonHeading ">
-                                                        <h1 class="mat-title">{{lesson.title}}</h1>
-                                                        <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
-                                        </div>
+                                <div *ngIf="module" class="breadcrumb">
+                                        <a [routerLink]="['/modules/module', module.id]">
+                                                {{module.title}}
+                                        </a>
+                                </div>        
+                                <div *ngIf="lesson" class="lessonHeading ">
+                                                <h1 class="mat-title">{{lesson.title}}</h1>
+                                                <h2 class="mat-subheading-1">{{lesson.subtitle}}</h2>
+                                </div>
                                 <section>
                                         <app-cp-learning-objectives 
                                                 [los]="los"
@@ -39,7 +41,7 @@
                                         #sectionElem
                                         [userId]="userProfile.authenticationId"
                                         [section]="section"
-                                        [completed]="getCompleted(sectionId)"
+                                        [completed]="getCompleted(section.id)"
                                         [payload]="getSectionPayload(section)"
                                         [index]="i"
                                         [highlightDragArea]="isDragging"

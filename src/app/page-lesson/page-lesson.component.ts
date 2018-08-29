@@ -75,7 +75,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   module: Module;
   lesson: Lesson;
   sections: LessonSection[];
-  lessonProgresses: any = {};
+  lessonProgresses: {[id: string]: LessonProgress} = {};
   los: LO[];
   loProgress: {[id: string]: LOProgress} = {};  // { [id: string]:  string}  = {};
   sectionPayloads: { [ id: string]: SectionPayload} = {};
@@ -167,7 +167,7 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
 
             // build completion dictionary.
             lessonData.progress.forEach((lp) => {
-              this.lessonProgresses[lp.sectionId] = lp.completed;
+              this.lessonProgresses[lp.sectionId] = lp;
             } );
 
             // Build the Learning Objective Progress
@@ -256,11 +256,13 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
     this.currentQuestion = this.questions[this.currentQuestionIndex];
   }
 
-  getCompleted() {
-    // TODO: ----
+  getCompleted(sectionId) {
+    console.log(`LessonProgress`, sectionId, this.lessonProgresses[sectionId] );
+    return (this.lessonProgresses[sectionId] === undefined || this.lessonProgresses[sectionId].completed === false) ? null : true;
   }
 
   getSectionPayload (section: LessonSection) {
+    
     return this.sectionPayloads[section.id];
   }
 

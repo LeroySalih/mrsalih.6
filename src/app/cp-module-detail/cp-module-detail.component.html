@@ -13,7 +13,7 @@
     <p-accordion>
         
         <p-accordionTab *ngFor="let lesson of lessons" >
-          <p-header>
+          <p-header >
             
               {{lesson.title}}
               <span style="float: right; width: 150px;" class="progressLabel">&nbsp;( {{ formatPercentCompleted(lesson.id) }})</span>

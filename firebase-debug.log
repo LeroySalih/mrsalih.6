@@ -1,0 +1,35 @@
+[debug] [2018-08-28T09:27:00.778Z] ----------------------------------------------------------------------
+[debug] [2018-08-28T09:27:00.780Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-08-28T09:27:00.780Z] CLI Version:   3.18.4
+[debug] [2018-08-28T09:27:00.780Z] Platform:      darwin
+[debug] [2018-08-28T09:27:00.780Z] Node Version:  v8.9.3
+[debug] [2018-08-28T09:27:00.781Z] Time:          Tue Aug 28 2018 11:27:00 GMT+0200 (SAST)
+[debug] [2018-08-28T09:27:00.781Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-28T09:27:00.794Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-28T09:27:00.794Z] > authorizing via signed-in user
+[debug] [2018-08-28T09:27:00.795Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-28T09:27:00.795Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/XJXnF6FPKXUl2TcotfOXrbDsuGCYmGB3voRCXzZyxHw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Aug 28 2018 11:27:00 GMT+0200 (SAST)
+[debug] [2018-08-28T09:27:02.358Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-28T09:27:02.375Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insight-e1d4e  
+  
+ Tue Aug 28 2018 11:27:02 GMT+0200 (SAST)
+[debug] [2018-08-28T09:27:04.556Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-28T09:27:04.556Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insight-e1d4e/tokens  
+  
+ Tue Aug 28 2018 11:27:04 GMT+0200 (SAST)
+[debug] [2018-08-28T09:27:05.938Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'insight-e1d4e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-08-28T09:27:08.056Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/insight-e1d4e/uploads/-LKzquimFWztIPY8ZBhW?fileCount=101&message=  
+  
+ Tue Aug 28 2018 11:27:08 GMT+0200 (SAST)

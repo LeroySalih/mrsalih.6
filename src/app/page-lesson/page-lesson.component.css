@@ -12,8 +12,7 @@
 }
 
 .lessonHeading{
-    border: solid 3px rgb(0, 217, 255);
-    background-color: rgb(255, 249, 161);
+    
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -23,7 +22,7 @@
 }
 
 .mat-title {
-    font-size: 30px;
+    font-size: 45px;
 }
 
 .quizArea {
@@ -56,16 +55,18 @@
 
 .breadcrumb {
     cursor: pointer;
-    color: aquamarine;
-    background-color: rgb(100,100,100);
+    color: lightskyblue;
     width: 100%;
     padding: 5px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 5px;
+    font-family: 'Lato'
+    
 }
 
+.breadcrumb A:hover {
+    border-bottom: dashed 1px gray;
+}
 .breadcrumb A:visited {
-    color: aquamarine;
+    color: lightskyblue;
 }
 
 

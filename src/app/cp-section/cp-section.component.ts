@@ -54,6 +54,9 @@ export class CpSectionComponent implements OnInit {
   @Input()
   userId: string;
 
+  @Input()
+  isAdmin = false;
+
   items: MenuItem[];
 
   constructor() {

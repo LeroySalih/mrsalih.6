@@ -8,8 +8,9 @@
 #pageGrid {
     display: grid;
     width: 100%;
+    grid-column-gap: 10px;
     grid-template-areas: "profile detail" "sideBar detail";
-    grid-template-columns: 350px auto;
+    grid-template-columns: 250px auto;
 }
 
 #profile {
@@ -41,17 +42,17 @@
 
 #detail {
     grid-area: detail;
-    background-color: lightgrey;
+    background-color: ghostwhite;
 }
 
 #sideBar {
     grid-area: sideBar;
-    background-color: lightgrey; 
+    background-color: ghostwhite; 
 }
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: auto; 
   }
 

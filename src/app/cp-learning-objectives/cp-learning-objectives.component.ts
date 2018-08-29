@@ -25,6 +25,9 @@ export class CpLearningObjectivesComponent implements OnInit {
   @Input()
   loProgress: { [id: string]:  LOProgress}  = {};
 
+  @Input()
+  isAdmin = false;
+
   @Output()
   statusChange: EventEmitter<OnStatusChangeEvent>;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LessonSection } from '../models/lesson-section';
 import { SectionPayload } from '../models/section-payload';
-
+import { LessonProgress } from '../models/lesson-progress';
 
 export class SideNavEvent {
   type: string;
@@ -17,6 +17,9 @@ export class CpLessonSideNavComponent implements OnInit {
 
   @Input()
   sections: LessonSection[];
+
+  @Input()
+  lessonProgresses: LessonProgress[];
 
   @Input()
   sectionPayloads: { [ id: string]: SectionPayload};
@@ -46,7 +49,9 @@ export class CpLessonSideNavComponent implements OnInit {
   }
 
   checkSectionCompleted(sectionId): boolean {
-    return (this.sectionPayloads[sectionId]) ? this.sectionPayloads[sectionId].completed === true : false;
+    // console.log(sectionId, this.lessonProgresses);
+
+    return (this.lessonProgresses[sectionId] === undefined || this.lessonProgresses[sectionId].completed === false) ? false : true;
   }
 
 }

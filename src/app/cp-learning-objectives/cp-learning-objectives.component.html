@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card class="learningObjectives">
     <mat-card-title style="display: flex; flex-direction: row">
         <div style="flex:1">Learning Objectives</div>
         <mat-menu #appMenu="matMenu" >
                 <button mat-menu-item (click)="onLOAddClick()">Add LO</button>
         </mat-menu>             
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <button *ngIf="isAdmin" mat-icon-button [matMenuTriggerFor]="appMenu">
                 <mat-icon>more_vert</mat-icon>
         </button>
     </mat-card-title>
