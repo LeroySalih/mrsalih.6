@@ -76,12 +76,15 @@ import { PageProgressComponent } from './page-progress/page-progress.component';
 import { CpModuleSummaryListComponent } from './cp-module-summary-list/cp-module-summary-list.component';
 import { CpModuleDetailComponent } from './cp-module-detail/cp-module-detail.component';
 import { GraphComponent } from './graph/graph.component';
+import { CanAccessAdminActivate} from './guards/CanAccessAdminActivate';
+import { CpLoginButtonComponent } from './cp-login-button/cp-login-button.component';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
-  {path: 'modules', component: PageHomeComponent, children: [
-    {path: 'module/:id', component: CpModuleDetailComponent}
+  {path: 'modules', component: PageHomeComponent, canActivate: [CanAccessAdminActivate], children: [
+  {path: 'module/:id', component: CpModuleDetailComponent}
   ]},
   {path: 'login', component: PageLoginComponent},
   {path: 'moduleDetailTest/:id', component: CpModuleDetailComponent},
@@ -138,7 +141,9 @@ const appRoutes: Routes = [
   PageProgressComponent,
   CpModuleSummaryListComponent,
   CpModuleDetailComponent,
-  GraphComponent
+  GraphComponent,
+  CpLoginButtonComponent,
+  LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -163,6 +168,7 @@ const appRoutes: Routes = [
   providers: [
     ModuleService,
     LessonService,
+    CanAccessAdminActivate,
     UserService,
     LOService,
     LOProgressService,
@@ -171,11 +177,16 @@ const appRoutes: Routes = [
     LessonProgressService,
     SectionPayloadService,
     MessageService,
-    QuestionService,
+    QuestionService
 
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AppComponent, ModuleDialogComponent, LessonDialogComponent, LODialogComponent,
+  entryComponents: [
+    AppComponent,
+    ModuleDialogComponent,
+    LessonDialogComponent,
+    LODialogComponent,
+    LoginDialogComponent,
     SectionEditDialogComponent
   ]
 })

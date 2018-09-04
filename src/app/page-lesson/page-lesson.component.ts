@@ -262,7 +262,6 @@ export class PageLessonComponent implements OnInit, AfterViewInit {
   }
 
   getSectionPayload (section: LessonSection) {
-    
     return this.sectionPayloads[section.id];
   }
 

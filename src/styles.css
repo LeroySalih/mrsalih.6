@@ -115,6 +115,20 @@ figure {
     margin-top: 15px;
   }
 
+  .login-dialog-container .mat-dialog-container {
+    /* add your styles */
+    padding: 0px;
+    width: 300px;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0, 0.6);
+}
+
+.ui-button.login-button {
+  background-color: 'red';
+}
+
 
   
 

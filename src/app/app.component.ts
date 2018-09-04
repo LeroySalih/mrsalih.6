@@ -9,6 +9,9 @@ import { UserService } from './services/user.service';
 import { UserProfile } from './models/user-profile';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { fadeAnimation } from './animations';
+import { LoginEvent } from './cp-login-button/cp-login-button.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +29,10 @@ export class AppComponent implements OnInit, OnDestroy {
              private firebaseAuth: AngularFireAuth,
              private userService: UserService,
              private messageService: MessageService,
+             private matDialog: MatDialog,
              private router: Router) {
             this.userService.currentUser$.subscribe((user: UserProfile) => {
- //           console.log(`[constructor] New user detected`, user);
+            console.log(`[constructor] New user detected`, user);
             this.userProfile = user;
 
 
@@ -45,13 +49,44 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
+  OnLoginEvent(event: LoginEvent) {
+    switch (event.type) {
+      case 'LOG_IN' : return this.OnLogIn();
+      case 'LOG_OUT' : return this.OnLogOut();
+    }
+  }
+
   OnLogOut() {
+    console.log('Logging Out');
+    this.router.navigate(['/']);
     this.userService.logOut();
   }
 
   OnLogIn() {
-    this.router.navigate(['/login']);
+    console.log('Loggin In');
+    // this.router.navigate(['/login']);
+
+    console.log(`[onLOEvent]`, event);
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.panelClass = 'login-dialog-container';
+
+    dialogConfig.data = {test: 'test'};
+    // dialogConfig.data.order = this.getNextOrder(this.los);
+
+    const dialogRef = this.matDialog.open(LoginDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data) => {
+        console.log('[newLO] from dlg: ', data);
+        // ToDo Add Login Attempt....
+      }
+  );
+
   }
+
   toggleSideButton() {
     console.log('CLicked');
   }
