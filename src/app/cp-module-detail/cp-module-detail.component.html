@@ -1,4 +1,7 @@
-<div *ngIf="module" [@moduleIdState]="moduleId" (@moduleIdState.start)="animateStart($event)">
+<div *ngIf="module"
+    class="moduleDetailContainer"
+    [@moduleIdState]="moduleId" 
+    (@moduleIdState.start)="animateStart($event)">
   <div> 
     <div class="card">
         <div class="card-fig">

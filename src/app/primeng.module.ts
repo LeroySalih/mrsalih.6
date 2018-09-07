@@ -17,14 +17,15 @@ import {TreeTableModule} from 'primeng/treetable';
 import {TreeNode} from 'primeng/api';
 import {AccordionModule} from 'primeng/accordion';
 
+
 @NgModule({
 
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-      CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule
+      CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule,
     ],
     exports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-    CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule],
+    CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule, ],
   })
   export class PrimeNGModule { }

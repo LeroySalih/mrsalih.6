@@ -1,0 +1,90 @@
+
+<div>
+    <span>Links:</span>
+    <a class="questionPaperLink" href="{{pastPaperAnswers.paperLink}}" target="_new">Paper</a>
+    <a class="questionPaperLink" href="{{pastPaperAnswers.markSchemeLink}}" target="_new">Mark Scheme</a>
+</div>
+
+<div>
+  <div class="chartContainer">
+      <div [chart]="chart" class="chart"></div>
+      <div class="chartData">
+          <table>
+              <tr>
+                <td>Basic: </td>
+                <td>{{ sumAvailableMarksByLevel()['basic'] }}</td>
+                <td>{{ sumActualMarksByLevel()['basic'] }}</td>
+              </tr>
+      
+              <tr>
+                  <td>Intermediate: </td>
+                  <td>{{ sumAvailableMarksByLevel()['intermediate'] }}</td>
+                  <td>{{ sumActualMarksByLevel()['intermediate'] }}</td>
+                </tr>
+      
+                <tr>
+                    <td>Advanced: </td>
+                    <td>{{ sumAvailableMarksByLevel()['advanced'] }}</td>
+                    <td>{{ sumActualMarksByLevel()['advanced'] }}</td>
+                  </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td>All Correct:</td>
+                    <td>{{ sumAvailableMarksByMistake()['OK'] }}</td>
+                  </tr>
+              <tr>
+                <td>Not Answered:</td>
+                <td>{{ sumAvailableMarksByMistake()['NA'] }}</td>
+              </tr>
+              <tr>
+                  <td>Silly:</td>
+                  <td>{{ sumAvailableMarksByMistake()['SI'] }}</td>
+                </tr>
+                <tr>
+                    <td>Serious:</td>
+                    <td>{{ sumAvailableMarksByMistake()['SE'] }}</td>
+                  </tr>
+            </table>
+      </div>
+  </div>
+</div>
+
+
+  
+<form [formGroup]="answersForm" novalidate (ngSubmit)="savePastPaperAnswers(answersForm)">
+    <div>
+        Total Marks: {{getTotalAvailableMarks(pastPaperAnswers)}}
+        Actual Marks: {{getTotalActualMarks() }}
+    </div>
+    <button mat-primary type="submit">Save Marks</button>
+  <div>
+    <div formArrayName="answers" class="paperContainer">
+      <div class="paperQuestion" *ngFor="let answer of answersForm.get('answers').controls; let i = index;">
+        
+        
+        <div [formGroupName]="i">
+          
+          <div class="paperQuestionField" style="grid-area: number">
+              Q <span>{{ answer.controls.number.value }}</span>
+                <span>{{ answer.controls.type.value }}</span>
+                <span>{{ answer.controls.link.value }}</span>
+                <span>{{ answer.controls.level.value }}</span>
+                <span>{{ answer.controls.available_marks.value}}</span>
+            </div> 
+          <div class="paperQuestionField" style="grid-area: aMarks">
+            <input formControlName="actual_marks" type="number" pInputText>
+          </div>
+
+          <div class="paperQuestionField" style="grid-area: mType">
+              <p-dropdown [options]="mistakeTypes" optionLabel="name" formControlName="mistake_type"></p-dropdown>
+            </div>
+        
+        </div>
+  
+        </div>
+      </div>
+      </div>  
+  </form>
+

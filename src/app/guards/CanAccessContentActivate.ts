@@ -18,7 +18,9 @@ export class CanAccessContentActivate implements CanActivate {
     return new Promise<boolean>((resolve, reject) => {
         this.userService.currentUser$.subscribe((userProfile: UserProfile) => {
 
-        const canActivate = (userProfile === null) ? false : true;
+        const canActivate = (userProfile === null || userProfile === undefined) ? false : true;
+
+        console.log(`canActivate == ${canActivate}`);
 
         resolve(canActivate);
 

@@ -79,17 +79,23 @@ import { GraphComponent } from './graph/graph.component';
 import { CanAccessAdminActivate} from './guards/CanAccessAdminActivate';
 import { CpLoginButtonComponent } from './cp-login-button/cp-login-button.component';
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { PagePapersComponent } from './page-papers/page-papers.component';
+import { CanAccessContentActivate } from './guards/CanAccessContentActivate';
+import { PastPaperService } from './services/past-paper-service';
+import { CpPastPaperComponent } from './cp-past-paper/cp-past-paper.component';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
   {path: 'landing', component: PageLandingComponent},
-  {path: 'modules', component: PageHomeComponent, canActivate: [CanAccessAdminActivate], children: [
+  {path: 'modules', component: PageHomeComponent, canActivate: [CanAccessContentActivate], children: [
   {path: 'module/:id', component: CpModuleDetailComponent}
   ]},
   {path: 'login', component: PageLoginComponent},
   {path: 'moduleDetailTest/:id', component: CpModuleDetailComponent},
   {path: 'modules/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
+  {path: 'papers', component: PagePapersComponent, canActivate: [CanAccessContentActivate]},
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: 'posts', component: PageBlogHomeComponent},
@@ -143,7 +149,9 @@ const appRoutes: Routes = [
   CpModuleDetailComponent,
   GraphComponent,
   CpLoginButtonComponent,
-  LoginDialogComponent
+  LoginDialogComponent,
+  PagePapersComponent,
+  CpPastPaperComponent
   ],
   imports: [
     BrowserModule,
@@ -159,6 +167,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     KatexModule,
     MomentModule,
+    ChartModule,
     NgDragDropModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
@@ -169,6 +178,7 @@ const appRoutes: Routes = [
     ModuleService,
     LessonService,
     CanAccessAdminActivate,
+    CanAccessContentActivate,
     UserService,
     LOService,
     LOProgressService,
@@ -177,7 +187,8 @@ const appRoutes: Routes = [
     LessonProgressService,
     SectionPayloadService,
     MessageService,
-    QuestionService
+    QuestionService,
+    PastPaperService
 
   ],
   bootstrap: [AppComponent],

@@ -1,0 +1,49 @@
+.paperContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+.paperQuestion {
+  border: solid 1px silver;
+  margin: 15px;
+  padding: 10px;
+  display: grid;
+  grid-template-areas: 'number' 
+                       'aMarks' 
+                       'mType'; 
+  grid-template-columns: 150px;
+  grid-gap: 10px;
+}
+
+.paperQuestionField {
+  font-family: 'Lato';
+  font-size: small;
+}
+
+.questionPaperLink {
+  margin-right: 10px;
+  font-family: 'Lato';
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.questionPaperLink:hover {
+  border-bottom: dashed 1px silver;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.chartData {
+
+}
+
+.chart {
+  height: 400px;
+  width: 600px;
+}

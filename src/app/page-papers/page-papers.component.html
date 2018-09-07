@@ -1,0 +1,14 @@
+<p>
+  This page has the past papers.
+</p>
+
+<p-accordion>
+    <p-accordionTab [selected]="flase" *ngFor="let p of getPapers()">
+        <p-header >
+          <span>{{p.date}} | {{p.paperTitle}}</span>
+        </p-header>
+        <app-cp-past-paper [pastPaperAnswers]="p" (save)="onSave($event)"></app-cp-past-paper>
+    </p-accordionTab>
+    
+</p-accordion>
+
