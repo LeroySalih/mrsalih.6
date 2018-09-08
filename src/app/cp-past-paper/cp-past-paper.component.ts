@@ -68,6 +68,9 @@ export class CpPastPaperComponent implements OnInit {
     return ansGroups;
   }
 
+  get formData() { return <FormArray>this.answersForm.get('answers'); }
+
+
   buildChart() {
     const actualMarks = this.sumActualMarksByLevel();
     const availableMarks = this.sumAvailableMarksByLevel();
@@ -181,14 +184,20 @@ export class CpPastPaperComponent implements OnInit {
   sumAvailableMarksByMistake() {
     return sumByClassification<PastPaperAnswer>(
         this.answersForm.value.answers,
-        (item) => item.mistake_type.code,
+        (item) => this.classifyItem(item),
         (item) => item.available_marks);
+  }
+
+  classifyItem(item): string {
+    const result = (item.mistake_type.code === 'NA' || item.mistake_type === '') ? 'NA' : item.mistake_type.code;
+ //   console.log('Classified as ', item, result);
+    return result;
   }
 
   sumActualMarksByMistake() {
     return sumByClassification<PastPaperAnswer>(
         this.answersForm.value.answers,
-        (item) =>  (item.mistake_type.code === 'NA' || item.mistake_type === '') ? 'NA' : item.mistake_type.code,
+        (item) => this.classifyItem(item),
         (item) => item.actual_marks);
   }
 

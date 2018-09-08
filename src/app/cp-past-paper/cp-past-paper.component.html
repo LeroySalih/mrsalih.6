@@ -9,43 +9,55 @@
   <div class="chartContainer">
       <div [chart]="chart" class="chart"></div>
       <div class="chartData">
-          <table>
+          <table class="marks">
+             <tr>
+               <td colspan="3" class="table_title">Marks By Question Level</td>
+             </tr>
+              <tr>
+                <td></td>
+                <td>Av</td>
+                <td>Ac</td>
+              </tr>
               <tr>
                 <td>Basic: </td>
-                <td>{{ sumAvailableMarksByLevel()['basic'] }}</td>
-                <td>{{ sumActualMarksByLevel()['basic'] }}</td>
+                <td class="table_number">{{ sumAvailableMarksByLevel()['basic'] }}</td>
+                <td class="table_number">{{ sumActualMarksByLevel()['basic'] }}</td>
               </tr>
       
               <tr>
                   <td>Intermediate: </td>
-                  <td>{{ sumAvailableMarksByLevel()['intermediate'] }}</td>
-                  <td>{{ sumActualMarksByLevel()['intermediate'] }}</td>
+                  <td class="table_number">{{ sumAvailableMarksByLevel()['intermediate'] }}</td>
+                  <td class="table_number">{{ sumActualMarksByLevel()['intermediate'] }}</td>
                 </tr>
       
                 <tr>
                     <td>Advanced: </td>
-                    <td>{{ sumAvailableMarksByLevel()['advanced'] }}</td>
-                    <td>{{ sumActualMarksByLevel()['advanced'] }}</td>
-                  </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td>All Correct:</td>
-                    <td>{{ sumAvailableMarksByMistake()['OK'] }}</td>
-                  </tr>
-              <tr>
-                <td>Not Answered:</td>
-                <td>{{ sumAvailableMarksByMistake()['NA'] }}</td>
-              </tr>
-              <tr>
-                  <td>Silly:</td>
-                  <td>{{ sumAvailableMarksByMistake()['SI'] }}</td>
+                    <td class="table_number">{{ sumAvailableMarksByLevel()['advanced'] }}</td>
+                    <td class="table_number">{{ sumActualMarksByLevel()['advanced'] }}</td>
                 </tr>
                 <tr>
-                    <td>Serious:</td>
-                    <td>{{ sumAvailableMarksByMistake()['SE'] }}</td>
-                  </tr>
+                  <td>Total:</td>
+                  <td class="table_number table_total">{{ getTotalAvailableMarks(pastPaperAnswers)}}</td>
+                  <td class="table_number table_total">{{ getTotalActualMarks() }}</td>
+                </tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr><td colspan="3"  class="table_title">Marks by Mistake</td></tr>
+              <tr>
+                <td>Not Answered:</td>
+                <td>{{ (sumAvailableMarksByMistake()['NA'] || 0) - (sumActualMarksByMistake()['NA'] || 0) }}</td>
+              </tr>
+              <tr>
+                <td>Silly:</td>
+                <td>{{ (sumAvailableMarksByMistake()['SI'] || 0) - (sumActualMarksByMistake()['SI'] || 0) }}</td>
+              </tr>
+              <tr>
+                <td>Serious:</td>
+                <td>{{ (sumAvailableMarksByMistake()['SE'] || 0) - (sumActualMarksByMistake()['SE'] || 0) }}</td>
+              </tr>
+              <tr>
+                <td>Correct:</td>
+                <td>{{ getTotalActualMarks() }}</td>
+              </tr>
             </table>
       </div>
   </div>
@@ -54,24 +66,20 @@
 
   
 <form [formGroup]="answersForm" novalidate (ngSubmit)="savePastPaperAnswers(answersForm)">
-    <div>
-        Total Marks: {{getTotalAvailableMarks(pastPaperAnswers)}}
-        Actual Marks: {{getTotalActualMarks() }}
-    </div>
     <button mat-primary type="submit">Save Marks</button>
   <div>
     <div formArrayName="answers" class="paperContainer">
-      <div class="paperQuestion" *ngFor="let answer of answersForm.get('answers').controls; let i = index;">
+      <div class="paperQuestion" *ngFor="let answer of formData.controls; let i = index;">
         
         
         <div [formGroupName]="i">
           
           <div class="paperQuestionField" style="grid-area: number">
-              Q <span>{{ answer.controls.number.value }}</span>
-                <span>{{ answer.controls.type.value }}</span>
-                <span>{{ answer.controls.link.value }}</span>
-                <span>{{ answer.controls.level.value }}</span>
-                <span>{{ answer.controls.available_marks.value}}</span>
+                <div>Q{{ answer.controls.number.value }}</div>
+                <div>type: <a [routerLink]="answer.controls.link.value">{{ answer.controls.type.value }}</a></div>
+                
+                <div>level: {{ answer.controls.level.value }}</div>
+                <div>Available: {{ answer.controls.available_marks.value}}</div>
             </div> 
           <div class="paperQuestionField" style="grid-area: aMarks">
             <input formControlName="actual_marks" type="number" pInputText>
