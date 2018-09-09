@@ -63,3 +63,14 @@
 .table_total {
   border-top: solid silver 1px;
 }
+
+.error {
+  background-color : red;
+}
+
+.error_message {
+  color: red;
+  font-family: 'Lato';
+  font-size: small;
+
+}

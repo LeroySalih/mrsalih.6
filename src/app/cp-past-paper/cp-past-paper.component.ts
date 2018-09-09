@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PastPaper, PastPaperAnswers, PastPaperAnswer } from '../models/past-paper';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { countByClassification, sumByClassification } from '../library';
 import { Chart } from 'angular-highcharts';
+import { isNumberValidator, minValidator, maxValidator} from '../validators';
 
 interface MistakeType {
   name: string;
@@ -58,8 +59,13 @@ export class CpPastPaperComponent implements OnInit {
                                            link: a.link,
                                            available_marks: a.available_marks,
                                            type: a.type,
-                                           actual_marks: a.actual_marks,
-                                           mistake_type: a.mistake_type
+                                           actual_marks: [a.actual_marks,
+                                                            [isNumberValidator,
+                                                             minValidator(0),
+                                                             maxValidator(a.available_marks),
+                                                             Validators.required
+                                                            ]],
+                                           mistake_type: [a.mistake_type, [ mTypeValidator ]]
                                           }));
     });
 
@@ -211,4 +217,60 @@ export class CpPastPaperComponent implements OnInit {
     console.log(form.value);
   }
 
+  hasError(index, formControlName): string {
+
+    const errors = this.getErrors(index, formControlName);
+
+    const result = (errors !== undefined && errors !== null) ? 'error ' : '';
+    // console.log('${index} ${formControlName}', errors, result);
+    return result;
+  }
+
+  getErrors (index, formControlName): {} {
+    const fa = this.answersForm.controls.answers as FormArray;
+    const control = fa.at(index).get(formControlName);
+    if (control) {
+      return control.errors;
+    }
+  }
+
+  onChangeInput(event, index, ) {
+
+    // get the m_type dropdown
+    const fa = this.answersForm.controls.answers as FormArray;
+
+    const available_marks = fa.at(index).get('available_marks');
+    const actual_marks = fa.at(index).get('actual_marks');
+    const m_type = fa.at(index).get('mistake_type');
+
+    if (available_marks.value === actual_marks.value) {
+      m_type.setValue({code: 'OK', name: 'All Correct'});
+    }
+  }
+
 }
+
+
+
+export function mTypeValidator (control: FormControl): {[s: string]: boolean} {
+
+  const fg = control.parent;
+  if (!fg) {
+    return null;
+  }
+
+  const available_marks = fg.get('available_marks').value;
+  const actual_marks = fg.get('actual_marks').value;
+
+  console.log(`${available_marks} ${actual_marks} ${control.value.code}`);
+  if (available_marks === actual_marks && control.value.code !== 'OK') {
+    return {'InvalidValueEq': true};
+  }
+
+  if (available_marks !== actual_marks && control.value.code === 'OK') {
+    return {'InvalidValueNeq': true};
+  }
+
+  return null;
+}
+

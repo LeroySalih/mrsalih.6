@@ -63,8 +63,8 @@
   </div>
 </div>
 
+<div *ngIf="!answersForm.valid">Form is Invalid</div>
 
-  
 <form [formGroup]="answersForm" novalidate (ngSubmit)="savePastPaperAnswers(answersForm)">
     <button mat-primary type="submit">Save Marks</button>
   <div>
@@ -75,18 +75,35 @@
         <div [formGroupName]="i">
           
           <div class="paperQuestionField" style="grid-area: number">
-                <div>Q{{ answer.controls.number.value }}</div>
+                <div>Q{{ answer.controls.number.value }} ({{ answer.controls.available_marks.value}} marks)</div>
                 <div>type: <a [routerLink]="answer.controls.link.value">{{ answer.controls.type.value }}</a></div>
-                
                 <div>level: {{ answer.controls.level.value }}</div>
-                <div>Available: {{ answer.controls.available_marks.value}}</div>
             </div> 
           <div class="paperQuestionField" style="grid-area: aMarks">
-            <input formControlName="actual_marks" type="number" pInputText>
+            <input [className]="hasError(i, 'actual_marks')" 
+                   formControlName="actual_marks" 
+                   type="number" 
+                   pInputText
+                   (change)="onChangeInput($event, i)"
+                   >
+          </div>
+          <div *ngIf="getErrors(i, 'actual_marks')">
+            <div class="error_message" *ngIf="getErrors(i, 'actual_marks')['minVal']">The min value is 0.</div>
+            <div class="error_message" *ngIf="getErrors(i, 'actual_marks')['maxVal']">You have entered more marks than are allocated to this question.</div>
+            <div class="error_message" *ngIf="getErrors(i, 'actual_marks')['required']">A value is required.</div>
+            <!-- <div>{{getErrors(i, 'actual_marks') | json}}</div> -->
+          </div>
+
+          <div>
+            <div></div>
           </div>
 
           <div class="paperQuestionField" style="grid-area: mType">
               <p-dropdown [options]="mistakeTypes" optionLabel="name" formControlName="mistake_type"></p-dropdown>
+            </div>
+            <div *ngIf="getErrors(i, 'mistake_type')">
+                <div class="error_message" *ngIf="getErrors(i, 'mistake_type')['InvalidValueEq']">Invalid value when actual marks = availale marks.</div>
+                <div class="error_message" *ngIf="getErrors(i, 'mistake_type')['InvalidValueNeq']">Invalid value when actual marks != availale marks.</div>
             </div>
         
         </div>
