@@ -18,6 +18,10 @@ export class PastPaperService {
     return this.afs.collection<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}`).valueChanges();
   }
 
+  getPastPaperTemplate(pastPaperId: string): Observable<PastPaper> {
+    return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperId}`).valueChanges();
+  }
+
   savePastPaperAnswers (answers: PastPaperAnswers) {
 
     if (answers.id === undefined) {
@@ -31,11 +35,12 @@ export class PastPaperService {
 
   }
 
-  savePastPaperTemplate (paper: PastPaper) {
+  savePastPaperTemplate (paper: PastPaper): Promise<void> {
     if (paper.pastPaperId === undefined) {
       paper.pastPaperId = uuid();
     }
-    this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${paper.pastPaperId}`)
+
+    return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${paper.pastPaperId}`)
       .set(paper);
   }
 

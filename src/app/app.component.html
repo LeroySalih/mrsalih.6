@@ -10,6 +10,7 @@
 
                 <a *ngIf="userProfile" class="siteMenuItem" [routerLink]="'modules'"   [routerLinkActive]="'active'">Modules</a>
                 <a *ngIf="userProfile" class="siteMenuItem" [routerLink]="'papers'"   [routerLinkActive]="'active'">Past Papers</a>
+                <a *ngIf="isAdmin()" class="siteMenuItem" [routerLink]="'admin'"   [routerLinkActive]="'active'">Admin</a>
                 
                 <app-cp-login-button 
                         class="userName"

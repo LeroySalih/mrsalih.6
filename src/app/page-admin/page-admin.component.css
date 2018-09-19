@@ -1,0 +1,14 @@
+#pageLayout {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-areas: "sideBar detail"
+} 
+
+#sideBar {
+  grid-area: "sideBar";
+
+}
+
+#detail {
+  grid-area: "detail";
+}

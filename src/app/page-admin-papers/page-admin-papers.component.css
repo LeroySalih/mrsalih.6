@@ -1,0 +1,8 @@
+.pastPaperForm {
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.formLabel {
+  font-family: 'Open Sans';
+}

@@ -20,7 +20,7 @@ export class CanAccessContentActivate implements CanActivate {
 
         const canActivate = (userProfile === null || userProfile === undefined) ? false : true;
 
-        console.log(`canActivate == ${canActivate}`);
+     //   console.log(`canActivate == ${canActivate}`);
 
         resolve(canActivate);
 

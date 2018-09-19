@@ -31,16 +31,14 @@ export class AppComponent implements OnInit, OnDestroy {
              private messageService: MessageService,
              private matDialog: MatDialog,
              private router: Router) {
-            this.userService.currentUser$.subscribe((user: UserProfile) => {
-            console.log(`[constructor] New user detected`, user);
-            this.userProfile = user;
 
-
-        });
   }
 
   ngOnInit() {
-  //  console.log(`[app-component::ngInit] Called`);
+    this.userService.currentUser$.subscribe((user: UserProfile) => {
+    //  console.log(`[ngOnInt] New user detected`, user);
+      this.userProfile = user;
+    });
   }
 
 
@@ -57,37 +55,38 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   OnLogOut() {
-    console.log('Logging Out');
+  //  console.log('Logging Out');
     this.router.navigate(['/']);
     this.userService.logOut();
   }
 
   OnLogIn() {
-    console.log('Loggin In');
+   // console.log('Loggin In');
     // this.router.navigate(['/login']);
-
-    console.log(`[onLOEvent]`, event);
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.panelClass = 'login-dialog-container';
 
-    dialogConfig.data = {test: 'test'};
+    // dialogConfig.data = {test: 'test'};
     // dialogConfig.data.order = this.getNextOrder(this.los);
 
     const dialogRef = this.matDialog.open(LoginDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       (data) => {
-        console.log('[newLO] from dlg: ', data);
+        // console.log('[newLO] from dlg: ', data);
         // ToDo Add Login Attempt....
       }
   );
 
   }
 
+  isAdmin() {
+    return (this.userProfile && this.userProfile.isAdmin);
+  }
   toggleSideButton() {
-    console.log('CLicked');
+ //   console.log('CLicked');
   }
 }

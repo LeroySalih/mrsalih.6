@@ -11,10 +11,11 @@ export class DbConfig {
     public static BLOG_POSTS = 'blogPosts';
     public static CLASSES = 'classes';
     public static USER_DATA = 'userProfiles';
+    public static USER_PROFILES = 'userProfiles';
     public static PAST_PAPER_TEMPLATES = 'pastPapersTemplate';
     public static PAST_PAPER_ANSWERS = 'pastPaperAnswers';
 
-    public static USER_PROFILES = 'userProfiles';
+
 
     public static ID_FIELD = 'id';
     public static ORDER_FIELD = 'order';

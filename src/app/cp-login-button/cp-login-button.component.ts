@@ -32,9 +32,9 @@ export class CpLoginButtonComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(`Setting userprofile`, this.userProfile);
+    // console.log(`Setting userprofile`, this.userProfile);
     if (this.userProfile) {
-      console.log(`Setting userprofile`, this.userProfile);
+      // console.log(`Setting userprofile`, this.userProfile);
       this.userName = this.userProfile.name;
       this.items = [
         {label: 'Sign Out', icon: 'fa fa-profile', command: () => {

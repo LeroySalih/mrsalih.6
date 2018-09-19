@@ -15,17 +15,22 @@ import {DropdownModule} from 'primeng/dropdown';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TreeTableModule} from 'primeng/treetable';
 import {TreeNode} from 'primeng/api';
+import {TreeModule} from 'primeng/tree';
 import {AccordionModule} from 'primeng/accordion';
-
+import {TableModule} from 'primeng/table';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
 
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
-      InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-      CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule,
+      InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
+      CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
+      TreeTableModule, InputSwitchModule, TableModule, AccordionModule,
     ],
     exports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
-      InplaceModule, EditorModule, DialogModule, SplitButtonModule, CheckboxModule,
-    CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeTableModule, AccordionModule, ],
+      InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
+    CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
+    TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ],
   })
   export class PrimeNGModule { }

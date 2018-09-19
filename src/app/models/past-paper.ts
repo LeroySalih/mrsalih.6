@@ -21,6 +21,7 @@ export class PastPaper {
   paperTitle: string;
   paperLink: string;
   markSchemeLink: string;
+  testLink?: {href: string, active: boolean, adminOnly: boolean};
   questions: PastPaperQuestion[];
 }
 

@@ -36,5 +36,7 @@ export interface UserData {
     authenticationId: string;
     className: string;
     name: string;
+    familyName: string;
     isAdmin: boolean;
+    id: string;
 }

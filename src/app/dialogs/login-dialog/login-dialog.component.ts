@@ -29,6 +29,7 @@ export class LoginDialogComponent implements OnInit {
     this.message = 'Loggin In';
     this.userService.logIn(this.form.value.username, this.form.value.password)
       .then(() => {
+        console.log('User Logged In');
         this.dialogRef.close();
       })
       .catch((err) => {

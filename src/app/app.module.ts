@@ -84,6 +84,9 @@ import { CanAccessContentActivate } from './guards/CanAccessContentActivate';
 import { PastPaperService } from './services/past-paper-service';
 import { CpPastPaperComponent } from './cp-past-paper/cp-past-paper.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+import { PageAdminComponent } from './page-admin/page-admin.component';
+import { PageAdminUsersComponent } from './page-admin-users/page-admin-users.component';
+import { PageAdminPapersComponent } from './page-admin-papers/page-admin-papers.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -101,6 +104,11 @@ const appRoutes: Routes = [
   {path: 'posts', component: PageBlogHomeComponent},
   {path: 'posts/:id', component: PageBlogPostComponent},
   {path: 'progress', component: PageProgressComponent},
+
+  {path: 'admin', component: PageAdminComponent, canActivate: [CanAccessContentActivate, CanAccessAdminActivate], children: [
+    {path: 'users', component: PageAdminUsersComponent},
+    {path: 'papers/:id', component: PageAdminPapersComponent},
+  ]},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
@@ -151,7 +159,10 @@ const appRoutes: Routes = [
   CpLoginButtonComponent,
   LoginDialogComponent,
   PagePapersComponent,
-  CpPastPaperComponent
+  CpPastPaperComponent,
+  PageAdminComponent,
+  PageAdminUsersComponent,
+  PageAdminPapersComponent
   ],
   imports: [
     BrowserModule,

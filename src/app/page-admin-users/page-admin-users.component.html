@@ -1,0 +1,93 @@
+<h1>Users</h1>
+
+<p-table  [value]="users" 
+          [paginator]="true" 
+          [rows]="20" 
+          selectionMode="single" [(selection)]="selectedUser"
+          (onRowSelect)="onRowSelected($event)" 
+          (onEditComplete)="onEditComplete($event)">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">
+              name
+              <p-sortIcon [field]="name" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="familyName">
+                Family Name
+                <p-sortIcon [field]="familyName" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+              </th>
+
+            <th pSortableColumn="className">
+              className
+              <p-sortIcon [field]="className" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="isAdmin">
+                Is Admin
+              <p-sortIcon [field]="isAdmin" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+            <!--
+            <th pSortableColumn="id">
+                id
+              <p-sortIcon [field]="id" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+            </th>
+            -->
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+        <tr [pSelectableRow]="rowData">
+            
+            <td [pEditableColumn]="rowData['name']" [pEditableColumnField]="'name'" pSortableColumn >
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input type="text" [(ngModel)]="rowData.name">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.name}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+            <td [pEditableColumn]="rowData['familyName']" [pEditableColumnField]="'familyName'" pSortableColumn >
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input type="text" [(ngModel)]="rowData.familyName">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.familyName}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+            <td pEditableColumn pSortableColumn >
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input type="text" [(ngModel)]="rowData.className">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.className}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+            <td pEditableColumn pSortableColumn >
+                <p-inputSwitch [(ngModel)]="rowData.isAdmin" (onChange)="adminChange(rowData)"></p-inputSwitch>
+            </td>
+
+            <!--
+            <td  >
+                {{rowData.id}}
+            </td>
+          -->
+
+
+        </tr>
+    </ng-template>
+</p-table>
+<div>
+  Currently selectedUser:
+  <div *ngIf="selectedUser">{{selectedUser.name}}</div>
+</div>
+

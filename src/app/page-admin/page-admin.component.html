@@ -1,0 +1,17 @@
+<div id="pageLayout">
+  <div id="sideBar">
+    <p-tree [value]="tree.data" 
+            selectionMode="single" 
+            (onNodeSelect)="onTreeNodeExpand($event)"
+           
+           
+            >
+          </p-tree>
+
+  </div>
+
+  <div id="detail">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
