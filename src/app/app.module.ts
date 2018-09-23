@@ -87,6 +87,8 @@ import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { PageAdminUsersComponent } from './page-admin-users/page-admin-users.component';
 import { PageAdminPapersComponent } from './page-admin-papers/page-admin-papers.component';
+import { PageSpecificationsComponent } from './page-specifications/page-specifications.component';
+import { PageAdminPaperComponent } from './page-admin-paper/page-admin-paper.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -107,7 +109,10 @@ const appRoutes: Routes = [
 
   {path: 'admin', component: PageAdminComponent, canActivate: [CanAccessContentActivate, CanAccessAdminActivate], children: [
     {path: 'users', component: PageAdminUsersComponent},
-    {path: 'papers/:id', component: PageAdminPapersComponent},
+    {path: 'papers', component: PageAdminPapersComponent, children: [
+      {path: 'paper/:id', component: PageAdminPaperComponent},
+    ]},
+    {path: 'specifications', component: PageSpecificationsComponent}
   ]},
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}
@@ -162,7 +167,9 @@ const appRoutes: Routes = [
   CpPastPaperComponent,
   PageAdminComponent,
   PageAdminUsersComponent,
-  PageAdminPapersComponent
+  PageAdminPapersComponent,
+  PageSpecificationsComponent,
+  PageAdminPaperComponent
   ],
   imports: [
     BrowserModule,

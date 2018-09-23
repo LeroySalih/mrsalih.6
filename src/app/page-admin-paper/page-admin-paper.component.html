@@ -1,0 +1,114 @@
+
+ 
+<div *ngIf="pastPaperTemplate">
+    <form [formGroup]="pastPaperForm">
+      <!-- <input pInputText formControlName="pastPaperId"> -->
+  
+      <div class="pastPaperForm">
+          <div class="formLabel">Paper Date:</div>
+          <div>
+              <input pInputText formControlName="date">
+          </div>
+          <div>
+              <button type="button" pButton (click)="onRemovePastPaper()" label="Remove Paper" class="ui-button-danger" style="width: 150px"></button>
+          </div>
+  
+          <div class="formLabel">Paper Title:</div>
+          <div><input pInputText formControlName="paperTitle"></div>
+          <div>
+              <button type="button" pButton (click)="onAddPaper()" label="Add Paper" style="width: 150px"></button>
+          </div>
+  
+          <div class="formLabel">Paper Link:</div>
+          <div><input pInputText formControlName="paperLink"></div>
+          <div>
+              <button type="button" pButton (click)="onAddQuestion()" label="Add Question" style="width: 150px"></button>
+          </div>
+  
+          <div class="formLabel">Mark Scheme Link:</div>
+          <div><input pInputText formControlName="markSchemeLink"></div>
+          <div></div>
+          
+          
+      </div>
+      </form>
+      <div>Total Marks: {{totalMarks()}}</div>
+      <div>
+      <p-table [value]="pastPaperTemplate.questions" 
+              (onEditComplete)="onEditComplete($event)"
+              selectionMode="single"
+              [(selection)]="selectedQuestion"
+              (onRowSelect)="onRowSelected($event)"
+              >
+      
+        <ng-template pTemplate="header">
+            <tr>
+                
+                <th pSortableColumn="name" style="width: 50px;">
+                  N.
+                  <p-sortIcon [field]="name" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+  
+                <th pSortableColumn="level">
+                    Level
+                    <p-sortIcon [field]="level" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+  
+                <th pSortableColumn="level">
+                    Type
+                    <p-sortIcon [field]="type" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+  
+                <th pSortableColumn="level" style="width: 75px">
+                    Marks
+                    <p-sortIcon [field]="available_mark" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+          <tr [pSelectableRow]="rowData">
+            <td>{{rowData.number}}</td>
+    
+            <td [pEditableColumn]="rowData['level']" [pEditableColumnField]="'level'" pSortableColumn >
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input type="text" [(ngModel)]="rowData.level">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.level}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            
+            <td [pEditableColumn]="rowData['type']" [pEditableColumnField]="'type'" pSortableColumn >
+              <p-cellEditor>
+                  <ng-template pTemplate="input">
+                      <p-dropdown 
+                      (onChange)="onRowUpdate(rowData)" 
+                      [options]="questionTypes" 
+                      [(ngModel)]="rowData.type" ></p-dropdown>
+                      
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                      {{rowData.type}}
+                  </ng-template>
+              </p-cellEditor>
+          </td>
+  
+            <td [pEditableColumn]="rowData['available_marks']" [pEditableColumnField]="'available_marks'" pSortableColumn >
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input type="number" [(ngModel)]="rowData.available_marks">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.available_marks}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      </div>  
+  </div>
+  

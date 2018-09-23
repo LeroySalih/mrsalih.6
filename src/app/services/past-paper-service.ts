@@ -68,4 +68,9 @@ export class PastPaperService {
     this.savePastPaperAnswers(pastPaperAnswer);
 
   }
+
+  removePastPaperTemplate(pastPaperTemplate: PastPaper): Promise<void> {
+    return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperTemplate.pastPaperId}`)
+          .delete();
+  }
 }

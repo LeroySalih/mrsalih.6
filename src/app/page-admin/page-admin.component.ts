@@ -23,9 +23,16 @@ export class PageAdminComponent implements OnInit {
         },
         {
             'label': 'Past Papers',
-            'data': '',
+            'data': 'papers',
             'expandedIcon': 'pi pi-clone',
             'collapsedIcon': 'pi pi-clone',
+            'children': []
+        },
+        {
+          'label': 'Specifications',
+          'data': 'specifications',
+          'expandedIcon': 'pi pi-users',
+            'collapsedIcon': 'pi pi-users',
             'children': []
         }
     ]
@@ -57,8 +64,10 @@ export class PageAdminComponent implements OnInit {
 
     switch (event.node.data) {
       case 'users' : this.router.navigate(['/admin/users']); break;
+      case 'specifications' : this.router.navigate(['/admin/specifications']); break;
+      case 'papers' : this.router.navigate(['/admin/papers']); break;
       case '': break;
-      default:  this.router.navigate([`admin/papers/${event.node.data}`]);
+      default:  this.router.navigate([`admin/papers/paper/${event.node.data}`]);
     }
     // console.log(event);
   }

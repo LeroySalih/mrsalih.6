@@ -10,11 +10,11 @@ import { SelectItem } from 'primeng/api';
 import { SpecificationService } from '../services/specification-service.service';
 
 @Component({
-  selector: 'app-page-admin-papers',
-  templateUrl: './page-admin-papers.component.html',
-  styleUrls: ['./page-admin-papers.component.css']
+  selector: 'app-page-admin-paper',
+  templateUrl: './page-admin-paper.component.html',
+  styleUrls: ['./page-admin-paper.component.css']
 })
-export class PageAdminPapersComponent implements OnInit, OnChanges {
+export class PageAdminPaperComponent implements OnInit, OnChanges {
 
   pastPaperId: string;
   pastPaperTemplate: PastPaper;
@@ -59,7 +59,11 @@ export class PageAdminPapersComponent implements OnInit, OnChanges {
 
         this.pastPaperForm.valueChanges.subscribe((data) => {
           // console.log(data)
+          this.pastPaperTemplate.date = data.date;
           this.pastPaperTemplate.paperTitle = data.paperTitle;
+          this.pastPaperTemplate.paperLink = data.paperLink;
+          this.pastPaperTemplate.markSchemeLink = data.markSchemeLink;
+
           this.onEditComplete(null);
         });
       });
@@ -106,7 +110,7 @@ export class PageAdminPapersComponent implements OnInit, OnChanges {
 
     this.pastPaperService.savePastPaperTemplate(newPaper)
         .then(() => {
-          this.router.navigate([`admin/papers/paper/${id}`]);
+          this.router.navigate([`admin/papers/${id}`]);
         });
   }
 

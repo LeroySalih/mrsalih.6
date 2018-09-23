@@ -14,7 +14,7 @@ export class DbConfig {
     public static USER_PROFILES = 'userProfiles';
     public static PAST_PAPER_TEMPLATES = 'pastPapersTemplate';
     public static PAST_PAPER_ANSWERS = 'pastPaperAnswers';
-
+    public static SPECIFICATIONS = 'specification';
 
 
     public static ID_FIELD = 'id';
