@@ -46,6 +46,7 @@ export class PageAdminPapersComponent implements OnInit, OnChanges {
       this.pastPaperId = params['id'];
 
       this.pastPaperService.getPastPaperTemplate(this.pastPaperId).subscribe((pastPaperTemplate) => {
+        /*
         console.log(`Building Past Paper`, pastPaperTemplate);
         this.pastPaperTemplate = pastPaperTemplate;
 
@@ -56,12 +57,14 @@ export class PageAdminPapersComponent implements OnInit, OnChanges {
           markSchemeLink: [this.pastPaperTemplate.markSchemeLink, []],
           date: [this.pastPaperTemplate.date, []]
         });
-
+        */
+        /*
         this.pastPaperForm.valueChanges.subscribe((data) => {
           // console.log(data)
           this.pastPaperTemplate.paperTitle = data.paperTitle;
           this.onEditComplete(null);
         });
+        */
       });
     });
   }

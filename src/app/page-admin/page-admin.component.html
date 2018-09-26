@@ -1,6 +1,7 @@
 <div id="pageLayout">
   <div id="sideBar">
-    <p-tree [value]="tree.data" 
+    <p-tree *ngIf="tree.data" 
+            [value]="tree.data" 
             selectionMode="single" 
             (onNodeSelect)="onTreeNodeExpand($event)"
            

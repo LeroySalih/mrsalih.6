@@ -1,0 +1,80 @@
+
+<div *ngIf="module">
+  <div class="pageHeader">
+      <span class="title"><h2>{{module.title}}</h2></span>
+      <span><button type="button" pButton (click)="onRemoveModule()" label="Remove Module" class="ui-button-danger" style="width: 150px; margin-top: 19px; margn-bottom: 19px;"></button></span>
+    
+  </div>
+  
+  <form [formGroup]="moduleForm">
+      <div class="form-grid">
+          <div class="ui-float-label form-input">
+              <input formControlName="title" id="float-input" type="text" size="30" pInputText > 
+              <label for="float-input">Title:</label>
+          </div>
+
+          <div class="ui-float-label form-input">
+              <input formControlName="subTitle" id="float-input" type="text" size="30" pInputText > 
+              <label for="float-input">Subtitle:</label>
+          </div>
+
+          <div class="ui-float-label form-input">
+              <input formControlName="category" id="float-input" type="text" size="30" pInputText > 
+              <label for="float-input">Category:</label>
+          </div>
+            
+          <div class="ui-float-label form-input">
+              <input formControlName="thumbnaillUrl" id="float-input" type="text" size="30" pInputText > 
+              <label for="float-input">Thumbnail Url:</label>
+          </div>
+
+          <div class="ui-float-label form-input">
+              <input formControlName="order" id="float-input" type="text" size="30" pInputText > 
+              <label for="float-input">Order:</label>
+          </div>
+      </div>
+    </form>
+
+      <div>
+          <h2>Body Text:</h2>
+          <p-editor [(ngModel)]="module.bodyText" [style]="{'height':'160px'}"  (onSelectionChange)="updateModule()"></p-editor>
+      </div>
+
+        <h2>Lessons</h2>
+        <p-table [value]="lessons">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:50px;"></th>
+                    <th>Title</th>
+                    <th>Subtitle</th>
+                    <th style="width: 70px;">
+                      <span class="pi pi-plus-circle" (click)="onAddLesson()">Add</span>
+                    </th>
+        
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lesson let-i="rowIndex">
+                <tr>
+                    <td>{{lesson.order}}</td>
+                    <td><a [routerLink]="['/admin/lesson/', lesson.id]">{{lesson.title}}</a></td>
+                    <td>{{lesson.subtitle}}</td>
+                    <td style="width: 50px;">
+                        <span class="pi pi-trash" (click)="onRemoveLesson(lesson)" style="cursor: pointer"></span>
+                      <span *ngIf="i != 0" class="pi pi-angle-up" style="cursor: pointer" (click)="onPromoteLesson(i)"></span>
+                      <span *ngIf="i != this.lessons.length - 1"class="pi pi-angle-down" style="cursor: pointer" (click)="onDemoteLesson(i)"></span>
+                      
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        
+
+
+
+
+
+
+  
+
+</div>
+

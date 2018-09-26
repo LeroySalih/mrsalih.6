@@ -8,6 +8,7 @@ import { QuestionFactory } from '../models/question-factory';
 import { v4 as uuid } from 'uuid';
 import { SelectItem } from 'primeng/api';
 import { SpecificationService } from '../services/specification-service.service';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-page-admin-paper',
@@ -27,14 +28,17 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
               private fb: FormBuilder,
               private pastPaperService: PastPaperService,
               private specificationService: SpecificationService,
-              private router: Router
+              private router: Router,
+              private confirmationService: ConfirmationService
     ) {
       this.questionTypes = [];
       }
 
   ngOnInit() {
 
+    // Set up the Questions Grid
     this.specificationService.getSpecifications().subscribe((specifications) => {
+      console.log(specifications);
       specifications.forEach((spec) => {
         spec.section.forEach((section) => {
           this.questionTypes.push({label: `${section.level} ${section.title}`, value: `${section.level} ${section.title}`});
@@ -45,28 +49,36 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
     this.activedRoute.params.subscribe((params) => {
       this.pastPaperId = params['id'];
 
-      this.pastPaperService.getPastPaperTemplate(this.pastPaperId).subscribe((pastPaperTemplate) => {
-        console.log(`Building Past Paper`, pastPaperTemplate);
-        this.pastPaperTemplate = pastPaperTemplate;
+      if (this.pastPaperId !== undefined) {
+        console.log(this.pastPaperId);
+        this.pastPaperService.getPastPaperTemplate(this.pastPaperId).subscribe((pastPaperTemplate) => {
+          console.log(`Building Past Paper`, pastPaperTemplate);
 
-        this.pastPaperForm = this.fb.group({
-          pastPaperId: [this.pastPaperTemplate.pastPaperId, []],
-          paperTitle: [this.pastPaperTemplate.paperTitle, []],
-          paperLink: [this.pastPaperTemplate.paperLink, []],
-          markSchemeLink: [this.pastPaperTemplate.markSchemeLink, []],
-          date: [this.pastPaperTemplate.date, []]
-        });
+          this.pastPaperTemplate = pastPaperTemplate;
+          if (pastPaperTemplate) {
 
-        this.pastPaperForm.valueChanges.subscribe((data) => {
-          // console.log(data)
-          this.pastPaperTemplate.date = data.date;
-          this.pastPaperTemplate.paperTitle = data.paperTitle;
-          this.pastPaperTemplate.paperLink = data.paperLink;
-          this.pastPaperTemplate.markSchemeLink = data.markSchemeLink;
+            this.pastPaperForm = this.fb.group({
+              pastPaperId: [this.pastPaperTemplate.pastPaperId, []],
+              paperTitle: [this.pastPaperTemplate.paperTitle, []],
+              paperLink: [this.pastPaperTemplate.paperLink, []],
+              markSchemeLink: [this.pastPaperTemplate.markSchemeLink, []],
+              date: [this.pastPaperTemplate.date, []]
+            });
 
-          this.onEditComplete(null);
-        });
-      });
+            this.pastPaperForm.valueChanges.subscribe((data) => {
+              // console.log(data)
+              this.pastPaperTemplate.date = data.date;
+              this.pastPaperTemplate.paperTitle = data.paperTitle;
+              this.pastPaperTemplate.paperLink = data.paperLink;
+              this.pastPaperTemplate.markSchemeLink = data.markSchemeLink;
+              this.onEditComplete(null);
+            }); // end
+
+          }
+
+        }); // end;
+      }
+
     });
   }
 
@@ -115,10 +127,16 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
   }
 
   onRemovePastPaper() {
-    this.pastPaperService.removePastPaperTemplate(this.pastPaperTemplate)
-      .then(() => {
-        this.router.navigate([`admin/`]);
-      });
+
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to perform this action?',
+      accept: () => {
+        this.pastPaperService.removePastPaperTemplate(this.pastPaperTemplate)
+        .then(() => {
+          this.router.navigate([`admin/papers`]);
+        });
+      }
+    });
   }
 
   onAddQuestion() {

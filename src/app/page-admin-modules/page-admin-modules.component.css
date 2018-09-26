@@ -1,0 +1,8 @@
+.page-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-header :first-child {
+  flex: 1;
+}

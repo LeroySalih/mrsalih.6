@@ -20,17 +20,18 @@ import {AccordionModule} from 'primeng/accordion';
 import {TableModule} from 'primeng/table';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {InputTextModule} from 'primeng/inputtext';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {CarouselModule} from 'primeng/carousel';
 @NgModule({
 
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
       CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
-      TreeTableModule, InputSwitchModule, TableModule, AccordionModule,
+      TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule
     ],
     exports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
     CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
-    TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ],
+    TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule ],
   })
   export class PrimeNGModule { }

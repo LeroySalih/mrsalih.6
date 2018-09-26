@@ -89,6 +89,10 @@ import { PageAdminUsersComponent } from './page-admin-users/page-admin-users.com
 import { PageAdminPapersComponent } from './page-admin-papers/page-admin-papers.component';
 import { PageSpecificationsComponent } from './page-specifications/page-specifications.component';
 import { PageAdminPaperComponent } from './page-admin-paper/page-admin-paper.component';
+import { ConfirmationService} from 'primeng/api';
+import { PageAdminModulesComponent } from './page-admin-modules/page-admin-modules.component';
+import { PageAdminModuleComponent } from './page-admin-module/page-admin-module.component';
+import { PageAdminLessonComponent } from './page-admin-lesson/page-admin-lesson.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -109,6 +113,10 @@ const appRoutes: Routes = [
 
   {path: 'admin', component: PageAdminComponent, canActivate: [CanAccessContentActivate, CanAccessAdminActivate], children: [
     {path: 'users', component: PageAdminUsersComponent},
+    {path: 'lesson/:id', component: PageAdminLessonComponent},
+    {path: 'modules', component: PageAdminModulesComponent, children: [
+      {path: 'module/:id', component: PageAdminModuleComponent}
+    ]},
     {path: 'papers', component: PageAdminPapersComponent, children: [
       {path: 'paper/:id', component: PageAdminPaperComponent},
     ]},
@@ -169,7 +177,10 @@ const appRoutes: Routes = [
   PageAdminUsersComponent,
   PageAdminPapersComponent,
   PageSpecificationsComponent,
-  PageAdminPaperComponent
+  PageAdminPaperComponent,
+  PageAdminModulesComponent,
+  PageAdminModuleComponent,
+  PageAdminLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -206,7 +217,8 @@ const appRoutes: Routes = [
     SectionPayloadService,
     MessageService,
     QuestionService,
-    PastPaperService
+    PastPaperService,
+    ConfirmationService
 
   ],
   bootstrap: [AppComponent],

@@ -31,17 +31,19 @@ export class SectionEditDialogComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      type: [this.section.type, []],
-      title : [this.section.title, []],
-      content: [this.section.content, []],
-      videoId: [this.section.options.videoId, []],
-      url: [this.section.options.url, []],
-      question: [this.section.options.question, []],
-      answer: [this.section.options.answer, []],
-      quizTypeId: [this.section.options.quizTypeId, []],
-      showComments: new FormControl (false)
-    });
+    if (this.section) {
+      this.form = this.fb.group({
+        type: [this.section.type, []],
+        title : [this.section.title, []],
+        content: [this.section.content, []],
+        videoId: [this.section.options.videoId, []],
+        url: [this.section.options.url, []],
+        question: [this.section.options.question, []],
+        answer: [this.section.options.answer, []],
+        quizTypeId: [this.section.options.quizTypeId, []],
+        showComments: new FormControl (false)
+      });
+    }
 
     this.form.patchValue({showComments: this.getShowCommentsChecked()});
 

@@ -1,0 +1,44 @@
+<div>
+  Lesson {{lessonId}}
+</div>
+<form *ngIf="lessonForm" [formGroup]="lessonForm">
+  
+  <div>
+    <span>Title:</span>
+    <input formControlName="title">
+  </div>
+  
+
+  <div>
+      <span>Subtitle:</span>
+      <input formControlName="subtitle">
+    </div>
+  
+
+  </form>
+
+  <p-table [value]="lessonSections">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width:50px;"></th>
+              <th>Title</th>
+              <th>Type</th>
+              <th style="width: 110px;"></th>
+  
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-section let-i="rowIndex">
+          <tr>
+              <td>{{section.order}}, {{i}}</td>
+              <td><a [routerLink]="['/admin/lesson/', section.id]">{{section.title}}</a></td>
+              <td>{{section.type}}</td>
+              <td >
+                <span class="pi pi-pencil" (click)="onEditLessonSection(section)"></span>
+                <span class="pi pi-trash" (click)="onDeleteLessonSection(section)"></span>
+                <span *ngIf="i != 0" class="pi pi-angle-up" (click)="onPromoteLessonSection(i)"></span>
+                <span *ngIf="i != lessonSections.length - 1" class="pi pi-angle-down" (click)="onDemoteLessonSection(i)"></span>
+                
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
