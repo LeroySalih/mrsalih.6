@@ -1,35 +1,39 @@
-<div>
-  Lesson {{lessonId}}
-</div>
-<form *ngIf="lessonForm" [formGroup]="lessonForm">
-  
-  <div>
-    <span>Title:</span>
-    <input formControlName="title">
-  </div>
-  
 
-  <div>
-      <span>Subtitle:</span>
-      <input formControlName="subtitle">
-    </div>
+
+<form style="margin-top: 20px;" *ngIf="lessonForm" 
+      [formGroup]="lessonForm">
   
+      <H1>Lesson: {{lesson.title}}</H1>
+      <div class="ui-float-label form-input">
+          <input formControlName="title" id="float-input" type="text" size="30" pInputText > 
+          <label for="float-input">Title:</label>
+      </div>
+
+      <div class="ui-float-label form-input">
+          <input formControlName="subtitle" id="float-input" type="text" size="30" pInputText > 
+          <label for="float-input">Subtitle:</label>
+      </div>
 
   </form>
+
+  <h2>Learning Objectives:</h2>
+  <h2>Sections:</h2>
 
   <p-table [value]="lessonSections">
       <ng-template pTemplate="header">
           <tr>
-              <th style="width:50px;"></th>
+              
               <th>Title</th>
               <th>Type</th>
-              <th style="width: 110px;"></th>
+              <th style="width: 90px;">
+                <span class="pi pi-plus" (click)="onAddSection()">Add</span>
+              </th>
   
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-section let-i="rowIndex">
           <tr>
-              <td>{{section.order}}, {{i}}</td>
+              
               <td><a [routerLink]="['/admin/lesson/', section.id]">{{section.title}}</a></td>
               <td>{{section.type}}</td>
               <td >

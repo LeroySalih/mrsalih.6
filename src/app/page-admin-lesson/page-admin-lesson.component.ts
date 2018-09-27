@@ -7,6 +7,7 @@ import { LessonSectionService } from '../services/lesson-section.service';
 import { LessonSection } from '../models/lesson-section';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { SectionEditDialogComponent } from '../dialogs/section-edit-dialog/section-edit-dialog.component';
+import { v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-page-admin-lesson',
@@ -75,6 +76,23 @@ export class PageAdminLessonComponent implements OnInit {
 
   onDeleteLessonSection(lessonSection) {
     this.lessonSectionService.deleteLessonSection(lessonSection);
+  }
+
+  onAddSection() {
+    console.log('Add Section...');
+    const id = uuid();
+
+    const newSection: LessonSection = {
+      title: 'New Section',
+      lessonId: this.lesson.id,
+      content: '',
+      options: null,
+      id: id,
+      type: 'text',
+      order: this.lessonSections.length
+    };
+
+    this.lessonSectionService.saveLessonSection(newSection);
   }
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {

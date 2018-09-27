@@ -22,6 +22,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {InputTextModule} from 'primeng/inputtext';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {CarouselModule} from 'primeng/carousel';
+
 @NgModule({
 
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
