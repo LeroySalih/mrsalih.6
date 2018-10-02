@@ -88,7 +88,7 @@
                   <ng-template pTemplate="input">
                       <p-dropdown 
                       (onChange)="onRowUpdate(rowData)" 
-                      [options]="questionTypes" 
+                      [options]="getQuestionTypes()" 
                       [(ngModel)]="rowData.type" ></p-dropdown>
                       
                   </ng-template>

@@ -34,12 +34,22 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
       this.questionTypes = [];
       }
 
+  getQuestionTypes(): SelectItem[] {
+    return this.questionTypes.sort((a, b) => {
+      const aIndex = parseFloat(a.label.split(' ')[0]);
+      const bIndex = parseFloat(b.label.split(' ')[0]);
+
+      return aIndex - bIndex;
+    });
+  }
+
   ngOnInit() {
 
     // Set up the Questions Grid
     this.specificationService.getSpecifications().subscribe((specifications) => {
       console.log(specifications);
       specifications.forEach((spec) => {
+        console.log(spec.section);
         spec.section.forEach((section) => {
           this.questionTypes.push({label: `${section.level} ${section.title}`, value: `${section.level} ${section.title}`});
         });
