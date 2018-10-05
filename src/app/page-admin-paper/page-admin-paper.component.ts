@@ -150,7 +150,7 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
   }
 
   onAddQuestion() {
-    console.log('Adding Question');
+    // console.log('Adding Question');
     const newQuestion: PastPaperQuestion = {
       'number': this.pastPaperTemplate.questions.length + 1,
       'link': '',
@@ -160,6 +160,34 @@ export class PageAdminPaperComponent implements OnInit, OnChanges {
       'level': ''};
 
     this.pastPaperTemplate.questions.push(newQuestion);
+
+    this.pastPaperService.savePastPaperTemplate(this.pastPaperTemplate);
+  }
+
+  onDeleteQuestion(row) {
+    // console.log(row);
+
+    this.pastPaperTemplate.questions = this.pastPaperTemplate.questions.filter((question) => (question.number !== row.number));
+    this.pastPaperService.savePastPaperTemplate(this.pastPaperTemplate);
+  }
+
+  onInsertQuestionBelow(row) {
+
+    this.pastPaperTemplate.questions = this.pastPaperTemplate.questions.map((q) => {
+      if (q.number >= (row.number + 1)) {
+        q.number += 1;
+      }
+
+      return q;
+    });
+
+    this.pastPaperTemplate.questions.splice(row.number, 0, {
+      'number': row.number + 1,
+      'link': 'new insert',
+      'available_marks': 0,
+      'marks': 0,
+      'type': '',
+      'level': ''});
 
     this.pastPaperService.savePastPaperTemplate(this.pastPaperTemplate);
 

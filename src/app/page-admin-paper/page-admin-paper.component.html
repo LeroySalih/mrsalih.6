@@ -65,6 +65,9 @@
                     Marks
                     <p-sortIcon [field]="available_mark" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                 </th>
+                <th style="width:50px;">
+                    
+                </th>
                 
             </tr>
         </ng-template>
@@ -107,6 +110,11 @@
                         {{rowData.available_marks}}
                     </ng-template>
                 </p-cellEditor>
+            </td>
+
+            <td>
+                <span class="pi pi-trash" (click)="onDeleteQuestion(rowData)"></span>
+                <span class="pi pi-arrow-circle-down" (click)="onInsertQuestionBelow(rowData)"></span>
             </td>
           </tr>
         </ng-template>

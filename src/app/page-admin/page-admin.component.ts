@@ -64,7 +64,14 @@ export class PageAdminComponent implements OnInit {
       (modules, pastPapers) => ({ modules, pastPapers})
     ).subscribe((data) => {
 
-      this.pastPapers = data.pastPapers;
+      this.pastPapers = data.pastPapers.sort((p1, p2) => {
+
+        const k1 = parseInt(p1.date.replace('-', ''), 10);
+        const k2 = parseInt(p2.date.replace('-', ''), 10);
+
+        return k2 - k1;
+
+      });
 
       this.tree.data[1].children = [];
       this.pastPapers.forEach((pastPaper) => {
