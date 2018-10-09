@@ -52,7 +52,7 @@ export class CpPastPaperComponent implements OnInit {
 
     const ansGroups = [];
 
-    console.log(this.pastPaperAnswers.answers);
+    // console.log(this.pastPaperAnswers.answers);
     this.pastPaperAnswers.answers.forEach((a) => {
       ansGroups.push(this.formBuild.group({number: a.number,
                                            level: a.level,
@@ -214,7 +214,7 @@ export class CpPastPaperComponent implements OnInit {
   savePastPaperAnswers(form: FormGroup) {
     this.pastPaperAnswers.answers = form.value.answers;
     this.save.emit({type: 'SAVE', data: this.pastPaperAnswers});
-    console.log(form.value);
+    // console.log(form.value);
   }
 
   hasError(index, formControlName): string {
@@ -262,7 +262,7 @@ export function mTypeValidator (control: FormControl): {[s: string]: boolean} {
   const available_marks = fg.get('available_marks').value;
   const actual_marks = fg.get('actual_marks').value;
 
-  console.log(`${available_marks} ${actual_marks} ${control.value.code}`);
+  // console.log(`${available_marks} ${actual_marks} ${control.value.code}`);
   if (available_marks === actual_marks && control.value.code !== 'OK') {
     return {'InvalidValueEq': true};
   }

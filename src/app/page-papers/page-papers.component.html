@@ -2,7 +2,7 @@
 <p-accordion>
     <p-accordionTab [selected]="flase" *ngFor="let p of getPapers()">
         <p-header >
-          <span>{{p.date}} | {{p.paperTitle}}</span>
+          <span>{{p.date}} | {{p.paperTitle}} (Current Marks: {{getPaperScore(p.pastPaperId)}})</span>
         </p-header>
         <app-cp-past-paper [pastPaperAnswers]="p" (save)="onSave($event)"></app-cp-past-paper>
     </p-accordionTab>

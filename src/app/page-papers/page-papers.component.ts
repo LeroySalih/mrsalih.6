@@ -26,7 +26,7 @@ export class PagePapersComponent implements OnInit {
 
     this.pastPapers = {};
     this.pastPaperAnswers  = {};
- 
+
     }
 
   ngOnInit() {
@@ -81,6 +81,26 @@ export class PagePapersComponent implements OnInit {
           .values(this.pastPaperAnswers)
           .sort(
           (a, b) => ((a.date > b.date) ? 1 : -1));
+  }
+
+  getPaperScore(paperId) {
+
+    const pastPaper: PastPaperAnswers = this.pastPaperAnswers[paperId];
+
+    if (pastPaper === undefined) {
+      console.log(`PastPaperId not found: ${paperId}`);
+      // console.log(this.pastPaperAnswers);
+      return '';
+    }
+
+    let sum = 0;
+    console.log(pastPaper);
+    pastPaper.answers.forEach((answer) => {
+      // console.log (answer.marks || 0);
+      sum += answer.actual_marks;
+    });
+
+    return sum;
   }
 
   onSave(event) {

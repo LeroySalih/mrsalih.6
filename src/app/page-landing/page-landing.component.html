@@ -24,20 +24,17 @@
             </mat-card-content>
         </mat-card>
         
-        
+        <!--
         <app-cp-login 
         style="max-width: 300; margin: 10px;"
             class="loginForm" 
             [@frmLoginTrigger]="signedInState"></app-cp-login>
-
+        -->
         <div class="userStats" [@userStatsTrigger]="signedInState">
            <mat-card *ngIf="userProfile">
                <mat-card-title>Welcome {{userProfile.name}}</mat-card-title>
                <mat-card-content>
-                   <div>You have completed <a href="#">5 Modules</a>.</div>
-                   <div>You have been assigned <a href="#">3 Modules</a>.</div>
-                   <div>You have gained <a href="#">350</a> xps.</div>
-                   <div>You are ranked <a href="#">3rd</a> in your school.</div>
+                   <div>Test data goes here.</div>
                </mat-card-content>
            </mat-card> 
         </div>
