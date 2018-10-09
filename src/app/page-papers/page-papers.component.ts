@@ -88,13 +88,12 @@ export class PagePapersComponent implements OnInit {
     const pastPaper: PastPaperAnswers = this.pastPaperAnswers[paperId];
 
     if (pastPaper === undefined) {
-      console.log(`PastPaperId not found: ${paperId}`);
+      // console.log(`PastPaperId not found: ${paperId}`);
       // console.log(this.pastPaperAnswers);
       return '';
     }
 
     let sum = 0;
-    console.log(pastPaper);
     pastPaper.answers.forEach((answer) => {
       // console.log (answer.marks || 0);
       sum += answer.actual_marks;
