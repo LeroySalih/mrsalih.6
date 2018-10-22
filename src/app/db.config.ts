@@ -21,7 +21,7 @@ export class DbConfig {
     public static ORDER_FIELD = 'order';
     public static ACS = 'acs';
 
-    public static BLOG_BASE_URL = 'http://localhost:4200/assets/pages/';
+    public static BLOG_BASE_URL = '/assets/pages/';
     public static VIDEO_URL_BASE = 'https://www.dropbox.com/s/1x1dgnx8xtpq7yh/';
 
 }
