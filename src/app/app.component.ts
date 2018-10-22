@@ -12,6 +12,7 @@ import { fadeAnimation } from './animations';
 import { LoginEvent } from './cp-login-button/cp-login-button.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.compon
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'app';
+  items: MenuItem[];
 
   userProfile: UserProfile;
   val = 2;
@@ -31,6 +33,70 @@ export class AppComponent implements OnInit, OnDestroy {
              private messageService: MessageService,
              private matDialog: MatDialog,
              private router: Router) {
+
+              this.items = [
+                {
+                  label: 'Modules',
+                  icon: 'pi pi-face',
+                  items: [[
+                    {
+                      label: 'Computing',
+                      items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                    },
+                    {
+                      label: 'Maths',
+                      items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                    }
+                  ]]
+                },
+              {
+                label: 'Blog',
+                icon: 'pi pi-face',
+                items: [[
+                  {
+                    label: 'Computing',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  },
+                  {
+                    label: 'Maths',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  }
+
+                ]]
+              },
+
+              {
+                label: 'Past Papers',
+                icon: 'pi pi-face',
+                items: [[
+                  {
+                    label: 'Computing',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  },
+                  {
+                    label: 'Maths',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  }
+
+                ]]
+              },
+
+              {
+                label: 'Admin',
+                icon: 'pi pi-face',
+                items: [[
+                  {
+                    label: 'Computing',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  },
+                  {
+                    label: 'Maths',
+                    items: [{label: 'test 1A.1'}, {label: 'test 1A.2'}]
+                  }
+                ]]
+              }
+
+            ];
 
   }
 

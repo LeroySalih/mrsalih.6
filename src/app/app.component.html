@@ -8,9 +8,17 @@
                         <img   class="siteLogo" src="/assets/images/mrsalih_logo.png">
                 </a>
 
+                
+                <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Item 1</button>
+                        <button mat-menu-item>Item 2</button>
+                </mat-menu>
+
                 <a *ngIf="userProfile" class="siteMenuItem" [routerLink]="'modules'"   [routerLinkActive]="'active'">Modules</a>
                 <a *ngIf="userProfile" class="siteMenuItem" [routerLink]="'papers'"   [routerLinkActive]="'active'">Past Papers</a>
+                <a *ngIf="userProfile" class="siteMenuItem" [routerLink]="'posts'"   [routerLinkActive]="'active'">Posts</a>
                 <a *ngIf="isAdmin()" class="siteMenuItem" [routerLink]="'admin'"   [routerLinkActive]="'active'">Admin</a>
+                
                 
                 <app-cp-login-button 
                         class="userName"

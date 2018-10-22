@@ -1,0 +1,103 @@
+
+
+    <div class="blog-post">
+      <h2>Background.</h2>
+      <div>
+        At this point, we are comfortable with the idea that we can store <b>data</b> in <b>variables</b>.  We should also be comfortable with the idea that a variable has: <ul><li>A Name</li><li>A Data Type</li><li>A Value</li></ul> 
+      </div>
+      
+      <div
+      >So, lets imagine that we want to store the names of pupils in a class. Our first approach may be to store each pupil name in a variable.
+
+      </div>
+      
+      <div>
+          <iframe src="https://trinket.io/embed/python3/10d1f92f11?runOption=run" width="100%" height="200" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+      
+      <div>
+        However, this is going to lead us to a number of questions, such as:
+        <ul>
+          <li>How many pupils are there in the class?</li>  
+          <li>How many variables do I need to declare?</li>
+          <li>What happens if pupils join or leave the class?</li>
+        </ul>
+      </div>
+      
+      <div>
+        So, what we need is a flexible way to store pupil names.  A way that will allow us to add or remove names if pupils join or leave the class.  This is what <b>lists</b> provide. 
+      </div>
+
+      <h2>Lists</h2>
+      <div>A <b>Python List</b> allows us to create a list of variables.  We can then think of this list as either a single variable (with a data type of list) or as a collection of variables (with assorted data types).</div>
+      <div>Just like any variable, we need to declare a list before we use it.</div>
+      <div>Lists can be declared in the following syntaxt:</div>
+
+      <div>
+          <iframe src="https://trinket.io/embed/python3/e56f4c0a93" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+      <h2>List Indexes</h2>
+      <div>
+        Once we have declared our list, we can either treat the list as a single variable, or access individual items within the last.
+        To access a single item, we use the [ ] operator.  Between the [ ], we place the position of the item we want to access.
+
+        It is important to note that lists start counting at 0. The first item is [0].
+
+        We can use [ ] to either read or write to the list.
+      </div>
+      <div>
+      <iframe src="https://trinket.io/embed/python3/ea98d74208" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+      <div>
+        REPL Task:
+        <a href="">Complete Repl Task 1. Lists - Declare and Index.</a>
+      </div>
+      <h2>Adding Items.</h2>
+      <div>We have seen that we are able to initialise a list using code similar to:
+
+        <p><code>myList = ['Albert', 'Brian', 'Charles']</code></p>
+
+      We can also add or remove items to lists while the program is running.  We can use the <code>append()</code> function to add an item to the end of a list.  This is often used in collecting data from the user.
+      </div>
+      <div>
+          <iframe src="https://trinket.io/embed/python3/45ae2c95e7" width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+
+
+      <div>The <code>append()</code> function will place the new item at the end of the list.  We can also use the <code>insert()</code> function to place a new item at any position in the list.</div>
+
+      <iframe src="https://trinket.io/embed/python3/6315c445e3" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+      <h2>Removing Items</h2>
+      <div>
+        When we need to remove an item from the list, we have 4 options.  
+        <ul>
+          <li><code>pop()</code> We can call pop() to remove the last item of the list.</li>
+          <li><code>remove()</code> We can call remove() remove a specific item from the list.</li>
+          <li><code>del</code> We can use del to remove a specific position from the list</li>
+          <li><code>clear</code> Will remove all the items from the list.</li>
+        </ul>
+      </div>
+
+      <div>
+          <iframe src="https://trinket.io/embed/python3/74e4c8e94f" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+
+
+      <h2>List Functions</h2>
+      <div>
+        Being able to store  list of variables is the start of what makes lists usful.  However, what really gives them their power are their <b>Functions</b>
+      </div>
+      <div>As you know, a function is a small piece of code that can be executed many times and often gives us a reult.</div>
+      <div>There are a number of <b>List Functions</b> that we can use in our code to make our life far easier.</div>
+      <div>
+        Some examples of these functions are: <ul>
+          <li>sort() - </li>
+          <li>len () - This will give us the number of items in a list.</li>
+          <li>count() - </li>
+
+        </ul>
+      </div>
+      <div>
+          <iframe src="https://trinket.io/embed/python3/61ddc7bba5" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>

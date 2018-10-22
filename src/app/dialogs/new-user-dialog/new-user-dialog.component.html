@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Login</h2>
+<h2 mat-dialog-title>New User</h2>
 <mat-dialog-content [formGroup]="form" class="formContent">
   <div>
   <mat-form-field style="width: 100%">
@@ -15,10 +15,8 @@
     {{message}}
   </div>
 
-  
+  <div class="actions">
+      <button mat-raised-button (click)="close()">Close</button>
+      <button mat-raised-button color="primary" (click)="save()">Login</button>
+  </div>
 </mat-dialog-content> 
-
-<div style="text-align: right; padding: 10px">
-    <button style="margin-right:5px;" pButton (click)="close()" label="Close"></button>
-    <button pButton color="primary" label="Login" (click)="save()"></button>
-</div>

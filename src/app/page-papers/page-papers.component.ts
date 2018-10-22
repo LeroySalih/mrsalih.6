@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { UserProfile } from '../models/user-profile';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { countByClassification, sumByClassification } from '../library';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-papers',
@@ -21,7 +22,8 @@ export class PagePapersComponent implements OnInit {
 
   constructor(private pastPaperService: PastPaperService,
               private userService: UserService,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private router: Router
             ) {
 
     this.pastPapers = {};
@@ -105,6 +107,10 @@ export class PagePapersComponent implements OnInit {
   onSave(event) {
     const pastPaperAnswers: PastPaperAnswers = event.data;
     this.pastPaperService.savePastPaperAnswers(pastPaperAnswers);
+  }
+
+  gotoPastPaperAnswers(id) {
+      this.router.navigate(['/paper', id]);
   }
 
 }

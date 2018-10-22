@@ -1,0 +1,38 @@
+  page-paper works! with paperId  {{pastPaperId}}
+  <div *ngIf="pastPaperAnswers">
+    <!--
+    <app-cp-past-paper [pastPaperAnswers]="pastPaperAnswers" (save)="onSave($event)"></app-cp-past-paper>
+    -->
+    <p-table [value]="pastPaperAnswers.answers" (onEditComplete)="tableEdited($event)">
+      
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 50px;">Q</th>
+              <th style="width: 150px;">Type</th>
+              <th style="width: 100px;">Level</th>
+              <th style="width: 100px;">Available Marks</th>
+              <th style="width: 100px;">Actual Marks</th>
+              <th style="width: 100px;">Error</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData>
+          <tr>
+              <td>{{rowData.number}}</td>
+              <td>{{rowData.type}}</td>
+              <td>{{rowData.level}}</td>
+              <td>{{rowData.available_marks}}</td>
+              <td pEditableColumn [pEditableColumn]="rowData" [pEditableColumnField]="'actual_marks'">
+                  <p-cellEditor>
+                      <ng-template pTemplate="input">
+                          <input type="number" [(ngModel)]="rowData.actual_marks">
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                          {{rowData.actual_marks}}
+                      </ng-template>
+                  </p-cellEditor>
+              </td>
+              <td>Mistake Type</td>
+          </tr>
+      </ng-template>
+  </p-table>
+  </div>

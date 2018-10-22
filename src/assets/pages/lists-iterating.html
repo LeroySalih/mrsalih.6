@@ -1,0 +1,43 @@
+
+    <div>
+      <h2>Background.</h2>
+      <div>
+        It is often required to examine each item of an array.  For instance, to find a name in a list of pupils, or generate a sum of all exam scores.  Looping through all the items of a list is known as <b>Iteration</b>.
+      </div>
+      <div>
+        There are many mechanisms we can use yto iterate a list, in this session, we will discuss: 
+        <ul>
+          <li>Using <code>in</code> operator</li>
+          <li>Using [] and for loop</li>
+          <li>Using [] and a while loop</li>
+        </ul>
+      </div>
+      <h2>Using <code>in</code> operator</h2>
+      <div>
+        we have already used the <code>in</code> opeator, when we initialise our <code>for</code> loops.  We often see code such as <p><code>for index <b>in</b> range(0, 10, 1):</code></p>
+      </div>
+
+      <div>
+        If we wish to iterate through our loops, we can use the same approach (as in example 1 below).
+      </div>
+
+      <div>
+        However, there is a gotcha to be aware of!  When we access items usign the <code>in</code> operator, we are not accessing the actual item, but a copy of the item.  This means that if you make changes to the item, they are not reflecting in the original list.  To overcome this issue, you can use the enumerate command (as in exmaple 2 below). 
+      </div>
+
+      <div>
+          <iframe src="https://trinket.io/embed/python3/7ebfb6bc2a" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+
+      <h2>Using [] and for loop</h2>
+      <div>We already know that we can access items of the list using the <code>[]</code> operators.  We can combine this functionality with a standard <code>for</code> loop to iterate the list (example 1). </div>
+      <iframe src="https://trinket.io/embed/python3/675d951df6" width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    
+      <h2>Using [] and a while loop</h2>
+      <div>
+        Using a <code>while</code> loop rather than a <code>for</code> loop allows us more control over how to iterate the loop, but also comes with the additonal code required to initialise, update and exit the loop.  A simple example of using a <code>while</code> loop and and <code>if</code> statement to exit the loop early.
+      </div>
+      <div>
+          <iframe src="https://trinket.io/embed/python3/cf9c36d94e" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+      </div>
+  </div>

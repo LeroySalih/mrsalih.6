@@ -93,6 +93,8 @@ import { ConfirmationService} from 'primeng/api';
 import { PageAdminModulesComponent } from './page-admin-modules/page-admin-modules.component';
 import { PageAdminModuleComponent } from './page-admin-module/page-admin-module.component';
 import { PageAdminLessonComponent } from './page-admin-lesson/page-admin-lesson.component';
+import { NewUserDialogComponent } from './dialogs/new-user-dialog/new-user-dialog.component';
+import { PagePaperComponent } from './page-paper/page-paper.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -105,6 +107,7 @@ const appRoutes: Routes = [
   {path: 'modules/:id', component: PageModuleComponent},
   {path: 'lesson/:id', component: PageLessonComponent},
   {path: 'papers', component: PagePapersComponent, canActivate: [CanAccessContentActivate]},
+  {path: 'paper/:id', component: PagePaperComponent, canActivate: [CanAccessContentActivate]},
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: 'posts', component: PageBlogHomeComponent},
@@ -180,7 +183,9 @@ const appRoutes: Routes = [
   PageAdminPaperComponent,
   PageAdminModulesComponent,
   PageAdminModuleComponent,
-  PageAdminLessonComponent
+  PageAdminLessonComponent,
+  NewUserDialogComponent,
+  PagePaperComponent
   ],
   imports: [
     BrowserModule,
@@ -228,6 +233,7 @@ const appRoutes: Routes = [
     LessonDialogComponent,
     LODialogComponent,
     LoginDialogComponent,
+    NewUserDialogComponent,
     SectionEditDialogComponent
   ]
 })

@@ -5,6 +5,8 @@
           <span style="float: left;">{{p.date}} | {{p.paperTitle}} </span>
           <span style="float: right;">(Current Marks: {{getPaperScore(p.pastPaperId)}})</span>
         </p-header>
+        <a [routerLink]="['/paper', p.id]">Mark PastPaper</a>
+        <button pButton (click)="gotoPastPaperAnswers(p.id)">Submit Marks</button>
         <app-cp-past-paper [pastPaperAnswers]="p" (save)="onSave($event)"></app-cp-past-paper>
     </p-accordionTab>
     

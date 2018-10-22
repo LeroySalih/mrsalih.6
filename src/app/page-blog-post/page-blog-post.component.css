@@ -1,6 +1,6 @@
 .wrapper {
   display : grid;
-  grid-template-columns: 150px auto;
+  grid-template-columns: auto;
   font-family: 'Roboto', Verdana;
 }
 

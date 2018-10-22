@@ -52,6 +52,11 @@ export class PastPaperService {
       .valueChanges();
   }
 
+  getPastPaperAnswersById(pastPaperId: string): Observable<PastPaperAnswers> {
+    console.log(`Looking for pastpaper id: ${pastPaperId}`);
+    return this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${pastPaperId}`).valueChanges();
+  }
+
   createAnswersFromTemplate(userId: string, pastPaper: PastPaper ) {
 
     const pastPaperAnswer: PastPaperAnswers = pastPaper as PastPaperAnswers;

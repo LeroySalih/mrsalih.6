@@ -55,27 +55,27 @@ export class UserService {
 
 
   createUser (registrationForm: any) {
-    firebase.auth().createUserWithEmailAndPassword(registrationForm.userId, registrationForm.password)
-    .then((result) => {
-   //   console.log(`[AppComponent::OnSubmit] New User Created ${result['uid']}`);
-      const newUser = UserProfile.LoadUserFromRegisterForm(registrationForm);
-      newUser.authenticationId = result['uid'];
-      const userDataId = uuid();
-   //   console.log(`[UserService::createUser] Adding User profile`);
-      this.db.collection(`${DbConfig.USER_DATA}/${userDataId}`).add({
-        authenticationId: newUser.authenticationId,
-        name: newUser.name,
-        id: userDataId
-      })
-        .then(() => {console.log('New User Profile Added'); } );
-    })
-    .catch(function(error) {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
 
- //     console.log(`Error Occured: ${errorCode} with ${errorMessage}`);
-      // ...
+    return new Promise((resolve, reject) => {
+
+      firebase.auth().createUserWithEmailAndPassword(registrationForm.userId, registrationForm.password)
+      .then((result) => {
+        const userDataId = uuid();
+        this.db.collection(`${DbConfig.USER_DATA}/${userDataId}`).add({
+          authenticationId: result['uid'],
+          name: registrationForm.name,
+          id: userDataId
+        })
+        .then(() => {console.log('New User Profile Added'); resolve(); } )
+        .catch((err) => {console.error(err.message); reject(err); });
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        reject(error);
+      });
+
     });
   }
 
