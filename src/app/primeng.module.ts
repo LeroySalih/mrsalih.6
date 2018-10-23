@@ -23,17 +23,17 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {CarouselModule} from 'primeng/carousel';
 import {MegaMenuModule} from 'primeng/megamenu';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
-
     imports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
       CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
-      TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule, MegaMenuModule
+      TabViewModule, TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule, MegaMenuModule
     ],
     exports: [RatingModule, ButtonModule, TriStateCheckboxModule, GrowlModule,
       InplaceModule, EditorModule, InputTextModule, DialogModule, SplitButtonModule, CheckboxModule,
     CardModule, DragDropModule, DropdownModule, RadioButtonModule, TreeModule,
-    TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule, MegaMenuModule ],
+    TabViewModule, TreeTableModule, InputSwitchModule, TableModule, AccordionModule, ConfirmDialogModule, CarouselModule, MegaMenuModule ],
   })
   export class PrimeNGModule { }

@@ -3,6 +3,12 @@
     <div class="pageTitle">
       Posts
     </div>  
+    <p-tabView (onChange)="onNewTab($event)">
+        <p-tabPanel [header]="header" *ngFor="let header of tabHeaders; let i = index" [selected]="i == 0">
+            Content
+        </p-tabPanel>
+        
+    </p-tabView>
     <div *ngIf="firstBlogPost">
       <div class="firstBlogGrid">
           <div class="firstBlogImage"></div>
@@ -17,7 +23,7 @@
     <div *ngIf="remainingBlogPosts" class="card-container">
       <article class="card post" *ngFor="let bp of this.remainingBlogPosts">
         <div class="card-info post">
-            <div class="card-tag post">Computing</div>
+            <div class="card-tag post">{{bp.subject}}</div>
             <div class="card-date post">{{convertDate(bp.date)}}</div>    
         </div>
         <header class="card-title post">

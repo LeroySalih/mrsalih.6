@@ -10,18 +10,53 @@ import * as moment from 'moment';
 })
 export class PageBlogHomeComponent implements OnInit {
 
+  posts: BlogPost[];
   firstBlogPost: BlogPost;
   remainingBlogPosts: BlogPost[];
+
+  tabHeaders = [];
+  currentTabLabel = '';
 
   constructor(private blogService: BlogService) {
 
   }
 
+  getSubjects(posts): string[] {
+    const subjects = {};
+    posts.forEach(post => {
+      subjects[post.subject] = true;
+    });
+
+    return Object.keys(subjects);
+  }
+
+   filterPosts(posts: BlogPost[], filter: string): BlogPost[] {
+     if (filter === '') {
+      return posts;
+     }
+
+     return posts.filter((a) => a.subject === filter);
+   }
+
+   buildPosts() {
+
+    const posts = this.filterPosts(this.posts, this.currentTabLabel);
+
+    this.firstBlogPost = posts[0];
+    this.remainingBlogPosts = posts.splice(1, posts.length);
+
+   }
 
   ngOnInit() {
+    this.tabHeaders = ['Computing', 'Maths'];
     this.blogService.getBlogs().subscribe((posts) => {
-      this.firstBlogPost = posts[0];
-      this.remainingBlogPosts = posts.splice(1, posts.length);
+
+      this.posts = posts;
+      this.tabHeaders = this.getSubjects(this.posts);
+      this.currentTabLabel = this.tabHeaders[0];
+
+      this.buildPosts();
+
     });
 
   }
@@ -40,6 +75,11 @@ export class PageBlogHomeComponent implements OnInit {
     } else {
         return quizDate.fromNow();
     }
+  }
+
+  onNewTab(event)  {
+    this.currentTabLabel = this.tabHeaders[event.index];
+    this.buildPosts();
   }
 
 }
