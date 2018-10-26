@@ -1,0 +1,91 @@
+[debug] [2018-10-26T10:21:57.615Z] ----------------------------------------------------------------------
+[debug] [2018-10-26T10:21:57.617Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-10-26T10:21:57.617Z] CLI Version:   3.18.4
+[debug] [2018-10-26T10:21:57.617Z] Platform:      darwin
+[debug] [2018-10-26T10:21:57.617Z] Node Version:  v8.9.3
+[debug] [2018-10-26T10:21:57.618Z] Time:          Fri Oct 26 2018 13:21:57 GMT+0300 (+03)
+[debug] [2018-10-26T10:21:57.618Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-26T10:21:57.632Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-26T10:21:57.632Z] > authorizing via signed-in user
+[debug] [2018-10-26T10:21:57.635Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-26T10:21:57.635Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/XJXnF6FPKXUl2TcotfOXrbDsuGCYmGB3voRCXzZyxHw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Oct 26 2018 13:21:57 GMT+0300 (+03)
+[debug] [2018-10-26T10:21:58.204Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T10:21:58.220Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insight-e1d4e  
+  
+ Fri Oct 26 2018 13:21:58 GMT+0300 (+03)
+[debug] [2018-10-26T10:21:59.366Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T10:21:59.367Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insight-e1d4e/tokens  
+  
+ Fri Oct 26 2018 13:21:59 GMT+0300 (+03)
+[debug] [2018-10-26T10:22:00.489Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'insight-e1d4e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-10-26T10:22:02.544Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/insight-e1d4e/uploads/-LPjtHIHQWmADX7YND7A?fileCount=112&message=  
+  
+ Fri Oct 26 2018 13:22:02 GMT+0300 (+03)
+[debug] [2018-10-26T10:22:11.649Z] <<< HTTP RESPONSE 410
+[debug] [2018-10-26T10:22:11.649Z] <<< HTTP RESPONSE BODY undefined
+[debug] [2018-10-26T10:22:11.650Z] TypeError: Cannot read property 'error' of undefined
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:10:13)
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:47:25)
+    at Request.self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at emitTwo (events.js:126:13)
+    at Request.emit (events.js:214:7)
+    at Request.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1163:10)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1085:12)
+    at Object.onceWrapper (events.js:313:30)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-10-26T10:39:23.548Z] ----------------------------------------------------------------------
+[debug] [2018-10-26T10:39:23.549Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-10-26T10:39:23.549Z] CLI Version:   3.18.4
+[debug] [2018-10-26T10:39:23.549Z] Platform:      darwin
+[debug] [2018-10-26T10:39:23.549Z] Node Version:  v8.9.3
+[debug] [2018-10-26T10:39:23.550Z] Time:          Fri Oct 26 2018 13:39:23 GMT+0300 (+03)
+[debug] [2018-10-26T10:39:23.550Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-26T10:39:23.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-26T10:39:23.561Z] > authorizing via signed-in user
+[debug] [2018-10-26T10:39:23.563Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insight-e1d4e  
+  
+ Fri Oct 26 2018 13:39:23 GMT+0300 (+03)
+[debug] [2018-10-26T10:39:24.824Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-26T10:39:24.825Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insight-e1d4e/tokens  
+  
+ Fri Oct 26 2018 13:39:24 GMT+0300 (+03)
+[debug] [2018-10-26T10:39:25.554Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'insight-e1d4e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-10-26T10:39:27.663Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/insight-e1d4e/uploads/-LPjxGS7Cakdxs2mW4Ki?fileCount=112&message=  
+  
+ Fri Oct 26 2018 13:39:27 GMT+0300 (+03)
+[debug] [2018-10-26T10:39:48.154Z] <<< HTTP RESPONSE 410
+[debug] [2018-10-26T10:39:48.154Z] <<< HTTP RESPONSE BODY undefined
+[debug] [2018-10-26T10:39:48.155Z] TypeError: Cannot read property 'error' of undefined
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:10:13)
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:47:25)
+    at Request.self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at emitTwo (events.js:126:13)
+    at Request.emit (events.js:214:7)
+    at Request.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1163:10)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1085:12)
+    at Object.onceWrapper (events.js:313:30)
+[error] 
+[error] Error: An unexpected error has occurred.
