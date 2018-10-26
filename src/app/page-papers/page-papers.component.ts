@@ -7,6 +7,7 @@ import { UserProfile } from '../models/user-profile';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { countByClassification, sumByClassification } from '../library';
 import { Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-page-papers',
@@ -19,6 +20,8 @@ export class PagePapersComponent implements OnInit {
   pastPaperAnswers: {[id: string]: PastPaperAnswers};
 
   userProfile: UserProfile;
+  pastPaperDropDownItems: SelectItem[];
+  gotoPaperId = '';
 
   constructor(private pastPaperService: PastPaperService,
               private userService: UserService,
@@ -28,6 +31,7 @@ export class PagePapersComponent implements OnInit {
 
     this.pastPapers = {};
     this.pastPaperAnswers  = {};
+    this.pastPaperDropDownItems = [];
 
     }
 
@@ -59,16 +63,21 @@ export class PagePapersComponent implements OnInit {
           // Create a dictionary of past papers.
           data.templates.forEach((p) => {
 
+            this.pastPaperDropDownItems.push({label: `${p.date}-${p.paperTitle}`, value: p.pastPaperId});
+            this.pastPaperDropDownItems = this.pastPaperDropDownItems.sort ((a, b) => {
+               return  a.label > b.label ? 1 : -1;
+            });
+
             // add to dictionary
-            this.pastPapers[p.pastPaperId] = p;
+            // this.pastPapers[p.pastPaperId] = p;
 
             // Check if Past Paper Answers exist
-            const paperAnswers = this.pastPaperAnswers[p.pastPaperId];
+            // const paperAnswers = this.pastPaperAnswers[p.pastPaperId];
 
             // if not, create it.  This will cause a refresh of the data through the subscription.
-            if (paperAnswers === undefined) {
-              this.pastPaperService.createAnswersFromTemplate(userProfile.authenticationId, p);
-            }
+            // if (paperAnswers === undefined) {
+            //  this.pastPaperService.createAnswersFromTemplate(userProfile.authenticationId, p);
+            // }
           });
       });
 
@@ -109,8 +118,10 @@ export class PagePapersComponent implements OnInit {
     this.pastPaperService.savePastPaperAnswers(pastPaperAnswers);
   }
 
-  gotoPastPaperAnswers(id) {
-      this.router.navigate(['/paper', id]);
+  gotoPastPaperAnswers() {
+    const id = this.gotoPaperId;
+    console.log(id);
+    this.router.navigate(['/paper', id]);
   }
 
 }

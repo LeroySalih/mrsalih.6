@@ -1,0 +1,3 @@
+<div *ngFor="let paper of pastPaperAnswers">
+  <div *ngIf="getScore(paper) > 0">Found Paper {{paper.date}} {{paper.paperTitle}} {{getScore(paper)}} {{getUserName(paper)}}</div>
+</div>

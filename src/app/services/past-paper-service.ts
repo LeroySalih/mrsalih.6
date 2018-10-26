@@ -22,15 +22,14 @@ export class PastPaperService {
     return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperId}`).valueChanges();
   }
 
-  savePastPaperAnswers (answers: PastPaperAnswers) {
+  savePastPaperAnswers (answers: PastPaperAnswers): Promise<void> {
 
     if (answers.id === undefined) {
       answers.id = uuid();
     }
 
-    this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${answers.id}`)
+    return this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${answers.id}`)
       .set(answers)
-      .then(() => {console.log('Answers Created'); })
       .catch((err) => {console.error(err); });
 
   }
@@ -57,20 +56,20 @@ export class PastPaperService {
     return this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${pastPaperId}`).valueChanges();
   }
 
-  createAnswersFromTemplate(userId: string, pastPaper: PastPaper ) {
+  createAnswersFromTemplate(userId: string, pastPaperId: string ) {
 
-    const pastPaperAnswer: PastPaperAnswers = pastPaper as PastPaperAnswers;
+    this.afs.firestore.doc(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperId}`).get().then((doc) => {
+      const ppt: PastPaperAnswers = doc.data() as PastPaperAnswers;
+      ppt.userId = userId;
+      ppt.created = Math.ceil( Date.now());
+      ppt.answers = ppt.questions.map((q) => {
+        q['actual_marks'] = 0;
+        q['mistake_type'] = '';
+        return q as PastPaperAnswer;
+      });
 
-    pastPaperAnswer.userId = userId;
-    pastPaperAnswer.created = Math.ceil( Date.now());
-
-    pastPaperAnswer.answers = pastPaper.questions.map ((q) => {
-      q['actual_marks'] = 0;
-      q['mistake_type'] = '';
-      return q as PastPaperAnswer;
+      return this.savePastPaperAnswers(ppt);
     });
-
-    this.savePastPaperAnswers(pastPaperAnswer);
 
   }
 

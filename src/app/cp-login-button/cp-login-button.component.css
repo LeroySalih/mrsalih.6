@@ -1,3 +1,28 @@
-.override .ui-button-text {
-  background-color: aquamarine;
+
+:host >>>  .ui-button {
+  border: solid 1px black;
+}
+
+:host >>>  .ui-button-text  {
+  background-color: black;
+ color:red;
+ font-size: small;
+}
+
+:host >>> .ui-button-icon-left {
+background-color: black;
+color:aquamarine;
+font-size: small;
+}
+
+:host >>> .ui-menuitem-link:hover {
+background-color: black;
+color:aquamarine;
+font-size: small;
+}
+
+:host >>> .ui-menu {
+background-color: black;
+color:aquamarine;
+font-size: small;
 }

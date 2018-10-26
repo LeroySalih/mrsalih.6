@@ -61,26 +61,4 @@
     overflow-y: auto;
   }
 
-  :host >>> .ui-button-text {
-      background-color: black;
-     color:aquamarine;
-     font-size: small;
-  }
-
-  :host >>> .ui-button-icon-left {
-    background-color: black;
-   color:aquamarine;
-   font-size: small;
-}
-
-:host >>> .ui-menuitem-link {
-  background-color: black;
- color:aquamarine;
- font-size: small;
-}
-
-:host >>> .ui-menu {
-  background-color: black;
- color:aquamarine;
- font-size: small;
-}
+ 

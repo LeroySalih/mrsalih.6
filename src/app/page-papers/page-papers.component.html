@@ -1,4 +1,6 @@
 <h1>Past Papers</h1>
+<p-dropdown [(ngModel)]="gotoPaperId" [options]="pastPaperDropDownItems"></p-dropdown>
+<button pButton (click)="gotoPastPaperAnswers()" label="Save Marks"></button>
 <p-accordion>
     <p-accordionTab [selected]="flase" *ngFor="let p of getPapers()">
         <p-header >

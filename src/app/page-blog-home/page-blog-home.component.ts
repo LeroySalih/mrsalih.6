@@ -15,7 +15,9 @@ export class PageBlogHomeComponent implements OnInit {
   remainingBlogPosts: BlogPost[];
 
   tabHeaders = [];
+  chapters = [];
   currentTabLabel = '';
+  currentChapterLabel = '';
 
   constructor(private blogService: BlogService) {
 
@@ -30,20 +32,30 @@ export class PageBlogHomeComponent implements OnInit {
     return Object.keys(subjects);
   }
 
-   filterPosts(posts: BlogPost[], filter: string): BlogPost[] {
-     if (filter === '') {
-      return posts;
-     }
+  getChapters(posts): string[] {
+    const chapters = {};
 
-     return posts.filter((a) => a.subject === filter);
+    posts.forEach(post => {
+        chapters[post.chapter] = true;
+    });
+
+    return Object.keys(chapters);
+  }
+
+   filterPosts(posts: BlogPost[], tabFilter: string, chapterFilter: string): BlogPost[] {
+    console.log(tabFilter, chapterFilter, posts);
+     return posts.filter((a) => (a.subject === tabFilter || tabFilter === '') &&
+                                (a.chapter === this.currentChapterLabel || this.currentChapterLabel === ''));
    }
 
    buildPosts() {
 
-    const posts = this.filterPosts(this.posts, this.currentTabLabel);
+    const posts = this.filterPosts(this.posts, this.currentTabLabel, this.currentChapterLabel);
 
+    this.chapters = this.getChapters(posts);
+    // console.log(this.chapters);
     this.firstBlogPost = posts[0];
-    this.remainingBlogPosts = posts.splice(1, posts.length);
+    this.remainingBlogPosts = posts.splice(1, this.posts.length);
 
    }
 
@@ -52,6 +64,7 @@ export class PageBlogHomeComponent implements OnInit {
     this.blogService.getBlogs().subscribe((posts) => {
 
       this.posts = posts;
+      this.chapters = this.getChapters(this.posts);
       this.tabHeaders = this.getSubjects(this.posts);
       this.currentTabLabel = this.tabHeaders[0];
 
@@ -79,6 +92,13 @@ export class PageBlogHomeComponent implements OnInit {
 
   onNewTab(event)  {
     this.currentTabLabel = this.tabHeaders[event.index];
+    this.currentChapterLabel = '';
+    this.buildPosts();
+  }
+
+  onChapterSelect(data) {
+    console.log(data);
+    this.currentChapterLabel = data;
     this.buildPosts();
   }
 

@@ -32,7 +32,7 @@ export class PageBlogPostComponent implements OnInit {
 
       this.blogId = data['id'];
 
-      this.blog = 'This is my <b>blog</b>....';
+      this.blog = 'Loading Blog.';
 
       this.http.get(`${DbConfig.BLOG_BASE_URL}${this.blogId}.html`, {responseType: 'text'})
           .subscribe(

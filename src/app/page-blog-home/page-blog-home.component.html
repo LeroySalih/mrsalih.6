@@ -5,7 +5,14 @@
     </div>  
     <p-tabView (onChange)="onNewTab($event)">
         <p-tabPanel [header]="header" *ngFor="let header of tabHeaders; let i = index" [selected]="i == 0">
-            Content
+      
+            <button *ngFor="let chapter of chapters" 
+                    pButton 
+                    type="button" 
+                    icon="pi pi" iconPos="right"
+                    label="{{chapter}}"
+                    (click)="onChapterSelect(chapter)"
+                    class="ui-button-rounded ui-button-secondary"></button>
         </p-tabPanel>
         
     </p-tabView>
@@ -35,7 +42,7 @@
           </figure>
         </a>
         <main class="card-desc post">{{bp.desc}}</main>
-        
+        <div>{{bp.chapter}}</div>
       </article>
     
     </div>

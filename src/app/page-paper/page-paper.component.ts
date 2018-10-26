@@ -4,6 +4,8 @@ import { PastPaperService } from '../services/past-paper-service';
 import { PastPaperAnswers } from '../models/past-paper';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { isNumberValidator, minValidator, maxValidator} from '../validators';
+import { UserService } from '../services/user.service';
+import { UserProfile } from '../models/user-profile';
 
 interface MistakeType {
   name: string;
@@ -21,9 +23,12 @@ export class PagePaperComponent implements OnInit {
   pastPaperAnswers: PastPaperAnswers;
   mistakeTypes: MistakeType[];
   answersForm: FormGroup;
+  userData: UserProfile;
 
   constructor(private activeRoute: ActivatedRoute,
               private formBuild: FormBuilder,
+
+              private userService: UserService,
               private pastPaperService: PastPaperService) {
 
     this.mistakeTypes = [
@@ -31,6 +36,11 @@ export class PagePaperComponent implements OnInit {
       {name: 'All Correct', code: 'OK'},
       {name: 'Silly', code: 'SI'},
       {name: 'Serious', code: 'SE'}];
+
+
+      this.userService.currentUser$.subscribe((currentUser) => {
+        this.userData = currentUser;
+      });
 
   }
 
@@ -41,10 +51,21 @@ export class PagePaperComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // Always create a new mark scheme.
+    // Only Admin remove a mark scheme.
+ 
     this.activeRoute.params.subscribe((params: ParamMap) => {
       this.pastPaperId = params['id'];
 
       this.pastPaperService.getPastPaperAnswersById(this.pastPaperId).subscribe((pastPaperAnswers) => {
+
+        if (pastPaperAnswers === undefined) {
+          this.pastPaperService.createAnswersFromTemplate(
+            this.userData.authenticationId,
+            this.pastPaperId)
+        }
+
         this.pastPaperAnswers = pastPaperAnswers;
 
       });

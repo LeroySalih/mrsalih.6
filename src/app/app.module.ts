@@ -95,6 +95,7 @@ import { PageAdminModuleComponent } from './page-admin-module/page-admin-module.
 import { PageAdminLessonComponent } from './page-admin-lesson/page-admin-lesson.component';
 import { NewUserDialogComponent } from './dialogs/new-user-dialog/new-user-dialog.component';
 import { PagePaperComponent } from './page-paper/page-paper.component';
+import { PagePupilTrackingComponent } from './page-pupil-tracking/page-pupil-tracking.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -111,6 +112,7 @@ const appRoutes: Routes = [
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: 'posts', component: PageBlogHomeComponent},
+  {path: 'tracking/pupil', component: PagePupilTrackingComponent},
   {path: 'posts/:id', component: PageBlogPostComponent},
   {path: 'progress', component: PageProgressComponent},
 
@@ -185,7 +187,9 @@ const appRoutes: Routes = [
   PageAdminModuleComponent,
   PageAdminLessonComponent,
   NewUserDialogComponent,
-  PagePaperComponent
+  PagePaperComponent,
+  PagePupilTrackingComponent,
+
   ],
   imports: [
     BrowserModule,
