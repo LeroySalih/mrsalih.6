@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Citadel</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-form-field>
+  <mat-select placeholder="Choose Pupil" [(ngModel)]="currentPupilName" (valueChange)="onPupilChange($event)">
+    <mat-option *ngFor="let pupil of pupils" [value]="pupil">
+      {{pupil}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div [chart]="chart"></div>
+
+
+<div style="display: flex; flex-direction:columns; flex-wrap: wrap;">
+  <div *ngFor="let spec of specs; let i = index">
+    <div *ngIf="i > 0" class="specCard">
+      <div class="title">{{spec.title}}</div>
+        <div *ngFor="let section of spec.section" style="display: flex; flex-direction:row">
+          <div class="sectionTitle">{{section.level}} {{section.title}}</div>
+          <div *ngIf="section.results"  class="sectionResults">
+            
+            <div *ngFor="let result of section.results" style="display: flex; flex-direction: row">
+
+              <div *ngIf="result.available == result.actual" 
+                    class="question green">&nbsp;</div>
+              <div *ngIf="(result.available > result.actual) && (result.actual > 0)" 
+                    class="question orange">&nbsp;</div>
+              <div *ngIf="(result.actual == 0)" 
+                    class="question red">&nbsp;</div> 
+              
+              <!-- [{{result.paperTitle}}, {{result.available}}, {{result.actual}}] -->
+            </div>
+          </div>
+        </div>
+          
+       
+      </div>
+  </div>
+</div>
+
+

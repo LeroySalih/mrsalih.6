@@ -96,6 +96,10 @@ import { PageAdminLessonComponent } from './page-admin-lesson/page-admin-lesson.
 import { NewUserDialogComponent } from './dialogs/new-user-dialog/new-user-dialog.component';
 import { PagePaperComponent } from './page-paper/page-paper.component';
 import { PagePupilTrackingComponent } from './page-pupil-tracking/page-pupil-tracking.component';
+import { CitadelPastPaperService} from './services/citadel/past-paper.service';
+import { CitadelPupilService} from './services/citadel/pupil.service';
+import { CitadelSpecificationService } from './services/citadel/specification.service';
+import { PagePupilTrackerComponent } from './page-pupil-tracker/page-pupil.tracker.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
@@ -112,7 +116,7 @@ const appRoutes: Routes = [
   {path: 'quiz/:id', component: PageQuizComponent},
   {path: 'quiz-report/:lessonId', component: PageQuizReportComponent},
   {path: 'posts', component: PageBlogHomeComponent},
-  {path: 'tracking/pupil', component: PagePupilTrackingComponent},
+  {path: 'tracking/pupil', component: PagePupilTrackerComponent},
   {path: 'posts/:id', component: PageBlogPostComponent},
   {path: 'progress', component: PageProgressComponent},
 
@@ -152,6 +156,7 @@ const appRoutes: Routes = [
     CpLessonSummaryComponent,
     LODialogComponent,
     CpSectionComponent,
+    PagePupilTrackerComponent,
   //  CpSectionEditComponent,
     SectionEditDialogComponent,
   CpQuestionComponent,
@@ -227,7 +232,10 @@ const appRoutes: Routes = [
     MessageService,
     QuestionService,
     PastPaperService,
-    ConfirmationService
+    ConfirmationService,
+    CitadelPastPaperService,
+    CitadelPupilService,
+    CitadelSpecificationService,
 
   ],
   bootstrap: [AppComponent],

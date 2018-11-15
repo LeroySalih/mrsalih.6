@@ -1,9 +1,11 @@
-  page-paper works! with paperId  {{pastPaperId}}
+Page Loading {{pastPaperId}}
   <div *ngIf="pastPaperAnswers">
+      <h1>{{pastPaperAnswers.paperTitles}}</h1>
     <!--
     <app-cp-past-paper [pastPaperAnswers]="pastPaperAnswers" (save)="onSave($event)"></app-cp-past-paper>
-    -->
-    <p-table [value]="pastPaperAnswers.answers" (onEditComplete)="tableEdited($event)">
+    (onEditComplete)="tableEdited($event)"    
+-->
+    <p-table [value]="pastPaperAnswers.answers" [paginator]="true" [rows]="showRows" [first]="first" (onEditComplete)="tableEdited($event)">
       
       <ng-template pTemplate="header">
           <tr>
@@ -21,17 +23,30 @@
               <td>{{rowData.type}}</td>
               <td>{{rowData.level}}</td>
               <td>{{rowData.available_marks}}</td>
-              <td pEditableColumn [pEditableColumn]="rowData" [pEditableColumnField]="'actual_marks'">
+              <!-- <td pEditableColumn [pEditableColumn]="rowData" [pEditableColumnField]="'actual_marks'">-->
+                    <td pEditableColumn [pEditableColumn]="rowData" [pEditableColumnField]="'actual_marks'">
                   <p-cellEditor>
                       <ng-template pTemplate="input">
-                          <input type="number" [(ngModel)]="rowData.actual_marks">
+                          <input pInputText type="number" [(ngModel)]="rowData.actual_marks">
                       </ng-template>
                       <ng-template pTemplate="output">
                           {{rowData.actual_marks}}
                       </ng-template>
                   </p-cellEditor>
               </td>
-              <td>Mistake Type</td>
+
+              <td pEditableColumn [pEditableColumn]="rowData" [pEditableColumnField]="'mistake_type'">
+                   
+                            <mat-form-field>
+                                    <mat-select [(ngModel)]="rowData.mistake_type" (selectionChange)="onMistakeTypeChange($event)" style="width: 100px">
+                                        <mat-option *ngFor="let mt of mistakeTypes" [value]="mt.value" style="width:100px; background-color: red">
+                                        {{mt.label}}
+                                        </mat-option>
+                                    </mat-select>
+                                    </mat-form-field>
+                        
+                </td>
+              
           </tr>
       </ng-template>
   </p-table>

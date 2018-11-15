@@ -22,22 +22,25 @@ export class PastPaperService {
     return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperId}`).valueChanges();
   }
 
-  savePastPaperAnswers (answers: PastPaperAnswers): Promise<void> {
+  savePastPaperAnswers (ppa: PastPaperAnswers): Promise<string> {
 
-    if (answers.id === undefined) {
-      answers.id = uuid();
-    }
+    return new Promise((resolve, reject) => {
+      if (ppa.id === undefined) {
+        ppa.id = uuid();
+      }
 
-    return this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${answers.id}`)
-      .set(answers)
+      this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${ppa.id}`)
+      .set(ppa)
+      .then(() => {
+        resolve(ppa.id);
+      })
       .catch((err) => {console.error(err); });
+
+    });
 
   }
 
-  savePastPaperTemplate (paper: PastPaper): Promise<void> {
-    if (paper.pastPaperId === undefined) {
-      paper.pastPaperId = uuid();
-    }
+  savePastPaperTemplate (paper: PastPaper) {
 
     return this.afs.doc<PastPaper>(`${DbConfig.PAST_PAPER_TEMPLATES}/${paper.pastPaperId}`)
       .set(paper);
@@ -56,10 +59,15 @@ export class PastPaperService {
     return this.afs.doc<PastPaperAnswers>(`${DbConfig.PAST_PAPER_ANSWERS}/${pastPaperId}`).valueChanges();
   }
 
-  createAnswersFromTemplate(userId: string, pastPaperId: string ) {
+  createAnswersFromTemplate(userId: string, pptId: string ): Promise<string> {
 
-    this.afs.firestore.doc(`${DbConfig.PAST_PAPER_TEMPLATES}/${pastPaperId}`).get().then((doc) => {
+    return new Promise ((resolve, reject) => {
+
+      this.afs.firestore.doc(`${DbConfig.PAST_PAPER_TEMPLATES}/${pptId}`)
+                      .get()
+                      .then((doc) => {
       const ppt: PastPaperAnswers = doc.data() as PastPaperAnswers;
+      ppt.id = uuid();
       ppt.userId = userId;
       ppt.created = Math.ceil( Date.now());
       ppt.answers = ppt.questions.map((q) => {
@@ -68,7 +76,9 @@ export class PastPaperService {
         return q as PastPaperAnswer;
       });
 
-      return this.savePastPaperAnswers(ppt);
+      this.savePastPaperAnswers(ppt).then((id) => {resolve(id); } );
+    });
+
     });
 
   }

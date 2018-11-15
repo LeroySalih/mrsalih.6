@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule} from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -19,11 +20,11 @@ import { MatMenuModule } from '@angular/material/menu';
                MatInputModule, MatDividerModule,
                MatSelectModule, MatCheckboxModule,
                MatSidenavModule, MatIconModule, MatDialogModule,
-               MatMenuModule],
+               MatMenuModule, MatToolbarModule],
     exports: [ MatButtonModule, MatCardModule,
                MatInputModule, MatDividerModule,
                MatSelectModule, MatCheckboxModule,
                MatSidenavModule, MatIconModule, MatDialogModule,
-               MatMenuModule],
+               MatMenuModule, MatToolbarModule],
   })
   export class MaterialModule { }

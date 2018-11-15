@@ -8,6 +8,10 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { countByClassification, sumByClassification } from '../library';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+import { v4 as uuid } from 'uuid';
+import * as moment from 'moment';
+
+import { Chart } from 'angular-highcharts';
 
 @Component({
   selector: 'app-page-papers',
@@ -21,7 +25,9 @@ export class PagePapersComponent implements OnInit {
 
   userProfile: UserProfile;
   pastPaperDropDownItems: SelectItem[];
-  gotoPaperId = '';
+  pptId = '';
+
+  chart: Chart;
 
   constructor(private pastPaperService: PastPaperService,
               private userService: UserService,
@@ -53,9 +59,12 @@ export class PagePapersComponent implements OnInit {
         (templates, answers) => ( {templates, answers} )
       ).subscribe((data) => {
 
+        console.log(data);
+
          // Create a dictionary of past paper answers
-         data.answers.forEach((a: PastPaperAnswers) => {
-          this.pastPaperAnswers[a.pastPaperId] = a;
+         data.answers.forEach((ppa: PastPaperAnswers) => {
+
+          this.pastPaperAnswers[ppa.id] = ppa;
           // const fa: FormArray = this.answersForm.get('answers') as FormArray;
           // fa.push(this.createAnswer(a));
          });
@@ -65,23 +74,62 @@ export class PagePapersComponent implements OnInit {
 
             this.pastPaperDropDownItems.push({label: `${p.date}-${p.paperTitle}`, value: p.pastPaperId});
             this.pastPaperDropDownItems = this.pastPaperDropDownItems.sort ((a, b) => {
-               return  a.label > b.label ? 1 : -1;
+               return  a.label > b.label ? 1 : (a.label === b.label ) ? 0 : -1;
             });
 
-            // add to dictionary
-            // this.pastPapers[p.pastPaperId] = p;
+            this.chart = new Chart({
+              chart: {
+                type: 'line'
+              },
+              title: {
+                text: 'Score'
+              },
+              xAxis: {
+                min: 0,
+                title: {
+                  text: 'Week No.'
+                }
+              },
+              yAxis: {
+                min: 0,
+                title: {
+                  text: 'Marks'
+                }
+              },
+              legend: {
+                reversed: true
+              },
+              plotOptions: {
+                series: {
+                  stacking: 'normal'
+                }
+              },
+              series: [
+                {
+                  name: 'Incorrect',
+                  color: 'red',
+                  data: this.getScores(this.getPapers())
+                  }
+            ]
+            });
 
-            // Check if Past Paper Answers exist
-            // const paperAnswers = this.pastPaperAnswers[p.pastPaperId];
 
-            // if not, create it.  This will cause a refresh of the data through the subscription.
-            // if (paperAnswers === undefined) {
-            //  this.pastPaperService.createAnswersFromTemplate(userProfile.authenticationId, p);
-            // }
           });
       });
 
     });
+  }
+
+  getScores (ppas: PastPaperAnswers[]) {
+    const scores = [];
+
+    ppas.forEach((ppa) => {
+      const score = ppa.answers.reduce((prev, curr) => {
+        return prev + curr['actual_marks']; } , 0);
+      scores.unshift(score);
+    });
+
+    return scores;
   }
 
   getPapers(): PastPaperAnswers[] {
@@ -91,7 +139,7 @@ export class PagePapersComponent implements OnInit {
     return Object
           .values(this.pastPaperAnswers)
           .sort(
-          (a, b) => ((a.date > b.date) ? 1 : -1));
+          (a, b) => ((a.created < b.created) ? 1 : -1));
   }
 
   getPaperScore(paperId) {
@@ -113,15 +161,30 @@ export class PagePapersComponent implements OnInit {
     return sum;
   }
 
+  getDate(dt) {
+
+    const date = moment(new Date(dt));
+    return moment(date.toDate()).format('Do MMM YYYY HH:mm');
+  }
+
   onSave(event) {
     const pastPaperAnswers: PastPaperAnswers = event.data;
     this.pastPaperService.savePastPaperAnswers(pastPaperAnswers);
   }
 
-  gotoPastPaperAnswers() {
-    const id = this.gotoPaperId;
+  gotoPastPaperAnswers(id) {
     console.log(id);
     this.router.navigate(['/paper', id]);
   }
 
+  createPastPaperAnswers() {
+    // const id = uuid();
+    // console.log(`Created ${id}`);
+    this.pastPaperService
+          .createAnswersFromTemplate(this.userProfile.authenticationId, this.pptId)
+          .then((id) => { console.log(`received ${id}`);
+       //   this.gotoPastPaperAnswers(id);
+        });
+
+  }
 }

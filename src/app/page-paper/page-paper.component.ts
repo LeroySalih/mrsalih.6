@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PastPaperService } from '../services/past-paper-service';
 import { PastPaperAnswers } from '../models/past-paper';
@@ -6,6 +6,8 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 import { isNumberValidator, minValidator, maxValidator} from '../validators';
 import { UserService } from '../services/user.service';
 import { UserProfile } from '../models/user-profile';
+import { Table } from 'primeng/table';
+import { SelectItem } from 'primeng/api';
 
 interface MistakeType {
   name: string;
@@ -19,11 +21,13 @@ interface MistakeType {
 })
 export class PagePaperComponent implements OnInit {
 
-  pastPaperId: string;
+  ppaId: string;
   pastPaperAnswers: PastPaperAnswers;
-  mistakeTypes: MistakeType[];
+  mistakeTypes: SelectItem[];
   answersForm: FormGroup;
   userData: UserProfile;
+  showRows = 10;
+  first = 0;
 
   constructor(private activeRoute: ActivatedRoute,
               private formBuild: FormBuilder,
@@ -32,10 +36,10 @@ export class PagePaperComponent implements OnInit {
               private pastPaperService: PastPaperService) {
 
     this.mistakeTypes = [
-      {name: 'Not Answered', code: 'NA'},
-      {name: 'All Correct', code: 'OK'},
-      {name: 'Silly', code: 'SI'},
-      {name: 'Serious', code: 'SE'}];
+      {label: 'Not Answered', value: 'NA'},
+      {label: 'All Correct', value: 'OK'},
+      {label: 'Silly', value: 'SI'},
+      {label: 'Serious', value: 'SE'}];
 
 
       this.userService.currentUser$.subscribe((currentUser) => {
@@ -44,36 +48,32 @@ export class PagePaperComponent implements OnInit {
 
   }
 
-
-
   marksEntered(row) {
     console.log(row);
+  }
+
+  onMistakeTypeChange(event) {
+    console.log(event, this.pastPaperAnswers);
+    this.pastPaperService.savePastPaperAnswers(this.pastPaperAnswers);
   }
 
   ngOnInit() {
 
     // Always create a new mark scheme.
     // Only Admin remove a mark scheme.
- 
+
     this.activeRoute.params.subscribe((params: ParamMap) => {
-      this.pastPaperId = params['id'];
+      this.ppaId = params['id'];
 
-      this.pastPaperService.getPastPaperAnswersById(this.pastPaperId).subscribe((pastPaperAnswers) => {
-
-        if (pastPaperAnswers === undefined) {
-          this.pastPaperService.createAnswersFromTemplate(
-            this.userData.authenticationId,
-            this.pastPaperId)
-        }
-
-        this.pastPaperAnswers = pastPaperAnswers;
-
+      this.pastPaperService.getPastPaperAnswersById(this.ppaId).subscribe((ppa) => {
+        console.log(ppa);
+        this.pastPaperAnswers = ppa;
       });
     });
   }
 
   tableEdited(event) {
-    // console.log('Table Change Detected', this.pastPaperAnswers);
+    console.log('Table Change Detected', this.pastPaperAnswers);
     this.pastPaperService.savePastPaperAnswers(this.pastPaperAnswers);
   }
 

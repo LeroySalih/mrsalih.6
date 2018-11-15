@@ -14,7 +14,6 @@
                     (click)="onChapterSelect(chapter)"
                     class="ui-button-rounded ui-button-secondary"></button>
         </p-tabPanel>
-        
     </p-tabView>
     <div *ngIf="firstBlogPost">
       <div class="firstBlogGrid">
@@ -33,9 +32,9 @@
             <div class="card-tag post">{{bp.subject}}</div>
             <div class="card-date post">{{convertDate(bp.date)}}</div>    
         </div>
-        <header class="card-title post">
+        <div class="card-title post">
           <a [routerLink]="['/posts', bp.id]">{{bp.title}}</a> 
-        </header>
+        </div>
         <a class="card-fig post" [routerLink]="['/posts', bp.id]">
           <figure >
             <img src="assets/images/python_logo.png">

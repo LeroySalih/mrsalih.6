@@ -1,14 +1,20 @@
 <h1>Past Papers</h1>
-<p-dropdown [(ngModel)]="gotoPaperId" [options]="pastPaperDropDownItems"></p-dropdown>
-<button pButton (click)="gotoPastPaperAnswers()" label="Save Marks"></button>
+<p-dropdown [(ngModel)]="pptId" style="width:150px;" autoWidth="false" [style]="{'width':'150px'}"  [options]="pastPaperDropDownItems"></p-dropdown>
+<button pButton (click)="createPastPaperAnswers()" label="Complete Paper"></button>
+<div [chart]="chart"></div>
 <p-accordion>
     <p-accordionTab [selected]="flase" *ngFor="let p of getPapers()">
         <p-header >
-          <span style="float: left;">{{p.date}} | {{p.paperTitle}} </span>
-          <span style="float: right;">(Current Marks: {{getPaperScore(p.pastPaperId)}})</span>
+          <span style="float:left">{{p.date}} | {{p.paperTitle}} ({{getPaperScore(p.id)}} marks)</span>
+          <span style="float:right; font-size: smaller; color: silver"><i>{{getDate(p.created)}}</i></span>
         </p-header>
-        <a [routerLink]="['/paper', p.id]">Mark PastPaper</a>
-        <button pButton (click)="gotoPastPaperAnswers(p.id)">Submit Marks</button>
+
+        <div style="text-align: right">
+            <button pButton (click)="gotoPastPaperAnswers(p.id)" label="Edit Marks" style="margin-right: 10px;"></button>
+            <button pButton class="ui-button-danger" label="Delete Marks"></button>    
+        </div>
+       
+        
         <app-cp-past-paper [pastPaperAnswers]="p" (save)="onSave($event)"></app-cp-past-paper>
     </p-accordionTab>
     
